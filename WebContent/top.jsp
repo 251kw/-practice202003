@@ -39,6 +39,13 @@
 					<tr>
 						<td colspan="2">${user.profile}</td>
 					</tr>
+					</table>
+					</form>
+					<form action="/Updeta" method="post">
+				<table class="table table-bordered">
+					<tr>
+						<td><input class="btn btn-light" type="submit" value="ユーザー情報変更" /></td>
+					</tr>
 				</table>
 			</form>
 		</div>

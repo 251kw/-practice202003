@@ -60,6 +60,7 @@ public class LoginServlet extends HttpServlet {
 
 				// 処理の転送先を top.jsp に指定
 				dispatcher = request.getRequestDispatcher("top.jsp");
+				
 			} else {
 				// ユーザ情報が取得できない場合
 				// エラーメッセージをリクエストオブジェクトに保存

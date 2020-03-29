@@ -31,7 +31,7 @@ public class DBManager extends SnsDAO {
 			pstmt = conn.prepareStatement(sql);	// SELECT 構文登録
 			pstmt.setString(1, loginId);
 			pstmt.setString(2, password);
-			rset = pstmt.executeQuery();
+			rset = pstmt.executeQuery();//
 
 			// 検索結果があれば
 			if (rset.next()) {
@@ -69,8 +69,8 @@ public class DBManager extends SnsDAO {
 			pstmt = conn.createStatement();
 
 			// SELECT 文の実行
-			String sql = "SELECT * FROM shouts ORDER BY date DESC";
-			rset = pstmt.executeQuery(sql);
+			String sql = "SELECT * FROM shouts ORDER BY date DESC";//
+			rset = pstmt.executeQuery(sql);//
 
 			// 検索結果の数だけ繰り返す
 			while (rset.next()) {
