@@ -38,6 +38,7 @@ public class Updeta extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
+
 		String message1 = request.getParameter("shin");
 		String  message2= request.getParameter("kawafuchi");
 
