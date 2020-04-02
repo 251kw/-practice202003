@@ -41,13 +41,7 @@
 					</tr>
 					</table>
 					</form>
-					<form action="/Updeta" method="post">
-				<table class="table table-bordered">
-					<tr>
-						<td><input class="btn btn-light" type="submit" value="ユーザー情報変更" /></td>
-					</tr>
-				</table>
-			</form>
+					<a href="NewFile.jsp" >ユーザー情報変更</a>
 		</div>
 	</div>
 	<div class="padding-y-5 text-center">
