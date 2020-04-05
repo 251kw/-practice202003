@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.DBSUBanager;
+
 /**
  * Servlet implementation class Updeta
  */
@@ -39,8 +42,10 @@ public class Updeta extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
 
-		String message1 = request.getParameter("shin");
-		String  message2= request.getParameter("kawafuchi");
+		String loginId = request.getParameter("loginId");
+		String password = request.getParameter("password");
+		DBSUBanager dbm = new  DBSUBanager();
+		dbm.getLoginUser(loginId, password);
 
 
 		//HTML 出力準備
@@ -51,10 +56,13 @@ public class Updeta extends HttpServlet {
 		out.println("<title>ユーザー情報変更</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("Name:+message1+<br>");
-		out.println("password:+message2+<br>");
+		out.println("Name:"+loginId+"<br>");
+		out.println("password:"+password+"<br>");
+		out.println("変更完了");
 		out.println("<body>");
 		out.println("</html>");
+
 	}
+
 
 }

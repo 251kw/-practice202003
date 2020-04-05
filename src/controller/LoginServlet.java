@@ -55,12 +55,12 @@ public class LoginServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
-				session.setAttribute("user", user);
+				session.setAttribute("user", user);//どういう意味なのか
 				session.setAttribute("shouts", list);
 
 				// 処理の転送先を top.jsp に指定
 				dispatcher = request.getRequestDispatcher("top.jsp");
-				
+
 			} else {
 				// ユーザ情報が取得できない場合
 				// エラーメッセージをリクエストオブジェクトに保存
