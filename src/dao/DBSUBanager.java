@@ -16,7 +16,7 @@ public class DBSUBanager extends SnsDAO {
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 
-		String sql = "UPDATE users SET loginId=?,password=? WHERE id=1";
+		String sql = "UPDATE users SET loginId=?,password=? WHERE userId=1";
 		UserDTO user = null; // 登録ユーザ情報
 
 		try {
