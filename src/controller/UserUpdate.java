@@ -15,13 +15,13 @@ import dao.DBSUBanager;
  * Servlet implementation class Updeta
  */
 @WebServlet("/Updeta")
-public class Updeta extends HttpServlet {
+public class UserUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Updeta() {
+    public UserUpdate() {
         super();
         // TODO Auto-generated constructor stub
     }
