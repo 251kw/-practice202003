@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DBSUBanager;
-
 /**
  * Servlet implementation class Updeta
  */
@@ -44,8 +42,6 @@ public class UserUpdate extends HttpServlet {
 
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
-		DBSUBanager dbm = new  DBSUBanager();
-		dbm.getLoginUser(loginId, password);
 
 
 		//HTML 出力準備
