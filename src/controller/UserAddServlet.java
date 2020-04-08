@@ -68,11 +68,7 @@ public class UserAddServlet extends HttpServlet {
 		out.println("<title>新規登録ユーザー情報</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("Name:"+loginId+"<br>");
-		out.println("password:"+password+"<br>");
-		out.println("userName:"+userName+"<br>");
-		out.println("icon:"+icon+"<br>");
-		out.println("profile:"+profile+"<br>");
+		out.println("登録完了");
 		out.println("<body>");
 		out.println("</html>");
 

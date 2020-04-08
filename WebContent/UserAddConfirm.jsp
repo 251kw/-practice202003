@@ -5,6 +5,9 @@
 <head>
 <meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="./css/skyblue.css">
+<link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
+<link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
 
@@ -16,7 +19,7 @@
 	<div>
 		<div>
 			<%-- action 属性にサーブレットを指定 --%>
-			<form action="./UserAddServlet" method="post">
+			<form action="UserAddInput.jsp" >
 				<table >
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
@@ -41,7 +44,6 @@
 						<lavel for="male"><input type="radio" name="icon" id="male" value="male" checked>male</lavel>
 						<lavel for="female"><input type="radio" name="icon" id="female" value="female">female</lavel>
 						</td>
-
 						</td>
 					</tr>
 					<tr>
@@ -57,9 +59,7 @@
 					</table>
 
 					</form>
-					<form action="" >
-						<input class="btn" type="submit" value="キャンセル"/>
-					</form>
+					<a href="SerchUser.jsp">戻る</a>
 					</div>
 					</div>
 
