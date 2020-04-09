@@ -21,12 +21,7 @@
 		out.println("アイコン:" + icon + "<br>");
 		out.println("コメント:" + profile + "<br>");
 	%>
-
-
-
-
 	<form action="./UserAddServlet" method="post">
-
 		<table>
 			<tr>
 				<%-- ログインID 入力欄の名前は loginId --%>
@@ -65,7 +60,46 @@
 		</table>
 
 	</form>
-	<a href="UserAddConfirm.jsp" class="btn">戻る</a>
+	<form action="./UserAddServlet" method="post">
+		<table>
+			<tr>
+				<%-- ログインID 入力欄の名前は loginId --%>
+				<td class="color-main text-left"></td>
+				<td class="text-left"><input class="form-control" type="hidden"
+					name="loginId" value=<%=loginId%> size="20" /></td>
+			</tr>
+			<tr>
+				<%-- パスワード入力欄の名前は password --%>
+				<td class="color-main text-left"></td>
+				<td class="text-left"><input class="form-control"
+					type="hidden" name="password" value=<%=password %> size="20" /></td>
+			</tr>
+			<tr>
+				<td class="color-main text-left"></td>
+				<td class="text-left"><input class="form-control" type="hidden"
+					name="userName" value=<%=userName %> size="20" /></td>
+			</tr>
+			<tr>
+				<td><lavel for="male">
+					<input type="hidden" name="icon" id="male" value=<%=icon %> checked></lavel>
+					<lavel for="female">
+					<input type="hidden" name="icon" id="female" value=<%=icon %>></lavel>
+				</td>
+				</td>
+			</tr>
+			<tr>
+				<td class="color-main text-left"></td>
+				<td class="text-left"><input class="form-control" type="hidden"
+					name="profile" value=<%=profile %> size="20" /></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="text-right"><input class="btn"
+					type="submit" value="キャンセル" /></td>
+			</tr>
+		</table>
+
+	</form>
+
 
 
 

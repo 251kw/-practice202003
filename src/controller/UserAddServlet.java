@@ -10,14 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DBSUBanager;
-
-
-
-
-
-
-
-
 /**
  * Servlet implementation class UserAddServlet
  */
@@ -55,22 +47,31 @@ public class UserAddServlet extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String icon=request.getParameter("icon");
 		String profile=request.getParameter("profile");
-		DBSUBanager add=new DBSUBanager();
-		add.getLoginUser(loginId, password, userName, icon, profile);
+		String message=null;
+
+		if(loginId.equals("")||userName.equals("")) {
+			message="ログインIDと名前は必須入力です";
+		}else if (!isEmpty(loginId) && (loginId.getBytes("UTF-8").length) == loginId.length() * 3) {
+	            message="半角入力です";
+		} else if (!checkLength(loginId, 8)) {
+            message = "文字が8文字以上入力されていません。";
+        }
+		else {
+			DBSUBanager add=new DBSUBanager();
+			add.getLoginUser(loginId, password, userName, icon, profile);
+			PrintWriter out=response.getWriter();
 
 
+			out.println("<html lang='ja'>");
+			out.println("<head>");
+			out.println("<title>新規登録ユーザー情報</title>");
+			out.println("</head>");
+			out.println("<body>");
+			out.println("登録完了");
+			out.println("<body>");
+			out.println("</html>");
+		}
 
-
-		PrintWriter out=response.getWriter();
-
-		out.println("<html lang='ja'>");
-		out.println("<head>");
-		out.println("<title>新規登録ユーザー情報</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("登録完了");
-		out.println("<body>");
-		out.println("</html>");
 
 
 
@@ -82,4 +83,16 @@ public class UserAddServlet extends HttpServlet {
 
 	}
 
+private boolean checkLength(String loginId, int i) {
+		// TODO 自動生成されたメソッド・スタブ
+		return false;
+	}
+private boolean isEmpty(String loginId) {
+	// TODO 自動生成されたメソッド・スタブ
+	return false;
 }
+
+
+}
+
+
