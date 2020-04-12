@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +17,7 @@ import dao.DBSUBanager;
 @WebServlet("/UserAddServlet")
 public class UserAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,19 +49,37 @@ public class UserAddServlet extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String icon=request.getParameter("icon");
 		String profile=request.getParameter("profile");
-		String message=null;
+		RequestDispatcher dispatcher = null;
+		int i=9;
 
-		if(loginId.equals("")||userName.equals("")) {
-			message="ログインIDと名前は必須入力です";
-		}else if (!isEmpty(loginId) && (loginId.getBytes("UTF-8").length) == loginId.length() * 3) {
-	            message="半角入力です";
-		} else if (!checkLength(loginId, 8)) {
-            message = "文字が8文字以上入力されていません。";
-        }
+		if(loginId.equals("")||password.equals("")) {
+			String message = "ログインIDとパスワードは必須入力です";
+
+			// エラーメッセージをリクエストオブジェクトに保存
+			request.setAttribute("alert", message);
+
+			// index.jsp に処理を転送
+			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher.forward(request, response);
+		}else if(loginId.length()>i) {
+			String message = "ログインIDは8文字以下で入力してください";
+
+			// エラーメッセージをリクエストオブジェクトに保存
+			request.setAttribute("alert", message);
+
+			// index.jsp に処理を転送
+			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher.forward(request, response);
+		}
+		else if(loginId.equals('\u00a5')) {
+
+		}
 		else {
 			DBSUBanager add=new DBSUBanager();
 			add.getLoginUser(loginId, password, userName, icon, profile);
 			PrintWriter out=response.getWriter();
+
+
 
 
 			out.println("<html lang='ja'>");
@@ -68,31 +88,18 @@ public class UserAddServlet extends HttpServlet {
 			out.println("</head>");
 			out.println("<body>");
 			out.println("登録完了");
-			out.println("<body>");
+			out.println("<a href='index.jsp'>ログイン画面に戻る</a>");
+			out.println("</body>");
 			out.println("</html>");
 		}
 
 
 
 
-
-
-
-
-
-
 	}
-
-private boolean checkLength(String loginId, int i) {
-		// TODO 自動生成されたメソッド・スタブ
-		return false;
-	}
-private boolean isEmpty(String loginId) {
-	// TODO 自動生成されたメソッド・スタブ
-	return false;
 }
 
 
-}
+
 
 
