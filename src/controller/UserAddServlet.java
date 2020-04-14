@@ -71,7 +71,15 @@ public class UserAddServlet extends HttpServlet {
 			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
 			dispatcher.forward(request, response);
 		}
-		else if(loginId.equals('\u00a5')) {
+		else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
+			String message = "半角英数記号で入力してください";
+
+			// エラーメッセージをリクエストオブジェクトに保存
+			request.setAttribute("alert", message);
+
+			// index.jsp に処理を転送
+			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher.forward(request, response);
 
 		}
 		else {

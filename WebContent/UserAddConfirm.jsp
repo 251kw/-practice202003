@@ -31,7 +31,7 @@ String profile = request.getParameter("profile");
 				<table >
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">ログインID(文字数は8文字以下)</td>
+						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>
 						<td class="text-left"><input class="form-control" type="text"
 							name="loginId" value=""  size="20" /></td>
 					</tr>
@@ -47,7 +47,7 @@ String profile = request.getParameter("profile");
 							name="userName" value="" size="20" /></td>
 					</tr>
 					<tr>
-						<th>性別</th>
+						<th><span class="icon-users pe-2x pe-va"></span>&nbsp;性別</th>
 						<td>
 						<lavel for="male"><input type="radio" name="icon" id="male" value="" checked>male</lavel>
 						<lavel for="female"><input type="radio" name="icon" id="female" value="" >female</lavel>
