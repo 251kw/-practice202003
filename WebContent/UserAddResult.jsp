@@ -7,7 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="bg-success padding-y-5">
+		<div class="container padding-y-5 text-center">
+			<h1>
+				&nbsp;
+			</h1>
+		</div>
+	</div>
 
 </body>
 </html>

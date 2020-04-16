@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,54 +48,36 @@ public class UserAddServlet extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String icon=request.getParameter("icon");
 		String profile=request.getParameter("profile");
-		RequestDispatcher dispatcher = null;
-		int i=9;
 
-		if(loginId.equals("")||password.equals("")) {
-			String message = "ログインIDとパスワードは必須入力です";
 
-			// エラーメッセージをリクエストオブジェクトに保存
-			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
-			dispatcher.forward(request, response);
-		}else if(loginId.length()>i) {
-			String message = "ログインIDは8文字以下で入力してください";
-
-			// エラーメッセージをリクエストオブジェクトに保存
-			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
-			dispatcher.forward(request, response);
-		}
-		else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
-			String message = "半角英数記号で入力してください";
-
-			// エラーメッセージをリクエストオブジェクトに保存
-			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
-			dispatcher.forward(request, response);
-
-		}
-		else {
 			DBSUBanager add=new DBSUBanager();
 			add.getLoginUser(loginId, password, userName, icon, profile);
 			PrintWriter out=response.getWriter();
 
 
-
-
 			out.println("<html lang='ja'>");
 			out.println("<head>");
+			out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
+			out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
+			out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
+			out.println("<div class=bg-success padding-y-5>");
+			out.println("</div>");
 			out.println("<title>新規登録ユーザー情報</title>");
 			out.println("</head>");
 			out.println("<body>");
-			out.println("登録完了");
+			out.println("<div class=bg-success padding-y-5>");
+			out.println("<div class=container padding-y-5 text-center>");
+			out.println("<div align=center>");
+			out.println("<h1>確認画面&nbsp</h1>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("</div>");
+			out.println("<div align=center>");
+			out.println("<p>登録完了</p>");
+			out.println("<div class=btn>");
 			out.println("<a href='index.jsp'>ログイン画面に戻る</a>");
+			out.println("</div>");
+			out.println("</div>");
 			out.println("</body>");
 			out.println("</html>");
 		}
@@ -104,7 +85,7 @@ public class UserAddServlet extends HttpServlet {
 
 
 
-	}
+
 }
 
 
