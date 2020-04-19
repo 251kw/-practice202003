@@ -57,6 +57,7 @@ public class UserAddServlet extends HttpServlet {
 
 			out.println("<html lang='ja'>");
 			out.println("<head>");
+			out.println("<meta http-equiv=\"Content=Type\" content=\"text/html; charset=UTF-8\">");
 			out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
 			out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
 			out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
@@ -65,6 +66,7 @@ public class UserAddServlet extends HttpServlet {
 			out.println("<title>新規登録ユーザー情報</title>");
 			out.println("</head>");
 			out.println("<body>");
+
 			out.println("<div class=bg-success padding-y-5>");
 			out.println("<div class=container padding-y-5 text-center>");
 			out.println("<div align=center>");
@@ -72,10 +74,24 @@ public class UserAddServlet extends HttpServlet {
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</div>");
-			out.println("<font size=5>");
 			out.println("<div align=center>");
 			out.println("<p>登録完了</p>");
-			out.println("</font>");
+			out.println("<a>");
+			out.println("<tr>");
+			out.println("<td><P>ログインID:"+loginId+"</p></td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td><P>パスワード:"+password+"</p></td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td><P>名前:"+userName+"</p></td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td><P>アイコン:"+icon+"</p></td>");
+			out.println("</tr>");
+			out.println("<tr>");
+			out.println("<td><P>コメント:"+profile+"</p></td>");
+			out.println("</tr>");
 			out.println("<div class=btn>");
 			out.println("<a href='top.jsp'　>ログイン画面に戻る</a>");
 			out.println("</div>");

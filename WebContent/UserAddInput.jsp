@@ -121,10 +121,10 @@ out.println("コメント:" + profile + "<br>");
 					name="userName" value=<%=userName %> /></td>
 			</tr>
 			<tr>
-				<td><lavel for="male">
-					<input type="hidden" name="icon" id="male" value=<%=icon %>></lavel>
-					<lavel for="female">
-					<input type="hidden" name="icon" id="female" value=<%=icon %>  ></lavel>
+				<td>
+					<input type="hidden" name="icon" id="male" value=<%=icon %>　checked>
+
+					<input type="hidden" name="icon" id="female" value=<%=icon %>  checked>
 				</td>
 				</td>
 			</tr>

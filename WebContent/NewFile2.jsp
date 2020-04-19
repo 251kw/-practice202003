@@ -58,8 +58,8 @@
 					<tr>
 						<td class="color-main text-left">性格</td>
 						<td>
-						<lavel for="male"><input type="radio" name="icon" id="male"　value=<%=icon %> >male</lavel>
-						<lavel for="female"><input type="radio" name="icon" id="female" value=<%=icon %> >female</lavel>
+						<input type="radio" name="icon" id="male"　value=<%=icon %> checked><span>male</span>
+						<input type="radio" name="icon" id="female" value=<%=icon %> checked><span>female</span>
 						</td>
 						</td>
 					</tr>

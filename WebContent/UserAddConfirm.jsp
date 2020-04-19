@@ -55,10 +55,10 @@
 							name="userName" value="" size="20" /></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left">性格</td>
+						<td class="color-main text-left">アイコン</td>
 						<td>
-						<lavel for="male"><input type="radio" name="icon" id="male" value="male" cheked>male</lavel>
-						<lavel for="female"><input type="radio" name="icon" id="female" value="female">female</lavel>
+						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
+						<input type="radio" name="icon" id="female" value="female" checked><span>female</span>
 						</td>
 						</td>
 					</tr>
