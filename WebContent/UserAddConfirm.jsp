@@ -17,7 +17,7 @@
 	String userName = request.getParameter("userName");
 	String icon = request.getParameter("icon");
 	String profile = request.getParameter("profile");
-	%>
+%>
 <div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -30,9 +30,6 @@
 			<strong class="color-main">入力してください</strong>
 		</div>
 		</div>
-	
-	<c:choose>
-	<c:when test="${password==null}">
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 
@@ -60,8 +57,8 @@
 					<tr>
 						<td class="color-main text-left">性格</td>
 						<td>
-						<lavel for="male"><input type="radio" name="icon" id="male" value="male" checked>male</lavel>
-						<lavel for="female"><input type="radio" name="icon" id="female" value="female" >female</lavel>
+						<lavel for="male"><input type="radio" name="icon" id="male" value="male" cheked>male</lavel>
+						<lavel for="female"><input type="radio" name="icon" id="female" value="female">female</lavel>
 						</td>
 						</td>
 					</tr>
@@ -86,59 +83,6 @@
 					</form>
 					</div>
 					</div>
-					</c:when>
-
-
-
-					<c:when test="${password!=null}">
-					<form action="UserAddInput.jsp" >
-				<table >
-					<tr>
-						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=<%=loginId %>  size="20" /></td>
-					</tr>
-					<tr>
-						<%-- パスワード入力欄の名前は password --%>
-						<td class="color-main text-left">パスワード</td>
-						<td class="text-left"><input class="form-control"
-							type="password" name="password" value=<%=password %> size="20" /></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">名前</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value="" size="20" /></td>
-					</tr>
-					<tr>
-						<th>性別</th>
-						<td>
-						<lavel for="male"><input type="radio" name="icon" id="male" value="" checked>male</lavel>
-						<lavel for="female"><input type="radio" name="icon" id="female" value="" >female</lavel>
-						</td>
-						</td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">コメント</td>
-						<td class="text-left"><input class="form-control"
-							type="text" name="profile" value=""  size="20" /></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="次へ" /></td>
-					</tr>
-					<c:if
-						test="${requestScope.alert != null }">
-						<tr>
-							<%-- リクエストスコープの alert の値を出力 --%>
-							<td colspan="2" class="color-error text-left"><c:out
-									value="${requestScope.alert}" /></td>
-						</tr>
-					</c:if>
-					</table>
-					</form>
-					</c:when>
-					</c:choose>
 
 
 

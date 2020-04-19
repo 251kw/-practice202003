@@ -31,9 +31,7 @@
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(loginId.length()>i) {
 			String message = "ログインIDは8文字以下で入力してください";
@@ -42,7 +40,7 @@
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}
 		else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
@@ -52,7 +50,7 @@
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddConfirm.jsp");
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 
 		}
@@ -61,16 +59,49 @@
 		<div style="width: 40%" class="container padding-y-5 text-center" >
 <div class="color-main" >
 <font size=5>
+<table style="width: 600px" class="table">
+<tr>
+<td>
 <%
 out.println("ログインID:" + loginId + "<br>");
+%>
+</td>
+</tr>
+<tr>
+<td>
+<%
 out.println("パスワード:" + password + "<br>");
+%>
+</td>
+</tr>
+<tr>
+<td>
+<%
 out.println("ユーザー名:" + userName + "<br>");
+%>
+</td>
+</tr>
+<tr>
+<td>
+<%
 out.println("アイコン:" + icon + "<br>");
+%>
+</td>
+</tr>
+<tr>
+<td>
+<%
 out.println("コメント:" + profile + "<br>");
 %>
+</td>
+</tr>
+<tr>
+
+
+</table>
 </font>
 </div>
-	<form action="./UserAddServlet" method="post">
+<form action="./UserAddServlet" method="post">
 		<table>
 			<tr>
 				<%-- ログインID 入力欄の名前は loginId --%>
@@ -87,20 +118,20 @@ out.println("コメント:" + profile + "<br>");
 			<tr>
 				<td class="color-main text-left"></td>
 				<td class="text-left"><input class="form-control" type="hidden"
-					name="userName"  size="20" /></td>
+					name="userName" value=<%=userName %> /></td>
 			</tr>
 			<tr>
 				<td><lavel for="male">
-					<input type="hidden" name="icon" id="male" checked></lavel>
+					<input type="hidden" name="icon" id="male" value=<%=icon %>></lavel>
 					<lavel for="female">
-					<input type="hidden" name="icon" id="female"  ></lavel>
+					<input type="hidden" name="icon" id="female" value=<%=icon %>  ></lavel>
 				</td>
 				</td>
 			</tr>
 			<tr>
 				<td class="color-main text-left"></td>
 				<td class="text-left"><input class="form-control" type="hidden"
-					name="profile" value=<%=profile %> size="20" /></td>
+					name="profile" value=<%=profile %>  /></td>
 			</tr>
 			<tr>
 				<td colspan="2" class="text-center"><input class="btn"
@@ -109,7 +140,6 @@ out.println("コメント:" + profile + "<br>");
 		</table>
 
 	</form>
-
 <form action="NewFile2.jsp">
 		<table>
 			<tr>
@@ -131,9 +161,9 @@ out.println("コメント:" + profile + "<br>");
 			</tr>
 			<tr>
 				<td><lavel for="male">
-					<input type="hidden" name="icon" id="male"　value="male"  checked></lavel>
+					<input type="hidden" name="icon" id="male"　value=<%=icon %>  checked></lavel>
 					<lavel for="female">
-					<input type="hidden" name="icon" id="female" value="female" ></lavel>
+					<input type="hidden" name="icon" id="female" value=<%=icon %> ></lavel>
 				</td>
 				</td>
 			</tr>
@@ -143,12 +173,12 @@ out.println("コメント:" + profile + "<br>");
 					name="profile" value=<%=profile %> size="20" /></td>
 			</tr>
 			<tr>
-				<td colspan="2" class="text-right"><input class="btn"
+				<td colspan="2" class="text-center"><input class="btn"
 					type="submit" value="戻る" /></td>
 			</tr>
 		</table>
+		</form>
 
-	</form>
 </div>
 </div>
 

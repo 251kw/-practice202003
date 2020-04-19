@@ -58,15 +58,15 @@
 					<tr>
 						<td class="color-main text-left">性格</td>
 						<td>
-						<lavel for="male"><input type="radio" name="icon" id="male" value="male" checked>male</lavel>
-						<lavel for="female"><input type="radio" name="icon" id="female" value="female" >female</lavel>
+						<lavel for="male"><input type="radio" name="icon" id="male"　value=<%=icon %> >male</lavel>
+						<lavel for="female"><input type="radio" name="icon" id="female" value=<%=icon %> >female</lavel>
 						</td>
 						</td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control"
-							type="text" name="profile" value="<%=profile %>"  size="20" /></td>
+							type="text" name="profile" value="<%=profile %>"  /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
