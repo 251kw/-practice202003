@@ -43,7 +43,7 @@
 					</form>
 					<a href="NewFile.jsp" >ユーザー情報変更</a>
 
-					<a href="SerchUser.jsp">ユーザ情報</a>
+					<a href="UserResearch.jsp">ユーザ情報</a>
 		</div>
 	</div>
 	<div class="padding-y-5 text-center">

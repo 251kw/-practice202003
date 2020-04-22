@@ -35,7 +35,7 @@
 		<div style="width: 40%" class="container padding-y-5 text-center">
 
 			<%-- action 属性にサーブレットを指定 --%>
-			<form action="UserAddInput.jsp" >
+			<form action="UserAddConfirm.jsp" >
 				<table style="width: 600px" class="table">
 					<tr>
 						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>

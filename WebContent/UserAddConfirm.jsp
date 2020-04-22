@@ -29,7 +29,7 @@
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
-			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
+			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
 			dispatcher.forward(request, response);
 		} else if (loginId.length() > i) {
 			String message = "ログインIDは8文字以下で入力してください";
@@ -38,7 +38,7 @@
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
+			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
 			dispatcher.forward(request, response);
 		} else if (!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
 			String message = "半角英数記号で入力してください";
@@ -47,7 +47,7 @@
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
+			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
 			dispatcher.forward(request, response);
 
 		}
@@ -133,7 +133,7 @@
 				</table>
 
 			</form>
-			<form action="NewFile2.jsp">
+			<form action="UserAddInput2.jsp">
 				<table>
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
