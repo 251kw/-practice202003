@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<!DOCTYPE html lang="ja">
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -16,7 +15,7 @@ String userName=request.getParameter("userName");
 %>
 
 
-		<form action="./Updeta" method="post">
+		<form action="" method="post">
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
@@ -37,7 +36,7 @@ String userName=request.getParameter("userName");
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="変更する" /></td>
+							type="submit" value="削除する" /></td>
 					</tr>
 					</table>
 					</form>

@@ -41,6 +41,7 @@ public class UserResearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
+		String icon=request.getParameter("icon");
 		RequestDispatcher dispatcher = null;
 		if(loginId.equals("")) {
 			// ログインIDが未入力なら
@@ -54,18 +55,17 @@ public class UserResearchServlet extends HttpServlet {
 						dispatcher.forward(request, response);
 		} else {
 			// ログイン認証を行い、ユーザ情報を取得
-			DBResrchManager dbm = new DBResrchManager();
-			UserDTO user = dbm.getLoginUser(loginId);
+			DBResrchManager dbr = new DBResrchManager();
+			UserDTO user = dbr.getLoginUser(loginId,icon);
 
 			if (user != null) {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 
 				HttpSession session = request.getSession();
 
+
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("user", user);
-
-				// 処理の転送先を top.jsp に指定
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 
 			} else {
@@ -82,8 +82,6 @@ public class UserResearchServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
-
-
 }
 
 

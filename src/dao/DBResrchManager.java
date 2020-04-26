@@ -5,16 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dao.SnsDAO;
 import dto.UserDTO;
 
 public class DBResrchManager extends SnsDAO {
-	public UserDTO getLoginUser(String loginId) {
+	public UserDTO getLoginUser(String loginId,String icon) {
 		Connection conn = null;            // データベース接続情報
 		PreparedStatement pstmt = null;    // SQL 管理情報
 		ResultSet rset = null;             // 検索結果
 
-		String sql = "SELECT * FROM users WHERE loginId=?";
+		String sql = "SELECT * FROM users WHERE loginId=? AND icon=?";
 		UserDTO user = null;    // 登録ユーザ情報
 
 		try {
@@ -24,6 +23,7 @@ public class DBResrchManager extends SnsDAO {
 			// SELECT 文の登録と実行
 			pstmt = conn.prepareStatement(sql);	// SELECT 構文登録
 			pstmt.setString(1, loginId);
+			pstmt.setString(2, icon);
 			rset = pstmt.executeQuery();//
 
 			// 検索結果があれば

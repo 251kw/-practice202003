@@ -18,7 +18,7 @@ import dto.UserDTO;
 @WebServlet("/bbs")
 public class BbsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DBManager dbm;	// ログインユーザ情報、書き込み内容管理クラス
+	DBManager dbm;	// ログインユーザ情報、書き込み内容管理クラス
 
 	// 直接アクセスがあった場合は index.jsp  に処理を転送
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

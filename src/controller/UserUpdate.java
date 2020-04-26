@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DEUpdetaManager;
+import dto.UserDTO;
+
 /**
  * Servlet implementation class Updeta
  */
@@ -42,6 +45,9 @@ public class UserUpdate extends HttpServlet {
 
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
+		String userName=request.getParameter("userName");
+		DEUpdetaManager dbm = new DEUpdetaManager();
+		UserDTO user = dbm.getLoginUser(loginId, password,userName);
 
 
 		//HTML 出力準備
@@ -52,7 +58,7 @@ public class UserUpdate extends HttpServlet {
 		out.println("<title>ユーザー情報変更</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("Name:"+loginId+"<br>");
+		out.println("loginId:"+loginId+"<br>");
 		out.println("password:"+password+"<br>");
 		out.println("変更完了");
 		out.println("<body>");

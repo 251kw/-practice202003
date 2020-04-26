@@ -60,7 +60,6 @@ public class DBManager extends SnsDAO {
     		}
     		return user;
     	}
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

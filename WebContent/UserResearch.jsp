@@ -27,6 +27,11 @@
 					name="loginId" value="" size="20" /></td>
 			</tr>
 			<tr>
+				<td class="color-main text-left">性別</td>
+				<td><input type="radio" name="icon" id="male" value="male"
+					checked><span>male</span> <input type="radio" name="icon"
+					id="female" value="female" checked><span>female</span></td>
+			</tr>
 			<tr>
 				<td colspan="2" class="text-right"><input class="btn"
 					type="submit" value="検索" /></td>
