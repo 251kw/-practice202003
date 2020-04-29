@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,18 +21,19 @@ import dto.UserDTO;
 public class UserResearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserResearchServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UserResearchServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
@@ -43,29 +45,31 @@ public class UserResearchServlet extends HttpServlet {
 		String loginId = request.getParameter("loginId");
 		String icon=request.getParameter("icon");
 		RequestDispatcher dispatcher = null;
-		if(loginId.equals("")) {
+		if(loginId.equals("")||icon.equals("")) {
 			// ログインIDが未入力なら
-						String message = "ログインIDとパスワードは必須入力です";
+						String message = "ログインIDは必須入力です";
 
 						// エラーメッセージをリクエストオブジェクトに保存
 						request.setAttribute("alert", message);
 
 						// index.jsp に処理を転送
-						dispatcher = request.getRequestDispatcher("index.jsp");
+						dispatcher = request.getRequestDispatcher("UserResearch.jsp");
 						dispatcher.forward(request, response);
-		} else {
+		}
+		else {
+
+
 			// ログイン認証を行い、ユーザ情報を取得
 			DBResrchManager dbr = new DBResrchManager();
-			UserDTO user = dbr.getLoginUser(loginId,icon);
+			ArrayList<UserDTO> list = dbr.getLoginUser(loginId,icon);
 
-			if (user != null) {
+			if (list != null) {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
-
 				HttpSession session = request.getSession();
 
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
-				session.setAttribute("user", user);
+				session.setAttribute("user", list);
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 
 			} else {
@@ -83,5 +87,3 @@ public class UserResearchServlet extends HttpServlet {
 		}
 	}
 }
-
-

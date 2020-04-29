@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.ShoutDTO;
 import dto.UserDTO;
 
 
@@ -60,6 +62,43 @@ public class DBManager extends SnsDAO {
     		}
     		return user;
     	}
+    	public ArrayList<ShoutDTO> getShoutList(){
+    		Connection conn =null;
+    		java.sql.Statement pstmt=null;
+    		ResultSet rset=null;
+
+    		ArrayList<ShoutDTO> list=new ArrayList<ShoutDTO>();
+    			try {
+    				conn=getConnection();
+    				pstmt=conn.createStatement();
+
+    				//SELECT文の実行
+    				String sql="SELECT*FROM shouts ORDER BY date DESC";
+    				rset=pstmt.executeQuery(sql);
+
+
+    			while (rset.next()) {
+    				ShoutDTO shout=new ShoutDTO();
+    				shout.setUserName(rset.getString(2));
+    				shout.setUserName(rset.getString(3));
+    				shout.setUserName(rset.getString(4));
+    				shout.setUserName(rset.getString(5));
+
+    				list.add(shout);
+    			}
+    	}catch(SQLException e) {
+    		e.printStackTrace();
+    	}finally {
+    		close(rset);
+    		close(pstmt);
+    		close(conn);
+    	}
+    			return list;
+    	}
+
+    	// ログインユーザー情報と書き込み内容受け取り、リストに追加する
+
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */

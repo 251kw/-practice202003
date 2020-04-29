@@ -4,16 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import dto.UserDTO;
 
 public class DBResrchManager extends SnsDAO {
-	public UserDTO getLoginUser(String loginId,String icon) {
+	public ArrayList<UserDTO> getLoginUser(String loginId,String icon) {
 		Connection conn = null;            // データベース接続情報
 		PreparedStatement pstmt = null;    // SQL 管理情報
-		ResultSet rset = null;             // 検索結果
-
-		String sql = "SELECT * FROM users WHERE loginId=? AND icon=?";
+		ResultSet rset = null;
+		// 検索結果
+		ArrayList<UserDTO> list=new ArrayList<UserDTO>();
+		String sql = "SELECT * FROM users WHERE loginId LIKE ?  OR icon=?";
 		UserDTO user = null;    // 登録ユーザ情報
 
 		try {
@@ -35,6 +37,7 @@ public class DBResrchManager extends SnsDAO {
 				user.setUserName(rset.getString(4));
 				user.setIcon(rset.getString(5));
 				user.setProfile(rset.getString(6));
+				list.add(user);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -45,7 +48,7 @@ public class DBResrchManager extends SnsDAO {
 			close(conn);
 		}
 
-		return user;
+		return list;
 	}
 
 }

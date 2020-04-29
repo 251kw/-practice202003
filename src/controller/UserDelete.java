@@ -9,19 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DEUpdetaManager;
+import dao.DEDelete;
 
 /**
- * Servlet implementation class Updeta
+ * Servlet implementation class UserDelete
  */
-@WebServlet("/Updeta")
-public class UserUpdate extends HttpServlet {
+@WebServlet("/UserDelete")
+public class UserDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UserUpdate() {
+    public UserDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,35 +38,30 @@ public class UserUpdate extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
 
-		String loginId = request.getParameter("loginId");
+		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		String userName=request.getParameter("userName");
-		DEUpdetaManager dbm = new DEUpdetaManager();
-		dbm.getLoginUser(loginId, password, userName);
+		String profile=request.getParameter("profile");
 
+		DEDelete del = new DEDelete();
+		del.getLoginUser(userName,password,profile);
 		//HTML 出力準備
-		PrintWriter out=response.getWriter();
+				PrintWriter out=response.getWriter();
 
-		out.println("<html lang='ja'>");
-		out.println("<head>");
-		out.println("<title>ユーザー情報変更</title>");
-		out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-		out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-		out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-		out.println("</head>");
-		out.println("<body>");
-		out.println("loginId:"+loginId+"<br>");
-		out.println("password:"+password+"<br>");
-		out.println("変更完了");
-		out.println("<a href='top.jsp'>トップに戻る</a>");
-		out.println("<body>");
-		out.println("</html>");
-
+				out.println("<html lang='ja'>");
+				out.println("<head>");
+				out.println("<title>削除完了</title>");
+				out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
+				out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
+				out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
+				out.println("</head>");
+				out.println("<body>");
+				out.println("削除完了");
+				out.println("<a href='top.jsp'>トップに戻る</a>");
+				out.println("<body>");
+				out.println("</html>");
 	}
-
 
 }
