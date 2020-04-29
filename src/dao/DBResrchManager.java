@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import dto.UserDTO;
 
 public class DBResrchManager extends SnsDAO {
-	public ArrayList<UserDTO> getLoginUser(String loginId,String icon) {
+	public ArrayList<UserDTO> getLoginUser(String loginId,String icon,String password) {
 		Connection conn = null;            // データベース接続情報
 		PreparedStatement pstmt = null;    // SQL 管理情報
 		ResultSet rset = null;
 		// 検索結果
 		ArrayList<UserDTO> list=new ArrayList<UserDTO>();
-		String sql = "SELECT * FROM users WHERE loginId LIKE ?  OR icon=?";
+		String sql = "SELECT * FROM users WHERE loginId LIKE ?  OR icon=? OR password LIKE ?";
 		UserDTO user = null;    // 登録ユーザ情報
 
 		try {
@@ -26,6 +26,7 @@ public class DBResrchManager extends SnsDAO {
 			pstmt = conn.prepareStatement(sql);	// SELECT 構文登録
 			pstmt.setString(1, loginId);
 			pstmt.setString(2, icon);
+			pstmt.setString(3, password);
 			rset = pstmt.executeQuery();//
 
 			// 検索結果があれば

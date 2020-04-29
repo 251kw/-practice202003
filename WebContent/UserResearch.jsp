@@ -28,6 +28,12 @@
 					name="loginId" value="" size="20" /></td>
 			</tr>
 			<tr>
+				<%-- ログインID 入力欄の名前は loginId --%>
+				<td class="color-main text-left">検索したいパスワードを入力してください</td>
+				<td class="text-left"><input class="form-control" type="text"
+					name="password" value="" size="20" /></td>
+			</tr>
+			<tr>
 				<td class="color-main text-left">性別</td>
 				<td><input type="radio" name="icon" id="male" value="male"
 					checked><span>male</span> <input type="radio" name="icon"

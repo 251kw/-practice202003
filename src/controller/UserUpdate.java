@@ -44,9 +44,11 @@ public class UserUpdate extends HttpServlet {
 
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
+		String profile=request.getParameter("profile");
+		String icon=request.getParameter("icon");
 		String userName=request.getParameter("userName");
 		DEUpdetaManager dbm = new DEUpdetaManager();
-		dbm.getLoginUser(loginId, password, userName);
+		dbm.getLoginUser(loginId, password,profile,icon,userName);
 
 		//HTML 出力準備
 		PrintWriter out=response.getWriter();
@@ -59,8 +61,6 @@ public class UserUpdate extends HttpServlet {
 		out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("loginId:"+loginId+"<br>");
-		out.println("password:"+password+"<br>");
 		out.println("変更完了");
 		out.println("<a href='top.jsp'>トップに戻る</a>");
 		out.println("<body>");

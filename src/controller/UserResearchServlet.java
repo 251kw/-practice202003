@@ -44,6 +44,7 @@ public class UserResearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
 		String icon=request.getParameter("icon");
+		String password=request.getParameter("password");
 		RequestDispatcher dispatcher = null;
 		if(loginId.equals("")||icon.equals("")) {
 			// ログインIDが未入力なら
@@ -61,7 +62,7 @@ public class UserResearchServlet extends HttpServlet {
 
 			// ログイン認証を行い、ユーザ情報を取得
 			DBResrchManager dbr = new DBResrchManager();
-			ArrayList<UserDTO> list = dbr.getLoginUser(loginId,icon);
+			ArrayList<UserDTO> list = dbr.getLoginUser(loginId,icon,password);
 
 			if (list != null) {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
