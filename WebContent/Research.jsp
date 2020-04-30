@@ -26,11 +26,7 @@
 		<form action="NewFile.jsp">
 			<td><input class="form-control" type="hidden" name="userName"
 				value=${users.userName } /></td>
-			<tr>
-				<td class="color-main text-left"></td>
-				<td class="text-left"><input class="form-control" type="hidden"
-					name="dels" value=${dele } size="20" /></td>
-			</tr>
+
 
 			<tr>
 				<td colspan="2" class="text-right"><input class="btn"
