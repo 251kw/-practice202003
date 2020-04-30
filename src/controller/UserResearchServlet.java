@@ -45,6 +45,7 @@ public class UserResearchServlet extends HttpServlet {
 		String loginId = request.getParameter("loginId");
 		String icon=request.getParameter("icon");
 		String password=request.getParameter("password");
+		String del=request.getParameter("del");
 		RequestDispatcher dispatcher = null;
 		if(loginId.equals("")||icon.equals("")) {
 			// ログインIDが未入力なら
@@ -71,6 +72,7 @@ public class UserResearchServlet extends HttpServlet {
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("user", list);
+				request.setAttribute("del", del);
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 
 			} else {

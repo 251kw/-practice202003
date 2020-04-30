@@ -13,6 +13,7 @@
 <body>
 	<%
 		String userName = request.getParameter("userName");
+		String dels = request.getParameter("dels");
 	%>
 
 

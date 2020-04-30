@@ -12,15 +12,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+		String del = request.getParameter("del");
+	%>
+
 	<jsp:useBean id="user" scope="session"
 		type="java.util.ArrayList<dto.UserDTO>" />
 	<c:forEach var="users" items="${user}">
+			${del}
 　			${users.userName}<br>
+
+
 		<form action="NewFile.jsp">
-
-
+			<td><input class="form-control" type="hidden" name="userName"
+				value=${users.userName } /></td>
+			<tr>
+				<td class="color-main text-left"></td>
 				<td class="text-left"><input class="form-control" type="hidden"
-					name="userName" value=${users.userName }  /></td>
+					name="dels" value=${dele } size="20" /></td>
+			</tr>
+
 			<tr>
 				<td colspan="2" class="text-right"><input class="btn"
 					type="submit" value="変更する" /></td>
@@ -46,10 +57,10 @@
 				<td colspan="2" class="text-right"><input class="btn"
 					type="submit" value="削除する" /></td>
 			</tr>
+
 		</form>
+
+
 	</c:forEach>
-
-
-
 </body>
 </html>

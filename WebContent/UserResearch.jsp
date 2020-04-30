@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
+<%
+String loginId=request.getParameter("loginId");
+%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -18,7 +21,7 @@
 			</h1>
 		</div>
 	</div>
-	<a href="UserAddInput.jsp">ユーザー情報を新規登録する</a>
+
 	<form action="./UserResearchServlet" method="post">
 		<table style="width: 400px" class="table">
 			<tr>
@@ -32,6 +35,12 @@
 				<td class="color-main text-left">検索したいパスワードを入力してください</td>
 				<td class="text-left"><input class="form-control" type="text"
 					name="password" value="" size="20" /></td>
+			</tr>
+				<tr>
+				<%--  --%>
+				<td class="color-main text-left">検索したいパスワードを入力してください</td>
+				<td class="text-left"><input class="form-control" type="hidden"
+					name="del" value=<%=loginId %> size="20" /></td>
 			</tr>
 			<tr>
 				<td class="color-main text-left">性別</td>

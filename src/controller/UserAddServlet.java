@@ -93,7 +93,7 @@ public class UserAddServlet extends HttpServlet {
 			out.println("<td><P>コメント:"+profile+"</p></td>");
 			out.println("</tr>");
 			out.println("<div class=btn>");
-			out.println("<a href='top.jsp'　>ログイン画面に戻る</a>");
+			out.println("<a href='index.jsp'　>ログイン画面に戻る</a>");
 			out.println("</div>");
 			out.println("</div>");
 			out.println("</body>");

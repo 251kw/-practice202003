@@ -39,11 +39,17 @@
 					<tr>
 						<td colspan="2">${user.profile}</td>
 					</tr>
-					</table>
-					</form>
-					<a href="NewFile.jsp" >ユーザー情報変更</a>
+				</table>
+			</form>
+			<form action="UserResearch.jsp">
 
-					<a href="UserResearch.jsp">ユーザ情報</a>
+				<input class="form-control" type="hidden"
+					name="loginId" value=${user.loginId } />
+				<tr>
+					<td colspan="2" class="text-right"><input class="btn"
+						type="submit" value="変更する" /></td>
+				</tr>
+			</form>
 		</div>
 	</div>
 	<div class="padding-y-5 text-center">
