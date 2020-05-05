@@ -23,6 +23,8 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+ul.sample3 {
+  list-style-type: none; }
 
 .pe-7s-album:before {
 	content: "\e6aa";

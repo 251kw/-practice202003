@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -75,8 +77,6 @@ public class DBManager extends SnsDAO {
     				//SELECT文の実行
     				String sql="SELECT*FROM shouts ORDER BY date DESC";
     				rset=pstmt.executeQuery(sql);
-
-
     			while (rset.next()) {
     				ShoutDTO shout=new ShoutDTO();
     				shout.setUserName(rset.getString(2));
@@ -97,7 +97,38 @@ public class DBManager extends SnsDAO {
     	}
 
     	// ログインユーザー情報と書き込み内容受け取り、リストに追加する
+    	public boolean setWriting(UserDTO user,String writing) {
+    		Connection conn =null;
+    		PreparedStatement pstmt=null;
+    		boolean result=false;
+    		try {
+    			conn=getConnection();
 
+    			//INSERT文の実行と登録
+    			String sql="INSERT INTO shouts(userName,icon,date,writing) VALUES(?,?,?,?)";
+    			pstmt=conn.prepareStatement(sql);
+    			pstmt.setString(1, user.getUserName());
+    			pstmt.setString(2, user.getIcon());
+    			//現在日時の取得と日付の書式指定
+    			Calendar calender=Calendar.getInstance();
+    			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd- hh:mm:ss");
+
+    			pstmt.setString(3, sdf.format(calender.getTime()));
+    			pstmt.setString(4 ,writing);
+
+    			int cnt=pstmt.executeUpdate();
+    			if(cnt==1) {
+    				//INSERT文の実行結果が１なら登録成功
+    				result=true;
+    			}
+    		}catch(SQLException e){
+    			e.printStackTrace();
+    		}finally {
+    			//データベース切断処理
+    			close(pstmt);
+    			close(conn);    		}
+    		return result;
+    	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

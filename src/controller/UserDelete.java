@@ -44,24 +44,48 @@ public class UserDelete extends HttpServlet {
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String profile=request.getParameter("profile");
+		String dele=request.getParameter("del");
+		String loginId=request.getParameter("loginId");
+		String delete=request.getParameter("delete");
 
-		DEDelete del = new DEDelete();
-		del.getLoginUser(userName,password,profile);
-		//HTML 出力準備
-				PrintWriter out=response.getWriter();
+		if(dele.equals(loginId)||delete.equals(loginId)) {
+			DEDelete del = new DEDelete();
+			del.getLoginUser(userName,password,profile);
+			//HTML 出力準備
+					PrintWriter out=response.getWriter();
 
-				out.println("<html lang='ja'>");
-				out.println("<head>");
-				out.println("<title>削除完了</title>");
-				out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-				out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-				out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-				out.println("</head>");
-				out.println("<body>");
-				out.println("削除完了");
-				out.println("<a href='top.jsp'>トップに戻る</a>");
-				out.println("<body>");
-				out.println("</html>");
+					out.println("<html lang='ja'>");
+					out.println("<head>");
+					out.println("<title>削除完了</title>");
+					out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
+					out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
+					out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
+					out.println("</head>");
+					out.println("<body>");
+					out.println("削除完了");
+					out.println("<a href='index.jsp' class='btn'>トップに戻る</a>");
+					out.println("<body>");
+					out.println("</html>");
+		}else {
+			DEDelete del = new DEDelete();
+			del.getLoginUser(userName,password,profile);
+			//HTML 出力準備
+					PrintWriter out=response.getWriter();
+
+					out.println("<html lang='ja'>");
+					out.println("<head>");
+					out.println("<title>削除完了</title>");
+					out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
+					out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
+					out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
+					out.println("</head>");
+					out.println("<body>");
+					out.println("削除完了");
+					out.println("<a href='top.jsp' class='btn'>トップに戻る</a>");
+					out.println("<body>");
+					out.println("</html>");
+		}
+
 	}
 
 }

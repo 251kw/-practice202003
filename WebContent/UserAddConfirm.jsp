@@ -92,10 +92,14 @@
 								%>
 							</td>
 						</tr>
-						<tr>
+
 					</table>
 				</font>
 			</div>
+		</div>
+	</div>
+	<div class="padding-y-5 text-center">
+		<div style="width: 40%" class="container padding-y-5 text-center">
 			<form action="./UserAddServlet" method="post">
 				<table>
 					<tr>
@@ -131,8 +135,12 @@
 							type="submit" value="新規登録する" /></td>
 					</tr>
 				</table>
-
 			</form>
+		</div>
+	</div>
+
+	<div class="padding-y-5 text-center">
+		<div style="width: 40%" class="container padding-y-5 text-center">
 			<form action="UserAddInput2.jsp">
 				<table>
 					<tr>
@@ -153,9 +161,9 @@
 							type="hidden" name="userName" value="<%=userName%>" size="20" /></td>
 					</tr>
 					<tr>
-						<td><lavel for="male"><input type="hidden"
-								name="icon" id="male" 　value=<%=icon%> checked></lavel><lavel
-								for="female"> <input type="hidden" name="icon"
+						<td><lavel for="male"> <input type="hidden"
+								name="icon" id="male" value=<%=icon%> checked></lavel>
+							<lavel for="female"> <input type="hidden" name="icon"
 								id="female" value=<%=icon%>></lavel></td>
 						</td>
 					</tr>
@@ -170,7 +178,6 @@
 					</tr>
 				</table>
 			</form>
-
 		</div>
 	</div>
 </body>

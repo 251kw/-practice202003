@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="./css/skyblue.css">
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
 <link rel="stylesheet" href="./css/helper.css">
+<link rel="stylesheet" href="./css/staylesheet.css">
 </head>
 <body>
 	<div class="bg-success padding-y-5">
@@ -18,8 +19,8 @@
 			</h1>
 		</div>
 	</div>
-	<a href="UserAddInput.jsp">ユーザー情報を新規登録する</a>
 	<div class="padding-y-5 text-center">
+
 		<div style="width: 40%" class="container padding-y-5 text-left">
 			<strong class="color-main">ログインIDとパスワードを入力してください</strong>
 		</div>
@@ -56,6 +57,7 @@
 					</c:if>
 				</table>
 			</form>
+			<a href="UserAddInput.jsp" class="btn">ユーザー情報を新規登録する</a>
 		</div>
 	</div>
 </body>

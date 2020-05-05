@@ -66,7 +66,6 @@ public class UserAddServlet extends HttpServlet {
 			out.println("<title>新規登録ユーザー情報</title>");
 			out.println("</head>");
 			out.println("<body>");
-
 			out.println("<div class=bg-success padding-y-5>");
 			out.println("<div class=container padding-y-5 text-center>");
 			out.println("<div align=center>");

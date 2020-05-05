@@ -20,7 +20,6 @@ import dto.UserDTO;
 @WebServlet("/UserResearchServlet")
 public class UserResearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -63,15 +62,15 @@ public class UserResearchServlet extends HttpServlet {
 
 			// ログイン認証を行い、ユーザ情報を取得
 			DBResrchManager dbr = new DBResrchManager();
-			ArrayList<UserDTO> list = dbr.getLoginUser(loginId,icon,password);
+			ArrayList<UserDTO> user = dbr.getLoginUser(loginId,icon,password);
 
-			if (list != null) {
+			if (user != null) {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 				HttpSession session = request.getSession();
 
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
-				session.setAttribute("user", list);
+				session.setAttribute("list", user);
 				request.setAttribute("del", del);
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 

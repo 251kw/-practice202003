@@ -32,7 +32,6 @@
 		</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-
 			<%-- action 属性にサーブレットを指定 --%>
 			<form action="UserAddConfirm.jsp" >
 				<table style="width: 600px" class="table">
@@ -58,7 +57,7 @@
 						<td class="color-main text-left">アイコン</td>
 						<td>
 						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
-						<input type="radio" name="icon" id="female" value="female" checked><span>female</span>
+						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
 						</td>
 						</td>
 					</tr>
@@ -67,6 +66,7 @@
 						<td class="text-left"><input class="form-control"
 							type="text" name="profile" value=""  size="20" /></td>
 					</tr>
+
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="次へ" /></td>

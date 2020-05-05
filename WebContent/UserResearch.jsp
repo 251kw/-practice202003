@@ -11,9 +11,9 @@
 <link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
-<%
-String loginId=request.getParameter("loginId");
-%>
+	<%
+		String loginId = request.getParameter("loginId");
+	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -21,38 +21,36 @@ String loginId=request.getParameter("loginId");
 			</h1>
 		</div>
 	</div>
+	<div class="padding-y-5 text-center">
+		<div style="width: 40%" class="container padding-y-5 text-center">
+			<form action="./UserResearchServlet" method="post">
+				<table style="width: 400px" class="table">
+					<tr>
+						<%-- ログインID 入力欄の名前は loginId --%>
+						<td class="color-main text-left">検索したいログインIDを入力してください</td>
+						<td class="text-left"><input class="form-control" type="text"
+							name="loginId" value="" size="20" /></td>
+					</tr>
+					<tr>
+						<%-- ログインID 入力欄の名前は loginId --%>
+						<td class="color-main text-left">検索したいパスワードを入力してください</td>
+						<td class="text-left"><input class="form-control" type="text"
+							name="password" value="" size="20" /></td>
+						<td><input type="hidden" name="del" value=<%=loginId%> /></td>
+					</tr>
 
-	<form action="./UserResearchServlet" method="post">
-		<table style="width: 400px" class="table">
-			<tr>
-				<%-- ログインID 入力欄の名前は loginId --%>
-				<td class="color-main text-left">検索したいログインIDを入力してください</td>
-				<td class="text-left"><input class="form-control" type="text"
-					name="loginId" value="" size="20" /></td>
-			</tr>
-			<tr>
-				<%-- ログインID 入力欄の名前は loginId --%>
-				<td class="color-main text-left">検索したいパスワードを入力してください</td>
-				<td class="text-left"><input class="form-control" type="text"
-					name="password" value="" size="20" /></td>
-			</tr>
-				<tr>
-				<%--  --%>
-				<td class="color-main text-left">検索したいパスワードを入力してください</td>
-				<td class="text-left"><input class="form-control" type="hidden"
-					name="del" value=<%=loginId %> size="20" /></td>
-			</tr>
-			<tr>
-				<td class="color-main text-left">性別</td>
-				<td><input type="radio" name="icon" id="male" value="male"
-					checked><span>male</span> <input type="radio" name="icon"
-					id="female" value="female" checked><span>female</span></td>
-			</tr>
-			<tr>
-				<td colspan="2" class="text-right"><input class="btn"
-					type="submit" value="検索" /></td>
-			</tr>
-				<%-- リクエストスコープに alert があれば --%>
+
+					<tr>
+						<td class="color-main text-left">性別</td>
+						<td><input type="radio" name="icon" id="male" value="male"
+							checked><span>male</span> <input type="radio" name="icon"
+							id="female" value="female"><span>female</span></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="text-right"><input class="btn"
+							type="submit" value="検索" /></td>
+					</tr>
+					<%-- リクエストスコープに alert があれば --%>
 					<c:if
 						test="${requestScope.alert != null && requestScope.alert != ''}">
 						<tr>
@@ -61,8 +59,9 @@ String loginId=request.getParameter("loginId");
 									value="${requestScope.alert}" /></td>
 						</tr>
 					</c:if>
-		</table>
-	</form>
-
+				</table>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

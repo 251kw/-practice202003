@@ -61,8 +61,17 @@ public class UserUpdate extends HttpServlet {
 		out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("変更完了");
-		out.println("<a href='top.jsp'>トップに戻る</a>");
+		out.println("<div class=bg-success padding-y-5>");
+		out.println("<div class=container padding-y-5 text-center>");
+		out.println("<div align=center>");
+		out.println("<h1>変更完了</h1>");
+		out.println("</div>");
+		out.println("</div>");
+		out.println("</div>");
+		out.println("<div align=center>");
+		out.println("<p>変更完了</P>");
+		out.println("<a href='top.jsp' class='btn'>トップに戻る</a>");
+		out.println("</div>");
 		out.println("<body>");
 		out.println("</html>");
 

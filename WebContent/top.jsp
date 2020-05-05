@@ -42,7 +42,6 @@
 				</table>
 			</form>
 			<form action="UserResearch.jsp">
-
 				<input class="form-control" type="hidden"
 					name="loginId" value=${user.loginId } />
 				<tr>
