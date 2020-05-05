@@ -16,7 +16,7 @@ public class DBSUBanager extends SnsDAO {
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 
-		String sql = "INSERT INTO users(loginId,password,userName,icon,profile) VALUES(?,?,?,?,?)";
+		String sql = "INSERT  INTO users(loginId,password,userName,icon,profile) VALUES(?,?,?,?,?)";
 		UserDTO user = null; // 登録ユーザ情報
 
 		try {
@@ -29,6 +29,9 @@ public class DBSUBanager extends SnsDAO {
 			pstmt.setString(4,icon);
 			pstmt.setString(5,profile);
 			pstmt.executeUpdate();
+			if(loginId.equals(null)) {
+				
+			}
 		}
 
 		catch (SQLException e) {
