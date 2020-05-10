@@ -69,14 +69,21 @@
 							type="submit" value="次へ" /></td>
 					</tr>
 					<c:if test="${requestScope.alert != null }">
-						<tr>
 							<%-- リクエストスコープの alert の値を出力 --%>
 							<td colspan="2" class="color-error text-left"><c:out
 									value="${requestScope.alert}" /></td>
-						</tr>
+
 					</c:if>
 				</table>
 			</form>
+				<form action="index.jsp">
+					<table>
+						<tr>
+							<td colspan="2" class="text-right"><input class="btn"
+								style="float: right;" type="submit" value="トップに戻る" /></td>
+						</tr>
+					</table>
+					</form>
 		</div>
 	</div>
 </body>

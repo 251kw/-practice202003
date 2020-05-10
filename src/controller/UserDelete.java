@@ -56,14 +56,28 @@ public class UserDelete extends HttpServlet {
 
 					out.println("<html lang='ja'>");
 					out.println("<head>");
-					out.println("<title>削除完了</title>");
+					out.println("<meta http-equiv=\"Content=Type\" content=\"text/html; charset=UTF-8\">");
 					out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
 					out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
 					out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
+					out.println("<div class=bg-success padding-y-5>");
+					out.println("</div>");
+					out.println("<title>削除完了</title>");
 					out.println("</head>");
 					out.println("<body>");
-					out.println("削除完了");
-					out.println("<a href='index.jsp' class='btn'>トップに戻る</a>");
+					out.println("<div class=bg-success padding-y-5>");
+					out.println("<div class=container padding-y-5 text-center>");
+					out.println("<div align=center>");
+					out.println("<h1>削除完了&nbsp</h1>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("<div align=center>");
+					out.println("<p>削除完了</p>");
+					out.println("<div class=btn>");
+					out.println("<a href='index.jsp'　>トップ画面に戻る</a>");
+					out.println("</div>");
+					out.println("</div>");
 					out.println("<body>");
 					out.println("</html>");
 		}else {
@@ -80,8 +94,19 @@ public class UserDelete extends HttpServlet {
 					out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
 					out.println("</head>");
 					out.println("<body>");
-					out.println("削除完了");
-					out.println("<a href='top.jsp' class='btn'>トップに戻る</a>");
+					out.println("<div class=bg-success padding-y-5>");
+					out.println("<div class=container padding-y-5 text-center>");
+					out.println("<div align=center>");
+					out.println("<h1>削除完了&nbsp</h1>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("</div>");
+					out.println("<div align=center>");
+					out.println("<p>削除完了</p>");
+					out.println("<div class=btn>");
+					out.println("<a href='top.jsp'　>ログイン画面に戻る</a>");
+					out.println("</div>");
+					out.println("</div>");
 					out.println("<body>");
 					out.println("</html>");
 		}

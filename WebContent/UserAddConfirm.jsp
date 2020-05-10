@@ -15,7 +15,6 @@
 			<h1>新規登録&nbsp;</h1>
 		</div>
 	</div>
-
 	<%
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
@@ -42,8 +41,7 @@
 			dispatcher.forward(request, response);
 		} else if (!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
 			String message = "半角英数記号で入力してください";
-
-			// エラーメッセージをリクエストオブジェクトに保存
+			
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
@@ -55,46 +53,28 @@
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<div class="color-main">
-				<font size=5>
-					<table style="width: 600px" class="table">
-						<tr>
-							<td>
-								<%
-									out.println("ログインID:" + loginId + "<br>");
-								%>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<%
-									out.println("パスワード:" + password + "<br>");
-								%>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<%
-									out.println("ユーザー名:" + userName + "<br>");
-								%>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<%
-									out.println("アイコン:" + icon + "<br>");
-								%>
-							</td>
-						</tr>
-						<tr>
-							<td>
-								<%
-									out.println("コメント:" + profile + "<br>");
-								%>
-							</td>
-						</tr>
-
-					</table>
-				</font>
+				<table style="width: 600px" class="table">
+					<tr>
+						<td class="color-main text-left">ログインID</td>
+						<td class="text-left"><%=loginId %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">パスワード</td>
+						<td class="text-left"><%=password %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">名前</td>
+						<td class="text-left"><%=userName %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">性別</td>
+						<td class="text-left"><%=icon %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">コメント</td>
+						<td class="text-left"><%=profile %></td>
+					</tr>
+				</table>
 			</div>
 		</div>
 	</div>
@@ -121,9 +101,8 @@
 					</tr>
 					<tr>
 						<td><input type="hidden" name="icon" id="male"
-							value=<%=icon%> 　checked> <input type="hidden"
+							value=<%=icon%> checked> <input type="hidden"
 							name="icon" id="female" value=<%=icon%> checked></td>
-						</td>
 					</tr>
 					<tr>
 						<td class="color-main text-left"></td>
@@ -162,8 +141,8 @@
 					</tr>
 					<tr>
 						<td><lavel for="male"> <input type="hidden"
-								name="icon" id="male" value=<%=icon%> checked></lavel>
-							<lavel for="female"> <input type="hidden" name="icon"
+								name="icon" id="male" value=<%=icon%> checked></lavel> <lavel
+								for="female"> <input type="hidden" name="icon"
 								id="female" value=<%=icon%>></lavel></td>
 						</td>
 					</tr>

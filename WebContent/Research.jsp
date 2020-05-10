@@ -35,7 +35,7 @@
 					<table>
 						<tr>
 							<td class="text-left"><input class="form-control"
-								type="hidden" name="userName" value=${users.userName } size="20" /></td>
+								type="hidden" name="loginId" value=${users.loginId } size="20" /></td>
 						</tr>
 
 						<tr>

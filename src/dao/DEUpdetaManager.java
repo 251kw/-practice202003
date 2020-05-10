@@ -14,7 +14,7 @@ public class DEUpdetaManager extends SnsDAO {
 		ResultSet rset = null; // 検索結果
 
 
-		String sql = "UPDATE users SET loginId=?,password=?,profile=?,icon=? WHERE userName=?";
+		String sql = "UPDATE users SET userName=?,password=?,profile=?,icon=? WHERE loginId=?";
 		UserDTO user = null; // 登録ユーザ情報
 
 
@@ -22,11 +22,11 @@ public class DEUpdetaManager extends SnsDAO {
 			conn = getConnection();
 
 			pstmt = conn.prepareStatement(sql); // SELECT 構文登録
-			pstmt.setString(1,loginId);
+			pstmt.setString(1,userName);
 			pstmt.setString(2, password);
 			pstmt.setString(3, profile);
 			pstmt.setString(4,icon);
-			pstmt.setString(5,userName);
+			pstmt.setString(5,loginId);
 			pstmt.executeUpdate();
 		}
 
