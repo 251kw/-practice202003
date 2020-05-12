@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DBResrchManager;
+import dao.DEReserarch2;
 import dto.UserDTO;
 
 /**
@@ -46,6 +47,8 @@ public class UserResearchServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		String del=request.getParameter("del");
 		RequestDispatcher dispatcher = null;
+		DEReserarch2 res= new DEReserarch2();
+		UserDTO users=res.getLoginUser(loginId,icon,password);
 		if(loginId.equals("")||icon.equals("")) {
 			// ログインIDが未入力なら
 						String message = "ログインIDは必須入力です";
@@ -57,7 +60,16 @@ public class UserResearchServlet extends HttpServlet {
 						dispatcher = request.getRequestDispatcher("UserResearch.jsp");
 						dispatcher.forward(request, response);
 		}
-		else {
+		else if(users==null) {
+			String message = "データがありません";
+
+			// エラーメッセージをリクエストオブジェクトに保存
+			request.setAttribute("alert", message);
+
+			// index.jsp に処理を転送
+			dispatcher = request.getRequestDispatcher("UserResearch.jsp");
+			dispatcher.forward(request, response);
+		}else {
 
 
 			// ログイン認証を行い、ユーザ情報を取得
@@ -72,16 +84,17 @@ public class UserResearchServlet extends HttpServlet {
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("list", user);
 				request.setAttribute("del", del);
+
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 
 			} else {
 				// ユーザ情報が取得できない場合
 				// エラーメッセージをリクエストオブジェクトに保存
-				String message = "ログインIDまたはパスワードが違います";
+				String message = "該当データがありません";
 				request.setAttribute("alert", message);
 
 				// 処理の転送先を index.jsp に指定
-				dispatcher = request.getRequestDispatcher("index.jsp");
+				dispatcher = request.getRequestDispatcher("UserResearch.jsp");
 			}
 
 			// 処理を転送

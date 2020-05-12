@@ -42,12 +42,15 @@
 				</table>
 			</form>
 			<form action="UserResearch.jsp">
-				<input class="form-control" type="hidden"
-					name="loginId" value=${user.loginId } />
+			<table>
+				<tr><td><input class="form-control" type="hidden"
+					name="loginId" value=${user.loginId } /></td></tr>
+
 				<tr>
 					<td colspan="2" class="text-right"><input class="btn"
 						type="submit" value="変更する" /></td>
 				</tr>
+				</table>
 			</form>
 		</div>
 	</div>

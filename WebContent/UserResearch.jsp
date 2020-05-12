@@ -27,19 +27,17 @@
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">検索したいログインIDを入力してください</td>
+						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value="" size="20" /></td>
+							name="loginId" value=""></td>
 					</tr>
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">検索したいパスワードを入力してください</td>
+						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
 							name="password" value="" size="20" /></td>
 						<td><input type="hidden" name="del" value=<%=loginId%> /></td>
 					</tr>
-
-
 					<tr>
 						<td class="color-main text-left">性別</td>
 						<td><input type="radio" name="icon" id="male" value="male"
@@ -49,6 +47,7 @@
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="検索" /></td>
+							<td class="text-left"><a href="top.jsp" class="btn">戻る</a></td>
 					</tr>
 					<%-- リクエストスコープに alert があれば --%>
 					<c:if

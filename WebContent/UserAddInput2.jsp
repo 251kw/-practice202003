@@ -37,7 +37,7 @@
 					<tr>
 						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value="<%=loginId%>" size="20" /></td>
+							name="loginId" value="<%=loginId%>"></td>
 					</tr>
 
 					<tr>
@@ -45,28 +45,29 @@
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value="<%=password%>" size="20" /></td>
+							type="password" name="password" value="<%=password%>"></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">名前</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value="<%=userName%>" size="20" /></td>
+							name="userName" value="<%=userName%>"></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性格</td>
 						<td><input type="radio" name="icon" id="male"
-							　value=<%=icon%> checked><span>male</span> <input
+							value=<%=icon%> checked><span>male</span> <input
 							type="radio" name="icon" id="female" value=<%=icon%> checked><span>female</span>
 						</td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value="<%=profile%>" /></td>
+							name="profile" value="<%=profile%>"></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="次へ" /></td>
+							<td class="text-left"><a href="index.jsp" class="btn">戻る</a></td>
 					</tr>
 					<c:if test="${requestScope.alert != null }">
 							<%-- リクエストスコープの alert の値を出力 --%>
@@ -75,15 +76,7 @@
 
 					</c:if>
 				</table>
-			</form>
-				<form action="index.jsp">
-					<table>
-						<tr>
-							<td colspan="2" class="text-right"><input class="btn"
-								style="float: right;" type="submit" value="トップに戻る" /></td>
-						</tr>
-					</table>
-					</form>
+				</form>
 		</div>
 	</div>
 </body>

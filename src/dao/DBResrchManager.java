@@ -15,7 +15,7 @@ public class DBResrchManager extends SnsDAO {
 		ResultSet rset = null;
 		// 検索結果
 		ArrayList<UserDTO> list=new ArrayList<UserDTO>();
-		String sql = "SELECT * FROM users WHERE loginId LIKE ?  OR icon=? OR password LIKE ?";
+		String sql = "SELECT * FROM users WHERE loginId LIKE ?  AND icon=? AND password=?";
 		UserDTO user = null;    // 登録ユーザ情報
 
 		try {

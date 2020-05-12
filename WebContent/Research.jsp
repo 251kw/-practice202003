@@ -19,7 +19,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				検索画面r&nbsp;<span class="icon-speaker"></span>
+				検索画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 					<table>
 						<tr>
 							<td class="text-left"><input class="form-control"
-								type="hidden" name="loginId" value=${users.loginId } size="20" /></td>
+								type="hidden" name="userName" value=${users.userName } size="20"/></td>
 						</tr>
 
 						<tr>
@@ -79,9 +79,11 @@
 						<tr>
 							<td colspan="2" class="text-right"><input class="btn"
 								type="submit" value="削除する" /></td>
+							<td class="text-left"><a href="UserResearch.jsp" class="btn">戻る</a></td>
 						</tr>
 					</table>
 				</form>
+
 				</div>
 			</c:forEach>
 			</div>

@@ -41,7 +41,7 @@
 			dispatcher.forward(request, response);
 		} else if (!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
 			String message = "半角英数記号で入力してください";
-			
+
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
@@ -144,7 +144,7 @@
 								name="icon" id="male" value=<%=icon%> checked></lavel> <lavel
 								for="female"> <input type="hidden" name="icon"
 								id="female" value=<%=icon%>></lavel></td>
-						</td>
+
 					</tr>
 					<tr>
 						<td class="color-main text-left"></td>

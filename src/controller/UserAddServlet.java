@@ -55,7 +55,6 @@ public class UserAddServlet extends HttpServlet {
 			DBReserch dbm = new DBReserch();
 			UserDTO users = dbm.getLoginUser(loginId);
 
-
 			if(users!=null) {
 				String message = "ログインIDは既に使われております";
 

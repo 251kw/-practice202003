@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DBResearch3;
 import dao.DEUpdetaManager;
+import dto.UserDTO;
 
 /**
  * Servlet implementation class Updeta
@@ -42,44 +44,69 @@ public class UserUpdate extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
-
 		String loginId = request.getParameter("loginId");
 		String password = request.getParameter("password");
 		String profile=request.getParameter("profile");
 		String icon=request.getParameter("icon");
 		String userName=request.getParameter("userName");
-		DEUpdetaManager dbm = new DEUpdetaManager();
-		dbm.getLoginUser(loginId, password,profile,icon,userName);
+		DBResearch3 dbs=new DBResearch3();
+		UserDTO users=dbs.getLoginUser(loginId);
 		RequestDispatcher dispatcher = null;
 		int i=9;
-		if(loginId.equals("") || password.equals("")) {
+		if(loginId.equals("") || password.equals(""))  {
 			String message = "ログインIDとパスワードは必須入力です";
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
-			dispatcher = request.getRequestDispatcher("NewFile.jsp");
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(userName, userName);
+			request.setAttribute(icon, icon);
+			request.setAttribute(password, password);
+			request.setAttribute(profile, profile);
+			request.setAttribute("alert", message);
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
+			dispatcher.forward(request, response);
+		}else if(users!=null){
+			String message = "ログインIDは既に使われています";
+
+			// エラーメッセージをリクエストオブジェクトに保存
+			request.setAttribute("alert", message);
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(userName, userName);
+			request.setAttribute(icon, icon);
+			request.setAttribute(password, password);
+			request.setAttribute(profile, profile);
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(loginId.length() > i){
 			String message = "ログインIDは8文字以下で入力してください";
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("NewFile.jsp");
+			request.setAttribute("alert", message);
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(userName, userName);
+			request.setAttribute(icon, icon);
+			request.setAttribute(password, password);
+			request.setAttribute(profile, profile);
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
 String message = "半角英数記号で入力してください";
 
 			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("NewFile.jsp");
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(userName, userName);
+			request.setAttribute(icon, icon);
+			request.setAttribute(password, password);
+			request.setAttribute(profile, profile);
+			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else {
 			//HTML 出力準備
 			PrintWriter out=response.getWriter();
-
+			DEUpdetaManager dbm = new DEUpdetaManager();
+			dbm.getLoginUser(loginId, password,profile,icon,userName);
 			out.println("<html lang='ja'>");
 			out.println("<head>");
 			out.println("<title>ユーザー情報変更</title>");

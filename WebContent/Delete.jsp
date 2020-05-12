@@ -33,32 +33,32 @@
 					<tr>
 						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value=<%=userName%> size="20" /></td>
+							name="userName" value=<%=userName%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=<%=password%> size="20" /></td>
+							name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=<%=loginId%> /></td>
+							name="loginId" value=<%=loginId%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value=<%=profile%> size="20" /></td>
+							name="profile" value=<%=profile%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="del" value=<%=dele %> size="20" /></td>
+							type="hidden" name="del" value=<%=dele %>></td>
 					</tr>
 						<tr>
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="delete" value=<%=delete %> size="20" /></td>
+							type="hidden" name="delete" value=<%=delete %>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
@@ -71,7 +71,7 @@
 					<tr>
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="return" value=<%=dele %> size="20" /></td>
+							type="hidden" name="return" value=<%=dele %>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"

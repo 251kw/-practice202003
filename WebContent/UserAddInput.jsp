@@ -59,7 +59,7 @@
 						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
 						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
 						</td>
-						</td>
+
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
@@ -70,7 +70,9 @@
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="次へ" /></td>
+							<td class="text-left"><a href="index.jsp" class="btn">戻る</a></td>
 					</tr>
+
 					<c:if
 						test="${requestScope.alert != null }">
 						<tr>
