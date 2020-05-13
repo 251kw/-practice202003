@@ -23,7 +23,6 @@
 			</h1>
 		</div>
 	</div>
-
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<jsp:useBean id="list" scope="session"
@@ -49,27 +48,27 @@
 						<tr>
 							<td class="color-main text-left"></td>
 							<td class="text-left"><input class="form-control"
-								type="hidden" name="userName" value=${users.userName } size="20" /></td>
-						</tr>
-						<tr>
-							<td class="color-main text-left"></td>
-							<td class="text-left"><input class="form-control"
-								type="hidden" name="password" value=${users.password } size="20" /></td>
-						</tr>
-						<tr>
-							<td class="color-main text-left"></td>
-							<td class="text-left"><input class="form-control"
-								type="hidden" name="profile" value=${users.profile } size="20" /></td>
-						</tr>
-						<tr>
-							<td class="color-main text-left"></td>
-							<td class="text-left"><input class="form-control"
-								type="hidden" name="del" value=${del } size="20" /></td>
+								type="hidden" name="del" value=${del }></td>
 						</tr>
 						<tr>
 							<td class="color-main text-left"></td>
 							<td class="text-left"><input class="form-control"
 								type="hidden" name="loginId" value=${users.loginId } /></td>
+						</tr>
+							<tr>
+							<td class="color-main text-left"></td>
+							<td class="text-left"><input class="form-control"
+								type="hidden" name="userName" value=${users.userName } /></td>
+						</tr>
+								<tr>
+							<td class="color-main text-left"></td>
+							<td class="text-left"><input class="form-control"
+								type="hidden" name="profile" value=${users.profile } /></td>
+						</tr>
+									<tr>
+							<td class="color-main text-left"></td>
+							<td class="text-left"><input class="form-control"
+								type="hidden" name="password" value=${users.password } /></td>
 						</tr>
 						<tr>
 							<td class="color-main text-left"></td>

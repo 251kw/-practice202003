@@ -50,7 +50,7 @@ public class UserDelete extends HttpServlet {
 
 		if(dele.equals(loginId)||delete.equals(loginId)) {
 			DEDelete del = new DEDelete();
-			del.getLoginUser(loginId,password,profile);
+			del.getLoginUser(loginId);
 			//HTML 出力準備
 					PrintWriter out=response.getWriter();
 
@@ -82,7 +82,7 @@ public class UserDelete extends HttpServlet {
 					out.println("</html>");
 		}else {
 			DEDelete del = new DEDelete();
-			del.getLoginUser(userName,password,profile);
+			del.getLoginUser(loginId);
 			//HTML 出力準備
 					PrintWriter out=response.getWriter();
 

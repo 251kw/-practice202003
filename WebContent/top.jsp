@@ -44,7 +44,7 @@
 			<form action="UserResearch.jsp">
 			<table>
 				<tr><td><input class="form-control" type="hidden"
-					name="loginId" value=${user.loginId } /></td></tr>
+					name="user" value=${user.loginId } /></td></tr>
 
 				<tr>
 					<td colspan="2" class="text-right"><input class="btn"

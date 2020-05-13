@@ -12,7 +12,7 @@
 </head>
 <body>
 	<%
-		String loginId = request.getParameter("loginId");
+		String user = request.getParameter("user");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -36,7 +36,7 @@
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
 							name="password" value="" size="20" /></td>
-						<td><input type="hidden" name="del" value=<%=loginId%> /></td>
+						<td><input type="hidden" name="user" value=<%=user%> /></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性別</td>

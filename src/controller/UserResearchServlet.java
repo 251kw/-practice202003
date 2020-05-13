@@ -45,7 +45,7 @@ public class UserResearchServlet extends HttpServlet {
 		String loginId = request.getParameter("loginId");
 		String icon=request.getParameter("icon");
 		String password=request.getParameter("password");
-		String del=request.getParameter("del");
+		String delete=request.getParameter("user");
 		RequestDispatcher dispatcher = null;
 		DEReserarch2 res= new DEReserarch2();
 		UserDTO users=res.getLoginUser(loginId,icon,password);
@@ -83,7 +83,7 @@ public class UserResearchServlet extends HttpServlet {
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("list", user);
-				request.setAttribute("del", del);
+				request.setAttribute("del", delete);
 
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 
