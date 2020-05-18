@@ -18,6 +18,7 @@
 		String dele = request.getParameter("del");
 		String loginId = request.getParameter("loginId");
 		String delete=request.getParameter("delete");
+		String usere=request.getParameter("usere");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -60,6 +61,11 @@
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="delete" value=<%=delete %>></td>
 					</tr>
+							<tr>
+						<td class="color-main text-left"></td>
+						<td class="text-left"><input class="form-control"
+							type="hidden" name="usere" value=<%=usere %>></td>
+					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="削除する" /></td>
@@ -72,6 +78,11 @@
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="return" value=<%=dele %>></td>
+					</tr>
+						<tr>
+						<td class="color-main text-left"></td>
+						<td class="text-left"><input class="form-control"
+							type="hidden" name="usere" value=<%=usere %>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"

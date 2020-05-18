@@ -39,7 +39,7 @@
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value=<%=password %>></td>
+							type="text" name="password" value=<%=password %>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>

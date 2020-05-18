@@ -43,21 +43,23 @@ public class UserResearchServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String loginId = request.getParameter("loginId");
-		String icon=request.getParameter("icon");
 		String password=request.getParameter("password");
-		String delete=request.getParameter("user");
+		String userw=request.getParameter("user");
+		String usere=request.getParameter("usere");
 		RequestDispatcher dispatcher = null;
 		DEReserarch2 res= new DEReserarch2();
-		UserDTO users=res.getLoginUser(loginId,icon,password);
-		if(loginId.equals("")||icon.equals("")) {
+		UserDTO users=res.getLoginUser(loginId,password);
+		if(loginId.equals("")||password.equals("")) {
 			// ログインIDが未入力なら
-						String message = "ログインIDは必須入力です";
+						String message = "ログインIDとパスワードは必須入力です";
 
 						// エラーメッセージをリクエストオブジェクトに保存
 						request.setAttribute("alert", message);
-
+						request.setAttribute("userw", userw);
+						request.setAttribute(loginId, loginId);
+						request.setAttribute(password, password);
 						// index.jsp に処理を転送
-						dispatcher = request.getRequestDispatcher("UserResearch.jsp");
+						dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
 						dispatcher.forward(request, response);
 		}
 		else if(users==null) {
@@ -65,16 +67,18 @@ public class UserResearchServlet extends HttpServlet {
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
-
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(password, password);
+			request.setAttribute("userw", userw);
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserResearch.jsp");
+			dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
 			dispatcher.forward(request, response);
 		}else {
 
 
 			// ログイン認証を行い、ユーザ情報を取得
 			DBResrchManager dbr = new DBResrchManager();
-			ArrayList<UserDTO> user = dbr.getLoginUser(loginId,icon,password);
+			ArrayList<UserDTO> user = dbr.getLoginUser(loginId,password);
 
 			if (user != null) {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
@@ -82,10 +86,13 @@ public class UserResearchServlet extends HttpServlet {
 
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
+
 				session.setAttribute("list", user);
-				request.setAttribute("del", delete);
+				request.setAttribute("usere", usere);
+				request.setAttribute("del", userw);
 
 				dispatcher = request.getRequestDispatcher("Research.jsp");
+
 
 			} else {
 				// ユーザ情報が取得できない場合

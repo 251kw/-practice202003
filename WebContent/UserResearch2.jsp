@@ -12,7 +12,10 @@
 </head>
 <body>
 	<%
-		String user = request.getParameter("user");
+		String icon = request.getParameter("icon");
+		String loginId = request.getParameter("loginId");
+		String password = request.getParameter("password");
+		String usere=request.getParameter("usere");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -29,19 +32,21 @@
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=""></td>
+							name="loginId" value=<%=loginId%>></td>
+						<td><input type="hidden" name="usere" value=<%=usere %>></td>
 					</tr>
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=""/></td>
-						<td><input type="hidden" name="user" value=<%=user%> /></td>
+							name="password" value=<%=password%>></td>
+						<td><input type="hidden" name="user" value=${userw }></td>
+
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="検索" /></td>
-							<td class="text-left"><a href="top.jsp" class="btn">戻る</a></td>
+						<td class="text-left"><a href="top.jsp" class="btn">戻る</a></td>
 					</tr>
 					<%-- リクエストスコープに alert があれば --%>
 					<c:if

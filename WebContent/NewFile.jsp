@@ -14,6 +14,9 @@
 	<%
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
+		String loginId=request.getParameter("loginId");
+		String profile=request.getParameter("profile");
+		String icon=request.getParameter("icon");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -30,18 +33,18 @@
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value="" size="20" /></td>
+							name="loginId" value=<%=loginId %>></td>
 					</tr>
 					<tr>
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value="" size="20" /></td>
+							type="text" name="password" value=<%=password %>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value="" size="20" /></td>
+							name="profile" value=<%=profile %>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性別</td>

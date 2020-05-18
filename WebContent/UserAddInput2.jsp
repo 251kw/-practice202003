@@ -53,10 +53,10 @@
 							name="userName" value="<%=userName%>"></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left">性格</td>
+						<td class="color-main text-left">アイコン</td>
 						<td><input type="radio" name="icon" id="male"
-							value=<%=icon%> checked><span>male</span> <input
-							type="radio" name="icon" id="female" value=<%=icon%> checked><span>female</span>
+							value="male" checked><span>male</span> <input
+							type="radio" name="icon" id="female" value="female"><span>female</span>
 						</td>
 					</tr>
 					<tr>
