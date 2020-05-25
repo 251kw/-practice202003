@@ -31,11 +31,24 @@
 						<td class="text-left"><input class="form-control" type="text"
 							name="loginId" value=""></td>
 					</tr>
-					<tr>
-						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">パスワード</td>
+						<tr>
+						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=""/></td>
+							name="userName" value=""></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">アイコン</td>
+						<td>
+						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
+						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
+						</td>
+					</tr>
+						<tr>
+						<td class="color-main text-left">コメント</td>
+						<td class="text-left"><input class="form-control"
+							type="text" name="profile" value=""  size="20" /></td>
+					</tr>
+					<tr>
 						<td><input type="hidden" name="user" value=<%=user%> /></td>
 					</tr>
 					<tr>

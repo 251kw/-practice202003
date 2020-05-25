@@ -55,7 +55,7 @@
 					<tr>
 						<td class="color-main text-left"></td>
 							<td class="text-left"><input class="form-control"
-								type="hidden" name="userName" value=<%=userName %> size="20" /></td>
+								type="hidden" name="userName" value=<%=userName %>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"

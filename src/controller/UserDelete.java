@@ -48,6 +48,9 @@ public class UserDelete extends HttpServlet {
 		String loginId=request.getParameter("loginId");
 		String delete=request.getParameter("delete");
 		String usere=request.getParameter("usere");
+		if(usere.equals(null)||usere.equals("")) {
+			usere="";
+		}
 
 		if(dele.equals(loginId)||delete.equals(loginId)||usere.equals(loginId)) {
 			DEDelete del = new DEDelete();

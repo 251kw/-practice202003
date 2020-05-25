@@ -14,8 +14,9 @@
 	<%
 		String icon = request.getParameter("icon");
 		String loginId = request.getParameter("loginId");
-		String password = request.getParameter("password");
 		String usere=request.getParameter("usere");
+		String userName=request.getParameter("userName");
+		String profile=request.getParameter("profile");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -35,11 +36,24 @@
 							name="loginId" value=<%=loginId%>></td>
 						<td><input type="hidden" name="usere" value=<%=usere %>></td>
 					</tr>
-					<tr>
-						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">パスワード</td>
+						<tr>
+						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=<%=password%>></td>
+							name="userName" value=<%=userName%>></td>
+					</tr>
+						<tr>
+						<td class="color-main text-left">アイコン</td>
+						<td>
+						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
+						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
+						</td>
+					</tr>
+						<tr>
+						<td class="color-main text-left">コメント</td>
+						<td class="text-left"><input class="form-control"
+							type="text" name="profile" value=<%=profile %>></td>
+					</tr>
+					<tr>
 						<td><input type="hidden" name="user" value=${userw }></td>
 
 					</tr>

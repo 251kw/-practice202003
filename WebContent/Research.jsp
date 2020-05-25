@@ -24,7 +24,7 @@
 		</div>
 	</div>
 	<div class="padding-y-5 text-center">
-		<div style="width: 40%" class="container padding-y-5 text-center">
+		<div style="width: 60%" class="container padding-y-5 text-center">
 			<jsp:useBean id="list" scope="session"
 				type="java.util.ArrayList<dto.UserDTO>" />
 			<c:forEach var="users" items="${list}">
@@ -36,8 +36,7 @@
 						<table>
 							<tr>
 								<td class="text-left"><input class="form-control"
-									type="hidden" name="userName" value=${users.userName }
-									size="20" /></td>
+									type="hidden" name="userName" value=${users.userName }></td>
 							</tr>
 							<tr>
 								<td class="text-left"><input class="form-control"
@@ -108,31 +107,34 @@
 					<form action="UserResearch2.jsp" method="post">
 						<table>
 							<tr>
-								<td class="color-main text-left"></td>
 								<td class="text-left"><input class="form-control"
 									type="hidden" name="usere" value=${del }></td>
 							</tr>
 							<tr>
-								<td class="color-main text-left"></td>
+
 								<td class="text-left"><input class="form-control"
 									type="hidden" name="del" value=${usere }></td>
 							</tr>
 							<tr>
-								<td class="color-main text-left"></td>
+
 								<td class="text-left"><input class="form-control"
 									type="hidden" name="loginId" value=${users.loginId } /></td>
 							</tr>
 							<tr>
-								<td class="color-main text-left"></td>
+
 								<td class="text-left"><input class="form-control"
 									type="hidden" name="password" value=${users.password } /></td>
 							</tr>
 							<tr>
-								<td class="color-main text-left"></td>
+
 								<td class="text-left"><input class="form-control"
 									type="hidden" name="profile" value=${users.profile } /></td>
 							</tr>
+							<tr>
 
+								<td class="text-left"><input class="form-control"
+									type="hidden" name="userName" value=${users.userName } /></td>
+							</tr>
 							<tr>
 								<td><input type="hidden" name="icon" id="male"
 									value=${users.icon } checked> <input type="hidden"

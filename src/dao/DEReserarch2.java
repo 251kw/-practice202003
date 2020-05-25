@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import dto.UserDTO;
 
 public class DEReserarch2 extends SnsDAO {
-	public UserDTO getLoginUser(String loginId,String password) {
+	public UserDTO getLoginUser(String loginId,String userName,String icon,String profile) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 
-		String sql="SELECT * FROM users WHERE loginId like ? AND password=?";
+		String sql="SELECT * FROM users WHERE loginId LIKE ? AND userName LIKE ? AND icon=? AND profile LIKE ?";
 		UserDTO users =null; //登録ユーザー情報
 
 		try {
@@ -22,8 +22,10 @@ public class DEReserarch2 extends SnsDAO {
 
 			//SELECT文の登録と実行
 			pstmt=conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, loginId);
-			pstmt.setString(2, password);
+			pstmt.setString(1, "%"+loginId+"%");
+			pstmt.setString(2,"%"+userName+"%");
+			pstmt.setString(3,icon);
+			pstmt.setString(4,"%"+profile+"%");
 			rset=pstmt.executeQuery();
 
 			//検索結果があれば
