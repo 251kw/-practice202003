@@ -16,7 +16,6 @@
 		String loginId = request.getParameter("loginId");
 		String usere=request.getParameter("usere");
 		String userName=request.getParameter("userName");
-		String profile=request.getParameter("profile");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -47,11 +46,6 @@
 						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
 						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
 						</td>
-					</tr>
-						<tr>
-						<td class="color-main text-left">コメント</td>
-						<td class="text-left"><input class="form-control"
-							type="text" name="profile" value=<%=profile %>></td>
 					</tr>
 					<tr>
 						<td><input type="hidden" name="user" value=${userw }></td>

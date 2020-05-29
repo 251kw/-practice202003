@@ -27,12 +27,11 @@
 	<jsp:useBean id="user" scope="session" type="dto.UserDTO" />
 	<div class="padding-y-5">
 		<div style="width: 40%" class="container padding-y-5">
-			<%-- action 属性にサーブレットを指定 --%>
 			<form action="./logout" method="post">
 				<table class="table table-bordered">
 					<tr>
 						<td rowspan="2" class="text-center"><span
-							class="${user.icon} pe-3x pe-va"></span></td>
+							class="${user.icon} pe-3x pe-va"></span>${user.icon}</td>
 						<td width="256">${user.userName}</td>
 						<td><input class="btn btn-light" type="submit" value="ログアウト" /></td>
 					</tr>

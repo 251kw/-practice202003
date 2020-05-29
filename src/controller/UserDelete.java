@@ -108,7 +108,7 @@ public class UserDelete extends HttpServlet {
 					out.println("<div align=center>");
 					out.println("<p>削除完了</p>");
 					out.println("<div class=btn>");
-					out.println("<a href='top.jsp'　>ログイン画面に戻る</a>");
+					out.println("<a href='top.jsp'>ログイン画面に戻る</a>");
 					out.println("</div>");
 					out.println("</div>");
 					out.println("<body>");

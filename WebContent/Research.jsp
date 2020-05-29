@@ -26,12 +26,16 @@
 	<div class="padding-y-5 text-center">
 		<div style="width: 60%" class="container padding-y-5 text-center">
 			<jsp:useBean id="list" scope="session"
-				type="java.util.ArrayList<dto.UserDTO>" />
+				type="java.util.ArrayList<dto.UserDTO>"/>
 			<c:forEach var="users" items="${list}">
-				<div style="display: inline-flex">
+			
+				<div class="row">
+				<div class="col md-3">
 					<P>
 						<font size="5" color="#2196F3">ユーザー名:${users.userName}</font>
 					</P>
+					</div>
+					<div class="col md-3">
 					<form action="NewFile.jsp">
 						<table>
 							<tr>
@@ -61,6 +65,8 @@
 							</tr>
 						</table>
 					</form>
+					</div>
+					<div class="col md-3">
 					<form action="Delete.jsp" method="post">
 						<table>
 							<tr>
@@ -104,6 +110,8 @@
 							</tr>
 						</table>
 					</form>
+					</div>
+					<div class="col md-3">
 					<form action="UserResearch2.jsp" method="post">
 						<table>
 							<tr>
@@ -146,6 +154,7 @@
 							</tr>
 						</table>
 					</form>
+					</div>
 				</div>
 			</c:forEach>
 		</div>

@@ -21,6 +21,7 @@
 			</h1>
 		</div>
 	</div>
+	
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<form action="./UserResearchServlet" method="post">
@@ -42,11 +43,6 @@
 						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
 						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
 						</td>
-					</tr>
-						<tr>
-						<td class="color-main text-left">コメント</td>
-						<td class="text-left"><input class="form-control"
-							type="text" name="profile" value=""  size="20" /></td>
 					</tr>
 					<tr>
 						<td><input type="hidden" name="user" value=<%=user%> /></td>
