@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import dto.UserDTO;
 
 public class DBResearch3 extends SnsDAO {
-	public UserDTO getLoginUser(String loginId) {
+	public UserDTO getLoginUser7(String loginId) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;

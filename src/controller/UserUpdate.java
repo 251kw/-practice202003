@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,8 +48,9 @@ public class UserUpdate extends HttpServlet {
 		String profile=request.getParameter("profile");
 		String icon=request.getParameter("icon");
 		String userName=request.getParameter("userName");
+		String del=request.getParameter("del");
 		DBResearch3 dbs=new DBResearch3();
-		UserDTO users=dbs.getLoginUser(loginId);
+		UserDTO users=dbs.getLoginUser7(loginId);
 		RequestDispatcher dispatcher = null;
 		int i=9;
 		if(loginId.equals("") || password.equals(""))  {
@@ -103,31 +103,15 @@ String message = "半角英数記号で入力してください";
 			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else {
-			//HTML 出力準備
-			PrintWriter out=response.getWriter();
 			DEUpdetaManager dbm = new DEUpdetaManager();
 			dbm.getLoginUser(loginId, password,profile,icon,userName);
-			out.println("<html lang='ja'>");
-			out.println("<head>");
-			out.println("<title>ユーザー情報変更</title>");
-			out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div class=bg-success padding-y-5>");
-			out.println("<div class=container padding-y-5 text-center>");
-			out.println("<div align=center>");
-			out.println("<h1>変更完了</h1>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<div align=center>");
-			out.println("<p>変更完了</P>");
-			out.println("<a href='top.jsp' class='btn'>トップに戻る</a>");
-			out.println("</div>");
-			out.println("<body>");
-			out.println("</html>");
+			request.setAttribute(loginId, loginId);
+			request.setAttribute(userName, userName);
+			request.setAttribute(password, password);
+			request.setAttribute(profile, profile);
+			request.setAttribute(del, del);
+			dispatcher = request.getRequestDispatcher("NewFile3.jsp");
+			dispatcher.forward(request, response);
 		}
 
 	}

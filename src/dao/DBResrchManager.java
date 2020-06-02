@@ -27,7 +27,6 @@ public class DBResrchManager extends SnsDAO {
 			pstmt.setString(2, "%"+userName+"%");
 			pstmt.setString(3, icon);
 			rset = pstmt.executeQuery();
-
 			// 検索結果があれば
 			while (rset.next()) {
 				// 必要な列から値を取り出し、ユーザ情報オブジェクトを生成
@@ -47,7 +46,6 @@ public class DBResrchManager extends SnsDAO {
 			close(pstmt);
 			close(conn);
 		}
-
 		return list;
 	}public ArrayList<UserDTO> getLoginUser1(String loginId,String icon) {
 		Connection conn = null;            // データベース接続情報
@@ -87,7 +85,6 @@ public class DBResrchManager extends SnsDAO {
 			close(pstmt);
 			close(conn);
 		}
-
 		return list;
 	}
 	public ArrayList<UserDTO> getLoginUser2(String userName,String icon) {
@@ -128,7 +125,6 @@ public class DBResrchManager extends SnsDAO {
 			close(pstmt);
 			close(conn);
 		}
-
 		return list;
 	}
 	public ArrayList<UserDTO> getLoginUser3(String loginId,String icon) {
