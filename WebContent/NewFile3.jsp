@@ -31,23 +31,23 @@
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">ログインID</td>
+						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="loginId" value=<%=loginId%>></td>
 					</tr>
 					<tr>
 						<%-- パスワード入力欄の名前は password --%>
-						<td class="color-main text-left">パスワード</td>
+						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left">コメント</td>
+						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="profile" value=<%=profile%>></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left">コメント</td>
+						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
 							type="hidden" name="userName" value=<%=userName%>></td>
 					</tr>
