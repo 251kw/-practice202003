@@ -51,7 +51,7 @@ public class DBManager extends SnsDAO {
     				user.setPassword(rset.getString(3));
     				user.setUserName(rset.getString(4));
     				user.setIcon(rset.getString(5));
-    				user.setProfile(rset.getString(3));
+    				user.setProfile(rset.getString(6));
     			}
 
     		}catch(SQLException e) {

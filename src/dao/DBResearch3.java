@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import dto.UserDTO;
 
 public class DBResearch3 extends SnsDAO {
-	public UserDTO getLoginUser7(String loginId) {
+	public UserDTO getLoginUser7(String userName) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rset=null;
 
-		String sql="SELECT * FROM users WHERE loginId=?";
+		String sql="SELECT * FROM users WHERE userName=?";
 		UserDTO users =null; //登録ユーザー情報
 
 		try {
@@ -22,7 +22,7 @@ public class DBResearch3 extends SnsDAO {
 
 			//SELECT文の登録と実行
 			pstmt=conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, loginId);
+			pstmt.setString(1, userName);
 			rset=pstmt.executeQuery();
 
 			//検索結果があれば

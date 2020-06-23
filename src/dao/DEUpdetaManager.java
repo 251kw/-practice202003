@@ -14,7 +14,7 @@ public class DEUpdetaManager extends SnsDAO {
 		ResultSet rset = null; // 検索結果
 
 
-		String sql = "UPDATE users SET loginId=?,password=?,profile=?,icon=? WHERE userName=?";
+		String sql = "UPDATE users SET userName=?,password=?,profile=?,icon=? WHERE loginId=?";
 		UserDTO user = null; // 登録ユーザ情報
 
 
@@ -22,11 +22,11 @@ public class DEUpdetaManager extends SnsDAO {
 			conn = getConnection();
 
 			pstmt = conn.prepareStatement(sql); // SELECT 構文登録
-			pstmt.setString(1,loginId);
+			pstmt.setString(1,userName);
 			pstmt.setString(2, password);
 			pstmt.setString(3, profile);
 			pstmt.setString(4,icon);
-			pstmt.setString(5,userName);
+			pstmt.setString(5,loginId);
 			pstmt.executeUpdate();
 
 		}
@@ -42,13 +42,13 @@ public class DEUpdetaManager extends SnsDAO {
 
 		return user;
 	}
-	public UserDTO getLoginUser7(String userName) {
+	public UserDTO getLoginUser7(String loginId) {
 		Connection conn = null; // データベース接続情報
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 
 
-		String sql = "SELECT * FROM users WHERE userName=?";
+		String sql = "SELECT * FROM users WHERE loginId=?";
 		UserDTO user = null; // 登録ユーザ情報
 
 		//検索結果があれば
@@ -56,7 +56,7 @@ public class DEUpdetaManager extends SnsDAO {
 			conn = getConnection();
 
 			pstmt = conn.prepareStatement(sql); // SELECT 構文登録
-			pstmt.setString(1,userName);
+			pstmt.setString(1,loginId);
 			rset=pstmt.executeQuery();
 			//検索結果があれば
 			if(rset.next()) {
@@ -66,7 +66,7 @@ public class DEUpdetaManager extends SnsDAO {
 				user.setPassword(rset.getString(3));
 				user.setUserName(rset.getString(4));
 				user.setIcon(rset.getString(5));
-				user.setProfile(rset.getString(3));
+				user.setProfile(rset.getString(6));
 			}
 		}
 

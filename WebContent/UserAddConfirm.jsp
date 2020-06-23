@@ -137,19 +137,17 @@
 					<tr>
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="userName" value="<%=userName%>" size="20" /></td>
+							type="hidden" name="userName" value="<%=userName%>"></td>
 					</tr>
 					<tr>
-						<td><lavel for="male"> <input type="hidden"
-								name="icon" id="male" value=<%=icon%> checked></lavel> <lavel
-								for="female"> <input type="hidden" name="icon"
-								id="female" value=<%=icon%>></lavel></td>
+						<td class="text-left"><input class="form-control"
+							type="hidden" name="icon" value=<%=icon%>></td>
 
 					</tr>
 					<tr>
 						<td class="color-main text-left"></td>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="profile" value=<%=profile%> size="20" /></td>
+							type="hidden" name="profile" value=<%=profile%>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center"><input class="btn"

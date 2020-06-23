@@ -12,13 +12,14 @@
 </head>
 <body>
 	<%
-		String loginId=request.getParameter("loginId");
-		String icon=request.getParameter("icon");
+		String loginId = request.getParameter("loginId");
+		String icon = request.getParameter("icon");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
-		String profile=request.getParameter("profile");
-		String del=request.getParameter("del");
+		String profile = request.getParameter("profile");
+		String del = request.getParameter("del");
 	%>
+	<c:set var="icon" value="<%=icon%>" />
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -32,40 +33,55 @@
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left">ログインID</td>
+						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=<%=loginId %>></td>
+							name="userName" value=<%=userName%>></td>
+						<td><input class="form-control" type="hidden" name="loginId"
+							value=<%=loginId%>></td>
 					</tr>
 					<tr>
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
-						<td class="text-left"><input class="form-control"
-							type="text" name="password" value=<%=password %>></td>
+						<td class="text-left"><input class="form-control" type="text"
+							name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value=<%=profile %>></td>
+							name="profile" value=<%=profile%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性別</td>
-						<td><input type="radio" name="icon" id="male" value="male"
-							checked><span>male</span> <input type="radio" name="icon"
-							id="female" value="female" ><span>male</span></td>
-
+						<c:if test="${icon == 'male'}">
+							<input type="radio" name="icon" id="male" value="male" checked>
+							<span>male</span>
+						</c:if>
+						<c:if test="${icon != 'male'}">
+							<input type="radio" name="icon" id="male" value="male">
+							<span>male</span>
+						</c:if>
+						<c:if test="${icon != 'female'}">
+							<input type="radio" name="icon" id="female" value="female">
+							<span>female</span>
+						</c:if>
+						<c:if test="${icon == 'female'}">
+							<input type="radio" name="icon" id="female" value="female"
+								checked>
+							<span>female</span>
+						</c:if>
 						<td class="text-left"><input class="form-control"
-							type="hidden" name="userName" value=<%=userName%>/></td>
+							type="hidden" name="userName" value=<%=userName%> /></td>
 					</tr>
-						<tr>
-									<td class="color-main text-left"></td>
-									<td class="text-left"><input class="form-control"
-										type="hidden" name="del" value=<%=del %>></td>
-								</tr>
+					<tr>
+						<td class="color-main text-left"></td>
+						<td class="text-left"><input class="form-control"
+							type="hidden" name="del" value=<%=del%>></td>
+					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="変更する" /></td>
 					</tr>
-						<c:if test="${requestScope.alert != null }">
+					<c:if test="${requestScope.alert != null }">
 						<tr>
 							<%-- リクエストスコープの alert の値を出力 --%>
 							<td colspan="2" class="color-error text-left"><c:out
@@ -74,14 +90,14 @@
 					</c:if>
 				</table>
 			</form>
-				<form action="Research.jsp">
-					<table>
-						<tr>
-							<td colspan="2" class="text-right"><input class="btn"
-								style="float: right;" type="submit" value="戻る" /></td>
-						</tr>
-					</table>
-					</form>
+			<form action="Research.jsp">
+				<table>
+					<tr>
+						<td colspan="2" class="text-right"><input class="btn"
+							style="float: right;" type="submit" value="戻る" /></td>
+					</tr>
+				</table>
+			</form>
 		</div>
 	</div>
 </body>

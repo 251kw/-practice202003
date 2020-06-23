@@ -18,6 +18,7 @@
 		String icon = request.getParameter("icon");
 		String profile = request.getParameter("profile");
 	%>
+	<c:set var="icon" value="<%=icon %>"/>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>新規登録&nbsp;</h1>
@@ -39,9 +40,7 @@
 						<td class="text-left"><input class="form-control" type="text"
 							name="loginId" value="<%=loginId%>"></td>
 					</tr>
-
 					<tr>
-
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
@@ -54,10 +53,24 @@
 					</tr>
 					<tr>
 						<td class="color-main text-left">アイコン</td>
-						<td><input type="radio" name="icon" id="male"
-							value="male" checked><span>male</span> <input
-							type="radio" name="icon" id="female" value="female"><span>female</span>
-						</td>
+
+						<c:if test="${icon == 'male'}">
+							<input type="radio" name="icon" id="male" value="male" checked>
+							<span>male</span>
+						</c:if>
+						<c:if test="${icon != 'male'}">
+							<input type="radio" name="icon" id="male" value="male">
+							<span>male</span>
+						</c:if>
+						<c:if test="${icon != 'female'}">
+							<input type="radio" name="icon" id="female" value="female">
+							<span>female</span>
+						</c:if>
+						<c:if test="${icon == 'female'}">
+							<input type="radio" name="icon" id="female" value="female"
+								checked>
+							<span>female</span>
+						</c:if>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
@@ -67,16 +80,16 @@
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="次へ" /></td>
-							<td class="text-left"><a href="index.jsp" class="btn">戻る</a></td>
+						<td class="text-left"><a href="index.jsp" class="btn">戻る</a></td>
 					</tr>
 					<c:if test="${requestScope.alert != null }">
-							<%-- リクエストスコープの alert の値を出力 --%>
-							<td colspan="2" class="color-error text-left"><c:out
-									value="${requestScope.alert}" /></td>
+						<%-- リクエストスコープの alert の値を出力 --%>
+						<td colspan="2" class="color-error text-left"><c:out
+								value="${requestScope.alert}" /></td>
 
 					</c:if>
 				</table>
-				</form>
+			</form>
 		</div>
 	</div>
 </body>

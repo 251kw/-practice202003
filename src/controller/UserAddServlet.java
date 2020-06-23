@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -65,33 +64,8 @@ public class UserAddServlet extends HttpServlet {
 			}else {
 				DBSUBanager add=new DBSUBanager();
 				UserDTO user=add.getLoginUser(loginId, password, userName, icon, profile);
-				PrintWriter out=response.getWriter();
-				out.println("<html lang='ja'>");
-				out.println("<head>");
-				out.println("<meta http-equiv=\"Content=Type\" content=\"text/html; charset=UTF-8\">");
-				out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-				out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-				out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-				out.println("<div class=bg-success padding-y-5>");
-				out.println("</div>");
-				out.println("<title>新規登録ユーザー情報</title>");
-				out.println("</head>");
-				out.println("<body>");
-				out.println("<div class=bg-success padding-y-5>");
-				out.println("<div class=container padding-y-5 text-center>");
-				out.println("<div align=center>");
-				out.println("<h1>確認画面&nbsp</h1>");
-				out.println("</div>");
-				out.println("</div>");
-				out.println("</div>");
-				out.println("<div align=center>");
-				out.println("<p>登録完了</p>");
-				out.println("<div class=btn>");
-				out.println("<a href='index.jsp'　>ログイン画面に戻る</a>");
-				out.println("</div>");
-				out.println("</div>");
-				out.println("</body>");
-				out.println("</html>");
+				dispatcher = request.getRequestDispatcher("newfuser.jsp");
+				dispatcher.forward(request, response);
 			}
 
 

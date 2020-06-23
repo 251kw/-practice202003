@@ -12,13 +12,13 @@
 </head>
 <body>
 	<%
-		String userName = request.getParameter("userName");
+		String userloginId = request.getParameter("userloginId");
 		String password = request.getParameter("password");
 		String profile = request.getParameter("profile");
-		String dele = request.getParameter("del");
 		String loginId = request.getParameter("loginId");
-		String delete=request.getParameter("delete");
-		String usere=request.getParameter("usere");
+		String delete = request.getParameter("delete");
+		String usere = request.getParameter("usere");
+		String user = request.getParameter("usero");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -30,67 +30,23 @@
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<form action="./UserDelete" method="post">
-				<table>
-					<tr>
-						<td class="color-main text-left">ユーザー名</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value=<%=userName%>></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">パスワード</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=<%=password%>></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">ログインID</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=<%=loginId%>></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">コメント</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value=<%=profile%>></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="del" value=<%=dele %>></td>
-					</tr>
+				<table class="table table-striped table-bordered table-hover">
+					<thead>
 						<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="delete" value=<%=delete %>></td>
-					</tr>
+							<td>ユーザー情報</td>
+						</tr>
+					</thead>
+					<c:forEach var="users" items="${info}">
+						<tbody>
 							<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="usere" value=<%=usere %>></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="削除する" /></td>
-					</tr>
+								<td>${users }<input type="hidden" name="del" value=${del }>
+									<input type="hidden" name="user" value=${users }></td>
+							</tr>
+					</c:forEach>
 				</table>
+				<input class="btn" type="submit" value="削除する" /> <input class="btn"
+					type="submit" name="re" value="戻る" />
 			</form>
-			<form action="Research.jsp" method="post">
-				<table>
-					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="return" value=<%=dele %>></td>
-					</tr>
-						<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="usere" value=<%=usere %>></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="戻る" /></td>
-					</tr>
-				</table>
-			</form>
-
 		</div>
 	</div>
 </body>

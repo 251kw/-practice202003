@@ -26,30 +26,53 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
+		<c:set var="icon" value="<%=icon %>"/>
+		<c:set var="userName" value="<%=userName %>"/>
+		<c:set var="loginId" value="<%=loginId %>"/>
 			<form action="./UserResearchServlet" method="post">
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ログインID</td>
-						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=<%=loginId%>></td>
-						<td><input type="hidden" name="usere" value=<%=usere %>></td>
+						<td class="text-left">
+						<c:if test="${loginId == ''}">
+						<input class="form-control" type="text"
+							name="loginId" value="">
+						</c:if>
+						<c:if test="${loginId != ''}">
+						<input class="form-control" type="text"
+							name="loginId" value=<%=loginId%>>
+						</c:if>
+					<input type="hidden" name="usere" value=<%=usere %>></td>
 					</tr>
 						<tr>
 						<td class="color-main text-left">ユーザー名</td>
-						<td class="text-left"><input class="form-control" type="text"
+						<c:if test="${userName == ''}">
+												<td class="text-left"><input class="form-control" type="text"
+							name="userName" value=""></td>
+						</c:if>
+						<c:if test="${userName != ''}">
+								<td class="text-left"><input class="form-control" type="text"
 							name="userName" value=<%=userName%>></td>
+						</c:if>
 					</tr>
 						<tr>
 						<td class="color-main text-left">アイコン</td>
 						<td>
+						<c:if test="${icon == 'male'}">
 						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
+						</c:if>
+						<c:if test="${icon != 'male'}">
+						<input type="radio" name="icon" id="male" value="male"><span>male</span>
+						</c:if>
+						<c:if test="${icon == 'female'}">
+						<input type="radio" name="icon" id="female" value="female" checked><span>female</span>
+						</c:if>
+						<c:if test="${icon != 'female'}">
 						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
+						</c:if>
+						<input type="hidden" name="user" value=${userw }>
 						</td>
-					</tr>
-					<tr>
-						<td><input type="hidden" name="user" value=${userw }></td>
-
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"

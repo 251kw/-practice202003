@@ -51,26 +51,23 @@ public class UserResearchServlet extends HttpServlet {
 			// ログインIDが未入力なら
 			DBResrchManager dbr = new DBResrchManager();
 			ArrayList<UserDTO> user = dbr.getLoginUser4(icon);
-			if (user !=null) {
+			if (user == null || user.size() == 0) {
+				// ユーザ情報が取得できない場合
+				// エラーメッセージをリクエストオブジェクトに保存
+				String message = "該当データがありません";
+				request.setAttribute("alert", message);
+				request.setAttribute(icon, icon);
+				// 処理の転送先を index.jsp に指定
+				dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+			} else{
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 				HttpSession session = request.getSession();
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
-				request.setAttribute("del", userw);
-
+				session.setAttribute("userw", userw);
 				dispatcher = request.getRequestDispatcher("Research.jsp");
-
-
-			} else if(user==null) {
-				// ユーザ情報が取得できない場合
-				// エラーメッセージをリクエストオブジェクトに保存
-				String message = "該当データがありません";
-				request.setAttribute("alert", message);
-
-				// 処理の転送先を index.jsp に指定
-				dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
 			}
 
 			// 処理を転送
@@ -80,25 +77,22 @@ public class UserResearchServlet extends HttpServlet {
 			// ログインIDが未入力なら
 			DBResrchManager dbr = new DBResrchManager();
 			ArrayList<UserDTO> user = dbr.getLoginUser2(userName,icon);
-			if (user==null) {
-				// ユーザ情報が取得できない場合
+			if (user == null || user.size() == 0) {
 				// エラーメッセージをリクエストオブジェクトに保存
 				String message = "該当データがありません";
 				request.setAttribute("alert", message);
+				request.setAttribute(icon, icon);
+				request.setAttribute(userName, userName);
 				// 処理の転送先を index.jsp に指定
 				dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
-
-
-
-			} else if(user!=null) {
+			} else{
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 				HttpSession session = request.getSession();
 
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
-				request.setAttribute("del", userw);
-
+				request.setAttribute(userw, userw);
 				dispatcher = request.getRequestDispatcher("Research.jsp");
 			}
 
@@ -109,8 +103,15 @@ public class UserResearchServlet extends HttpServlet {
 			// ログインIDが未入力なら
 						DBResrchManager dbr = new DBResrchManager();
 						ArrayList<UserDTO> user = dbr.getLoginUser1(loginId,icon);
-						if (user !=null) {
-							// ユーザ情報を取得できたら、書き込み内容リストを取得
+						if (user == null || user.size() == 0) {
+							// エラーメッセージをリクエストオブジェクトに保存
+							String message = "該当データがありません";
+							request.setAttribute("alert", message);
+							request.setAttribute(icon, icon);
+							request.setAttribute(loginId, loginId);
+							// 処理の転送先を index.jsp に指定
+							dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+						} else{// ユーザ情報を取得できたら、書き込み内容リストを取得
 							HttpSession session = request.getSession();
 
 							// ログインユーザ情報、書き込み内容リストとしてセッションに保存
@@ -119,16 +120,6 @@ public class UserResearchServlet extends HttpServlet {
 							request.setAttribute("del", userw);
 
 							dispatcher = request.getRequestDispatcher("Research.jsp");
-
-
-						} else if(user==null) {
-							// ユーザ情報が取得できない場合
-							// エラーメッセージをリクエストオブジェクトに保存
-							String message = "該当データがありません";
-							request.setAttribute("alert", message);
-
-							// 処理の転送先を index.jsp に指定
-							dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
 						}
 
 						// 処理を転送
@@ -137,7 +128,17 @@ public class UserResearchServlet extends HttpServlet {
 				// ログインIDが未入力なら
 							DBResrchManager dbr = new DBResrchManager();
 							ArrayList<UserDTO> user = dbr.getLoginUser(loginId,userName,icon);
-							if (user !=null) {
+							if (user == null || user.size() == 0) {
+								// ユーザ情報が取得できない場合
+								// エラーメッセージをリクエストオブジェクトに保存
+								String message = "該当データがありません";
+								request.setAttribute("alert", message);
+								request.setAttribute(icon, icon);
+								request.setAttribute(userName, userName);
+								request.setAttribute(loginId, loginId);
+								// 処理の転送先を index.jsp に指定
+								dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+							} else{
 								// ユーザ情報を取得できたら、書き込み内容リストを取得
 								HttpSession session = request.getSession();
 
@@ -148,15 +149,6 @@ public class UserResearchServlet extends HttpServlet {
 
 								dispatcher = request.getRequestDispatcher("Research.jsp");
 
-
-							} else if(user==null) {
-								// ユーザ情報が取得できない場合
-								// エラーメッセージをリクエストオブジェクトに保存
-								String message = "該当データがありません";
-								request.setAttribute("alert", message);
-
-								// 処理の転送先を index.jsp に指定
-								dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
 							}
 
 							// 処理を転送

@@ -56,8 +56,9 @@
 					<tr>
 						<td class="color-main text-left">アイコン</td>
 						<td>
-						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
-						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
+
+						<input type="radio" name="icon" id="male" value="male"><span>male</span>
+						<input type="radio" name="icon" id="female" value="female"><span>female</span>
 						</td>
 
 					</tr>

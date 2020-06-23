@@ -50,7 +50,7 @@ public class UserUpdate extends HttpServlet {
 		String userName=request.getParameter("userName");
 		String del=request.getParameter("del");
 		DBResearch3 dbs=new DBResearch3();
-		UserDTO users=dbs.getLoginUser7(loginId);
+		UserDTO users=dbs.getLoginUser7(userName);
 		RequestDispatcher dispatcher = null;
 		int i=9;
 		if(loginId.equals("") || password.equals(""))  {
@@ -64,10 +64,11 @@ public class UserUpdate extends HttpServlet {
 			request.setAttribute(password, password);
 			request.setAttribute(profile, profile);
 			request.setAttribute("alert", message);
+			request.setAttribute(del, del);
 			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(users!=null){
-			String message = "ログインIDは既に使われています";
+			String message = "ユーザー名は既に使われています";
 
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
@@ -76,6 +77,7 @@ public class UserUpdate extends HttpServlet {
 			request.setAttribute(icon, icon);
 			request.setAttribute(password, password);
 			request.setAttribute(profile, profile);
+			request.setAttribute(del, del);
 			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(loginId.length() > i){
@@ -89,6 +91,7 @@ public class UserUpdate extends HttpServlet {
 			request.setAttribute(icon, icon);
 			request.setAttribute(password, password);
 			request.setAttribute(profile, profile);
+			request.setAttribute(del, del);
 			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
@@ -100,6 +103,7 @@ String message = "半角英数記号で入力してください";
 			request.setAttribute(icon, icon);
 			request.setAttribute(password, password);
 			request.setAttribute(profile, profile);
+			request.setAttribute(del, del);
 			dispatcher = request.getRequestDispatcher("NewFile2.jsp");
 			dispatcher.forward(request, response);
 		}else {
