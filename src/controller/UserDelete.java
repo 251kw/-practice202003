@@ -1,9 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-import java.util.StringJoiner;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DBResrchManager;
-import dto.UserDTO;
 
 
 
@@ -49,91 +46,27 @@ public class UserDelete extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
-
-		String password = request.getParameter("password");
-		String profile = request.getParameter("profile");
-		String dele = request.getParameter("del");
-		String loginId = request.getParameter("loginId");
-		String delete = request.getParameter("delete");
-		String usere = request.getParameter("usere");
-		String userName = request.getParameter("userName");
-		String user = request.getParameter("user");
-		String re = request.getParameter("re");
+		String shin=null;
 		HttpSession session = request.getSession();
+	    String  myName = (String) session.getAttribute("name");
 		List<String> info = (List<String>) session.getAttribute("info");
-		String[] sent= (String[])session.getAttribute("userloginId");
-		StringJoiner joiner=new StringJoiner("','","'","'");
-
-		for(String s:sent) {
-			joiner.add(s);
-		}
-		String str=joiner.toString();
-		RequestDispatcher dispatcher = null;
-		DBResrchManager users=new DBResrchManager();
-		UserDTO infos = users.getLoginUser6(str);
-		if (infos != null) {
-			dispatcher = request.getRequestDispatcher("Research.jsp");
-			dispatcher.forward(request, response);
-		}
-		if (dele.equals(loginId) || delete.equals(loginId) || usere.equals(loginId)) {
-
-			//HTML 出力準備
-			PrintWriter out = response.getWriter();
-			out.println("<html lang='ja'>");
-			out.println("<head>");
-			out.println("<meta http-equiv=\"Content=Type\" content=\"text/html; charset=UTF-8\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-			out.println("<div class=bg-success padding-y-5>");
-			out.println("</div>");
-			out.println("<title>削除完了</title>");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div class=bg-success padding-y-5>");
-			out.println("<div class=container padding-y-5 text-center>");
-			out.println("<div align=center>");
-			out.println("<h1>削除完了</h1>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<div align=center>");
-			out.println("<p>削除完了</p>");
-			out.println("<div class=btn>");
-			out.println("<a href='index.jsp'　>トップ画面に戻る</a>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<body>");
-			out.println("</html>");
-		} else {
-			//HTML 出力準備
-			PrintWriter out = response.getWriter();
-
-			out.println("<html lang='ja'>");
-			out.println("<head>");
-			out.println("<title>削除完了</title>");
-			out.println("<link rel=\"stylesheet\" href=\"./css/skyblue.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/pe-icon-7-stroke.css\">");
-			out.println("<link rel=\"stylesheet\" href=\"./css/helper.css\">");
-			out.println("</head>");
-			out.println("<body>");
-			out.println("<div class=bg-success padding-y-5>");
-			out.println("<div class=container padding-y-5 text-center>");
-			out.println("<div align=center>");
-			out.println("<h1>削除完了&nbsp</h1>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<div align=center>");
-			out.println("<p>削除完了</p>");
-			out.println("<div class=btn>");
-			out.println("<a href='index.jsp'>ログイン画面に戻る</a>");
-			out.println("</div>");
-			out.println("</div>");
-			out.println("<body>");
-			out.println("</html>");
-		}
-
+		for(int i = 0; i < info.size(); i ++){
+			String as=info.get(i);
+			DBResrchManager users=new DBResrchManager();
+			users.getLoginUser6(as);
+			if(myName.equals(as)) {
+				shin="del";
+			}
 	}
+		RequestDispatcher dispatcher = null;
+		if(shin!=null) {
+			session.setAttribute("shin", shin);
+			dispatcher = request.getRequestDispatcher("last2.jsp");
+			dispatcher.forward(request, response);
 
+}else {
+	dispatcher = request.getRequestDispatcher("last.jsp");
+	dispatcher.forward(request, response);
+}
+}
 }

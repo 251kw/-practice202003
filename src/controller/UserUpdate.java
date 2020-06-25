@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DBResearch3;
 import dao.DEUpdetaManager;
@@ -49,13 +50,13 @@ public class UserUpdate extends HttpServlet {
 		String icon=request.getParameter("icon");
 		String userName=request.getParameter("userName");
 		String del=request.getParameter("del");
+		HttpSession session = request.getSession();
 		DBResearch3 dbs=new DBResearch3();
 		UserDTO users=dbs.getLoginUser7(userName);
 		RequestDispatcher dispatcher = null;
 		int i=9;
 		if(loginId.equals("") || password.equals(""))  {
 			String message = "ログインIDとパスワードは必須入力です";
-
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
 			request.setAttribute(loginId, loginId);

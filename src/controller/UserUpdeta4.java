@@ -47,20 +47,19 @@ public class UserUpdeta4 extends HttpServlet {
 		String profile=request.getParameter("profile");
 		String userName=request.getParameter("userName");
 		String del=request.getParameter("del");
+		HttpSession session = request.getSession();
+		String  myName = (String) session.getAttribute("name");
 		RequestDispatcher dispatcher = null;
 		String message = null;
 		DEUpdetaManager dbm=new DEUpdetaManager();
 		UserDTO user=dbm.getLoginUser7(loginId);
 
-		if(loginId.equals(del)) {
-			HttpSession session = request.getSession();
-
+		if(loginId.equals(myName)) {
 			// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 			session.setAttribute("user", user);
 
 			// 処理の転送先を top.jsp に指定
 			dispatcher = request.getRequestDispatcher("top.jsp");
-
 		} else {
 
 			// 処理の転送先を top.jsp に指定

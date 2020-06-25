@@ -241,16 +241,16 @@ public class DBResrchManager extends SnsDAO {
 			close(pstmt);
 			close(conn);
 		}
-
 		return user;
-	}public UserDTO getLoginUser6(String loginId){
+	}
+	public int getLoginUser6(String loginId){
 		Connection conn = null;            // データベース接続情報
 		PreparedStatement pstmt = null;    // SQL 管理情報
 		ResultSet rset = null;
-		// 検索結果
-		String sql = "DELETE FROM users WHERE loginId in(?)";
-		UserDTO user = null;    // 登録ユーザ情報
-
+		int cnd = 0; // 検索結果
+		String sql = "DELETE FROM users WHERE  loginId in (?)";
+		
+		 // 登録ユーザ情報
 		try {
 			// データベース接続情報取得
 			conn = getConnection();
@@ -258,7 +258,7 @@ public class DBResrchManager extends SnsDAO {
 			// SELECT 文の登録と実行
 			pstmt = conn.prepareStatement(sql);	// SELECT 構文登録
 			pstmt.setString(1, loginId);
-			pstmt.executeUpdate();
+			cnd=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -267,8 +267,7 @@ public class DBResrchManager extends SnsDAO {
 			close(pstmt);
 			close(conn);
 		}
-
-		return user;
+		return cnd;
 	}
 
 }
