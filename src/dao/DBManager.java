@@ -79,11 +79,11 @@ public class DBManager extends SnsDAO {
     				rset=pstmt.executeQuery(sql);
     			while (rset.next()) {
     				ShoutDTO shout=new ShoutDTO();
+    				shout.setShout(rset.getString(1));
     				shout.setUserName(rset.getString(2));
-    				shout.setUserName(rset.getString(3));
-    				shout.setUserName(rset.getString(4));
-    				shout.setUserName(rset.getString(5));
-
+    				shout.setIcon(rset.getString(3));
+    				shout.setDate(rset.getString(4));
+    				shout.setWriting(rset.getString(5));
     				list.add(shout);
     			}
     	}catch(SQLException e) {
@@ -129,10 +129,83 @@ public class DBManager extends SnsDAO {
     			close(conn);    		}
     		return result;
     	}
+    	public ShoutDTO getShoutList1(String shouts) {
+    		Connection conn=null;
+    		PreparedStatement pstmt=null;
+    		ResultSet rset=null;
+    		ShoutDTO shout=null;
+    		String sql="SELECT*FROM shouts WHERE shouts=?";
+    		try {
+    			//データベース接続情報
+    			conn=getConnection();
+    			//SELECT文の登録と実行
+    			pstmt=conn.prepareStatement(sql); //セレクト文登録
+    			pstmt.setString(1, shouts);
+    			rset=pstmt.executeQuery();
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+    			//検索結果があれば
+    			while(rset.next()) {
+    				//必要な列から値を取り出し、ユーザー情報オブジェクトを生成
+    				shout=new ShoutDTO();
+    				shout.setShout(rset.getString(1));
+    				shout.setUserName(rset.getString(2));
+    				shout.setIcon(rset.getString(3));
+    				shout.setDate(rset.getString(4));
+    				shout.setWriting(rset.getString(5));
+    			}
+    }catch(SQLException e) {
+    	e.printStackTrace();
+    }finally {
+    	close(rset);
+    	close(pstmt);
+    	close(conn);
+    }
+    		return shout;
+    	}
+    	public ShoutDTO getShoutList2(String writing,String shouts) {
+    		Connection conn = null; // データベース接続情報
+    		PreparedStatement pstmt = null; // SQL 管理情報
+    		ResultSet rset = null; // 検索結果
+    		String sql="UPDATE shouts SET writing=? WHERE shouts=?";
+    		ShoutDTO shout=null;
+    		try {
+    			//データベース接続情報
+    			conn=getConnection();
+    			//SELECT文の登録と実行
+    			pstmt=conn.prepareStatement(sql); //セレクト文登録
+    			pstmt.setString(1, writing);
+    			pstmt.setString(2, shouts);
+    			pstmt.executeUpdate();
+    }catch(SQLException e) {
+    	e.printStackTrace();
+    }finally {
+    	close(rset);
+    	close(pstmt);
+    	close(conn);
+    }
+    		return shout;
+    	}
+    	public void getShoutList３(String shouts) {
+    		Connection conn = null; // データベース接続情報
+    		PreparedStatement pstmt = null; // SQL 管理情報
+    		ResultSet rset = null; // 検索結果
+    		String sql="DELETE FROM shouts WHERE shouts=?";
+    		try {
+    			//データベース接続情報
+    			conn=getConnection();
+    			//SELECT文の登録と実行
+    			pstmt=conn.prepareStatement(sql); //セレクト文登録
+    			pstmt.setString(1, shouts);
+    			pstmt.executeUpdate();
+    }catch(SQLException e) {
+    	e.printStackTrace();
+    }finally {
+    	close(rset);
+    	close(pstmt);
+    	close(conn);
+    }
+
+    	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());

@@ -17,8 +17,8 @@
 		String userName = request.getParameter("userName");
 		String icon = request.getParameter("icon");
 		String profile = request.getParameter("profile");
+		session.setAttribute("icon","icon");
 	%>
-	<c:set var="icon" value="<%=icon %>"/>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>新規登録&nbsp;</h1>
@@ -29,7 +29,6 @@
 			<strong class="color-main">入力してください</strong>
 		</div>
 	</div>
-
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<%-- action 属性にサーブレットを指定 --%>
@@ -52,21 +51,17 @@
 							name="userName" value="<%=userName%>"></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left">アイコン</td>
-
+						<td class="color-main text-left">性別</td>
+						<c:set var="icon" value="${icon}" />
 						<c:if test="${icon == 'male'}">
-							<input type="radio" name="icon" id="male" value="male" checked>
-							<span>male</span>
-						</c:if>
-						<c:if test="${icon != 'male'}">
-							<input type="radio" name="icon" id="male" value="male">
-							<span>male</span>
-						</c:if>
-						<c:if test="${icon != 'female'}">
-							<input type="radio" name="icon" id="female" value="female">
-							<span>female</span>
+							<td><input type="radio" name="icon" id="male" value="male"
+								checked> <span>male</span> <input type="radio"
+								name="icon" id="female" value="female"> <span>female</span>
+							</td>
 						</c:if>
 						<c:if test="${icon == 'female'}">
+							<input type="radio" name="icon" id="male" value="male">
+							<span>male</span>
 							<input type="radio" name="icon" id="female" value="female"
 								checked>
 							<span>female</span>

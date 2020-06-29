@@ -11,10 +11,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
-		String del = request.getParameter("del");
-	%>
+<%
+String loginId = request.getParameter("loginId");
+String userName = request.getParameter("userName");
+String password = request.getParameter("password");
+String profile = request.getParameter("profile");
+String icon=request.getParameter("icon");
+session.setAttribute("icon","icon");
 
+%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -30,24 +35,23 @@
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value="${users.userName}"></td>
+							name="userName" value=<%=userName %>></td>
 						<td><input class="form-control" type="hidden" name="loginId"
-							value="${users.loginId}"><input type="hidden" name="del"
-							value=<%=del%>></td>
+							value=<%=loginId %>>
 					</tr>
 					<tr>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value="${users.password}"></td>
+							name="password" value=<%=password %>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value="${users.profile}"></td>
+							name="profile" value=<%=profile%>></td>
 					</tr>
-					<tr>
+										<tr>
 						<td class="color-main text-left">性別</td>
-						<c:set var="icon" value="${users.icon }" />
+						<c:set var="icon" value="${icon}" />
 						<c:if test="${icon == 'male'}">
 							<td><input type="radio" name="icon" id="male" value="male"
 								checked> <span>male</span> <input type="radio"
@@ -81,4 +85,3 @@
 	</div>
 </body>
 </html>
-

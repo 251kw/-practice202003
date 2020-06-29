@@ -11,6 +11,9 @@
 <link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
+<%
+String full=request.getParameter("full");
+%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -83,13 +86,29 @@
 	<div class="padding-y-5">
 		<div style="width: 40%" class="container padding-y-5">
 			<%-- リストにある要素の数だけ繰り返し --%>
+			<form action="./message" method="post">
+					<c:if
+						test="${requestScope.alert != null }">
+						<tr>
+							<%-- リクエストスコープの alert の値を出力 --%>
+							<td colspan="2" class="color-error text-left"><c:out
+									value="${requestScope.alert}" /></td>
+						</tr>
+					</c:if>
 			<c:forEach var="shout" items="${shouts}">
 				<table class="table table-striped table-bordered">
-					<tr>
-						<td rowspan="2" class="text-center"><span
-							class="${shout.icon} pe-3x pe-va"></span></td>
+				<tr>
+					<c:if test="${full!=null}">
+								<td rowspan="2" class="text-center"><label><input type="checkbox" name="number"
+									value=${shout.shout } checked></label></td>
 						<td>${shout.userName}</td>
-					</tr>
+						</c:if>
+							<c:if test="${full==null}">
+								<td rowspan="2" class="text-center"><label><input type="checkbox" name="number"
+									value=${shout.shout } ></label></td>
+						<td>${shout.userName}</td>
+						</c:if>
+						</tr>
 					<tr>
 						<td>${shout.date}</td>
 					</tr>
@@ -99,6 +118,11 @@
 					</tr>
 				</table>
 			</c:forEach>
+			<input class="btn" type="submit" name="update" value="編集" />
+			<input class="btn" type="submit" name="delete" value="削除" />
+			<input class="btn"
+			style="float: center;" type="submit" name="full" value="全選択する" />
+				</form>
 		</div>
 	</div>
 </body>

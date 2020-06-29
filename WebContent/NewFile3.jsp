@@ -27,27 +27,28 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="./UserUpdeta4" method="post">
+		<form action="./UserUpdeta4" method="post">
 				<table>
 					<tr>
+					<td class="color-main text-left">ログインID</td>
 						<td><input class="form-control"
-							type="hidden" name="loginId" value=<%=loginId%>></td>
+							type="hidden" name="loginId" value=<%=loginId%>><%=loginId%></td>
+					</tr>
+							<tr>
+					<td class="color-main text-left">ユーザー名</td>
+						<td><input class="form-control"
+							type="hidden" name="userName" value=<%=userName%>><%=userName%></td>
 					</tr>
 					<tr>
+					<td class="color-main text-left">パスワード</td>
 						<td><input class="form-control"
-							type="hidden" name="password" value=<%=password%>></td>
+							type="hidden" name="password" value=<%=password%>><%=password%></td>
 					</tr>
 					<tr>
+						<td class="color-main text-left">コメント</td>
 						<td><input class="form-control"
-							type="hidden" name="profile" value=<%=profile%>></td>
-					</tr>
-					<tr>
-						<td><input class="form-control"
-							type="hidden" name="userName" value=<%=userName%>></td>
-					</tr>
-					<tr>
-
-						<td><input class="form-control"
+							type="hidden" name="profile" value=<%=profile%>><%=profile%>
+							<input class="form-control"
 							type="hidden" name="del" value=<%=del%>></td>
 					</tr>
 					<tr>

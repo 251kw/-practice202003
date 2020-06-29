@@ -28,7 +28,6 @@ public class DEUpdetaManager extends SnsDAO {
 			pstmt.setString(4,icon);
 			pstmt.setString(5,loginId);
 			pstmt.executeUpdate();
-
 		}
 
 		catch (SQLException e) {

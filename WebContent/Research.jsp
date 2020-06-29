@@ -28,7 +28,6 @@
 		<div style="width: 60%" class="container padding-y-5 text-center">
 			<jsp:useBean id="list" scope="session"
 				type="java.util.ArrayList<dto.UserDTO>" />
-
 		</div>
 	</div>
 	<c:if test="${requestScope.alert != null && requestScope.alert != ''}">
@@ -40,7 +39,6 @@
 	</c:if>
 	<form action="./User" method="post">
 		<table class="table table-striped table-bordered table-hover">
-
 			<thead>
 				<tr>
 					<th>選択</th>
@@ -64,7 +62,6 @@
 							id="female" value=${userw }></td>
 						<td>${users.icon }</td>
 						<td>${users.profile }</td>
-
 					</tr>
 				</tbody>
 			</c:forEach>
