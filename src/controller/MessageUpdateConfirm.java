@@ -15,14 +15,14 @@ import dao.DBManager;
 /**
  * Servlet implementation class messageupdate2
  */
-@WebServlet("/messageupdate2")
-public class messageupdate2 extends HttpServlet {
+@WebServlet("/MessageUpdateConfirm")
+public class MessageUpdateConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public messageupdate2() {
+    public MessageUpdateConfirm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,11 +47,13 @@ public class messageupdate2 extends HttpServlet {
 		String number=request.getParameter("number");
 		RequestDispatcher dispatcher = null;
 		if(back!=null) {
+			//メッセージ送信
 			String message="コメントを編集してくだい。（そのほかはできません。）";
 			request.setAttribute("alert", message);
 			HttpSession session=request.getSession();
+			//戻る処理、セッションにwritingを送信（メッセージ編集登録画面遷移）
 			session.setAttribute("writing", writing);
-			dispatcher = request.getRequestDispatcher("messageupdate4.jsp");
+			dispatcher = request.getRequestDispatcher("MessageUpdateInputReturn.jsp");
 			dispatcher.forward(request, response);
 
 	}else {
@@ -63,7 +65,9 @@ public class messageupdate2 extends HttpServlet {
 		session.setAttribute("number", number);
 		DBManager dbm = new DBManager();
 		dbm.getShoutList2(writing,number);
-		dispatcher = request.getRequestDispatcher("messageupdate3.jsp");
+		//セッションにデータを送信
+		//sql 編集処理（Update）
+		dispatcher = request.getRequestDispatcher("MessageUpdateResult.jsp");
 		dispatcher.forward(request, response);
 	}
 	}

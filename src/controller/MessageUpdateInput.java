@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,20 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DBManager;
-import dto.ShoutDTO;
-
 /**
- * Servlet implementation class messageupdate3
+ * Servlet implementation class messageupdate
  */
-@WebServlet("/messageupdate3")
-public class messageupdate3 extends HttpServlet {
+@WebServlet("/MessageUpdateInput")
+public class MessageUpdateInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public messageupdate3() {
+    public MessageUpdateInput() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,16 +37,28 @@ public class messageupdate3 extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String writing=request.getParameter("writing");
+		String icon=request.getParameter("icon");
+		String userName=request.getParameter("userName");
+		String back=request.getParameter("back");
+		String date=request.getParameter("date");
+		String number=request.getParameter("number");
 		RequestDispatcher dispatcher = null;
-		DBManager dbm = new DBManager();
-		ArrayList<ShoutDTO> list = dbm.getShoutList();
-		HttpSession session = request.getSession();
-		String message="コメントの編集、削除できます。";
-		session.setAttribute("shouts", list);
-		// 処理の転送先を top.jsp に指定
-		dispatcher = request.getRequestDispatcher("top.jsp");
+		if(back!=null) {
+			//戻るボタン処理
+			dispatcher = request.getRequestDispatcher("top.jsp");
+			dispatcher.forward(request, response);
+	}else {
+		//メッセージ編集確認画面処理
+		HttpSession session=request.getSession();
+		session.setAttribute("number", number);
+		session.setAttribute("writing", writing);
+		session.setAttribute("userName", userName);
+		session.setAttribute("date", date);
+		session.setAttribute("icon", icon);
+		dispatcher = request.getRequestDispatcher("MessageUpdateConfirm.jsp");
 		dispatcher.forward(request, response);
-
 	}
 
+	}
 }

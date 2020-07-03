@@ -12,14 +12,9 @@
 </head>
 <body>
 	<%
-		String loginId = request.getParameter("loginId");
-		String icon = request.getParameter("icon");
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String profile = request.getParameter("profile");
 		String del = request.getParameter("del");
 	%>
-	<c:set var="icon" value="<%=icon%>" />
+
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -29,31 +24,26 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="Newfile4.jsp">
+			<form action="UserDateUpdateConfirm.jsp">
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value=<%=userName%>></td>
+							name="userName" value="${users.userName}"></td>
 						<td><input class="form-control" type="hidden" name="loginId"
-							value=<%=loginId%>></td>
+							value="${users.loginId}"><input type="hidden" name="del"
+							value=<%=del%>></td>
 					</tr>
 					<tr>
-						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="password" value=<%=password%>></td>
+							name="password" value="${users.password}"></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value=<%=profile%>> <input
-							class="form-control" type="hidden" name="del" value=<%=del%>></td>
-					</tr>
-					<tr>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="userName" value=<%=userName%> /></td>
+							name="profile" value="${users.profile}"></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性別</td>
@@ -65,18 +55,19 @@
 							</td>
 						</c:if>
 						<c:if test="${icon == 'female'}">
-							<input type="radio" name="icon" id="male" value="male">
+							<td><input type="radio" name="icon" id="male" value="male">
 							<span>male</span>
 							<input type="radio" name="icon" id="female" value="female"
 								checked>
-							<span>female</span>
+							<span>female</span></td>
 						</c:if>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="変更する" /></td>
-						<td class="text-left"><a href="index.jsp" class="btn">戻る</a></td>
+							<td class="text-left"><a href="UserDateResearchResult.jsp" class="btn">戻る</a></td>
 					</tr>
+
 					<c:if test="${requestScope.alert != null }">
 						<tr>
 							<%-- リクエストスコープの alert の値を出力 --%>
@@ -90,3 +81,4 @@
 	</div>
 </body>
 </html>
+

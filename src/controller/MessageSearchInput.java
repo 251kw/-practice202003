@@ -19,14 +19,14 @@ import dto.ShoutDTO;
 /**
  * Servlet implementation class message
  */
-@WebServlet("/message")
-public class message extends HttpServlet {
+@WebServlet("/MessageSearchInput")
+public class MessageSearchInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public message() {
+    public MessageSearchInput() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,19 +50,34 @@ public class message extends HttpServlet {
 		String full=request.getParameter("full");
 		String delete=request.getParameter("delete");
 		String[] number = request.getParameterValues("number");
+		String clear=request.getParameter("clear");
 		int sum=0;
 		HttpSession session = request.getSession();
 		String message=null;
 		RequestDispatcher dispatcher = null;
 		if(full!=null) {
+			//全選択処理
+			if(clear!=null) {
+				//解除ボタンが押された場合、処理
+				full=null;
+		}
+			request.setAttribute("full", full);
+			dispatcher = request.getRequestDispatcher("top.jsp");
+			dispatcher.forward(request, response);
+		}else	if(clear!=null) {
+			//全選択処理
+			full=null;
 			request.setAttribute("full", full);
 			dispatcher = request.getRequestDispatcher("top.jsp");
 			dispatcher.forward(request, response);
 		}else if(update!=null) {
 			if(number!=null) {
+				//編集で複数選択の場合エラーメッセージを送る
+				//編集の場合は選択は一個
 			for (int index = 0; index < number.length; index ++){
 	            sum += index;
 	        }
+			//配列から文字列に変換
 			String numbares = String.join(",", number);
 			if(sum>=1) {
 				message="変更する場合はチェックは一つです";
@@ -75,9 +90,10 @@ public class message extends HttpServlet {
 			DBManager dbm = new DBManager();
 			ShoutDTO up=dbm.getShoutList1(numbares);
 			session.setAttribute("up", up);
-			dispatcher = request.getRequestDispatcher("messageupdate.jsp");
+			dispatcher = request.getRequestDispatcher("MessageUpdateInput.jsp");
 			dispatcher.forward(request, response);
 		}else {
+			//チェックボックスが選択されてない場合エラーメッセージ送信
 			message="選択されてません";
 			request.setAttribute("alert", message);
 			dispatcher = request.getRequestDispatcher("top.jsp");
@@ -88,6 +104,7 @@ public class message extends HttpServlet {
 				if(number!=null) {
 				List<String> info = Arrays.asList(number);
 				ArrayList<ShoutDTO> list=new ArrayList<ShoutDTO>();
+				//削除の場合リストに置く
 				for(int i = 0; i < info.size(); i ++){
 					String as=info.get(i);
 					DBManager dbm = new DBManager();
@@ -96,7 +113,7 @@ public class message extends HttpServlet {
 					}
 				//削除画面に遷移
 				session.setAttribute("list", list);
-				dispatcher = request.getRequestDispatcher("messagedelete.jsp");
+				dispatcher = request.getRequestDispatcher("MessageDateDeleteComfirm.jsp");
 				dispatcher.forward(request, response);
 				}else {
 					message="選択されてません";
@@ -104,16 +121,7 @@ public class message extends HttpServlet {
 					dispatcher = request.getRequestDispatcher("top.jsp");
 					dispatcher.forward(request, response);
 				}
-			}else {
-				if(number!=null) {
-					List<String> info = Arrays.asList(number);
-					session.setAttribute("number", number);
-					session.setAttribute("info",info);
-
-					dispatcher = request.getRequestDispatcher("Delete.jsp");
-					dispatcher.forward(request, response);
-				}
-	}
+			}
 	}
 
 }

@@ -17,13 +17,13 @@ import dto.UserDTO;
 /**
  * Servlet implementation class UserResearchServlet
  */
-@WebServlet("/UserResearchServlet")
-public class UserResearchServlet extends HttpServlet {
+@WebServlet("/UserDatesearchInput")
+public class UserDateSearchInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UserResearchServlet() {
+	public UserDateSearchInput() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -58,7 +58,7 @@ public class UserResearchServlet extends HttpServlet {
 				request.setAttribute("alert", message);
 				request.setAttribute(icon, icon);
 				// 処理の転送先を index.jsp に指定
-				dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
 			} else{
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 				HttpSession session = request.getSession();
@@ -67,7 +67,7 @@ public class UserResearchServlet extends HttpServlet {
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
 				session.setAttribute("userw", userw);
-				dispatcher = request.getRequestDispatcher("Research.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			}
 
 			// 処理を転送
@@ -84,7 +84,7 @@ public class UserResearchServlet extends HttpServlet {
 				request.setAttribute(icon, icon);
 				request.setAttribute(userName, userName);
 				// 処理の転送先を index.jsp に指定
-				dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
 			} else{
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
 				HttpSession session = request.getSession();
@@ -93,7 +93,7 @@ public class UserResearchServlet extends HttpServlet {
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
 				request.setAttribute(userw, userw);
-				dispatcher = request.getRequestDispatcher("Research.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			}
 
 			// 処理を転送
@@ -110,7 +110,7 @@ public class UserResearchServlet extends HttpServlet {
 							request.setAttribute(icon, icon);
 							request.setAttribute(loginId, loginId);
 							// 処理の転送先を index.jsp に指定
-							dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+							dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
 						} else{// ユーザ情報を取得できたら、書き込み内容リストを取得
 							HttpSession session = request.getSession();
 
@@ -119,7 +119,7 @@ public class UserResearchServlet extends HttpServlet {
 							request.setAttribute("usere", usere);
 							request.setAttribute("del", userw);
 
-							dispatcher = request.getRequestDispatcher("Research.jsp");
+							dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 						}
 
 						// 処理を転送
@@ -137,7 +137,7 @@ public class UserResearchServlet extends HttpServlet {
 								request.setAttribute(userName, userName);
 								request.setAttribute(loginId, loginId);
 								// 処理の転送先を index.jsp に指定
-								dispatcher = request.getRequestDispatcher("UserResearch2.jsp");
+								dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
 							} else{
 								// ユーザ情報を取得できたら、書き込み内容リストを取得
 								HttpSession session = request.getSession();
@@ -147,7 +147,7 @@ public class UserResearchServlet extends HttpServlet {
 								request.setAttribute("usere", usere);
 								request.setAttribute("del", userw);
 
-								dispatcher = request.getRequestDispatcher("Research.jsp");
+								dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 
 							}
 

@@ -12,12 +12,10 @@
 </head>
 <body>
 	<%
-		String loginId = request.getParameter("loginId");
-		String password = request.getParameter("password");
-		String userName = request.getParameter("userName");
-		String icon = request.getParameter("icon");
-		String profile = request.getParameter("profile");
-		session.setAttribute("icon","icon");
+	String loginId = (String) request.getAttribute("loginId");
+	String userName = (String) request.getAttribute("userName");
+	String password = (String) request.getAttribute("password");
+	String profile = (String) request.getAttribute("profile");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -31,24 +29,24 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<%-- action 属性にサーブレットを指定 --%>
-			<form action="UserAddConfirm.jsp">
+			<%-- エラー再入力ページ --%>
+			<form action="./UserAddInput" method="post">
 				<table style="width: 600px" class="table">
 					<tr>
 						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value="<%=loginId%>"></td>
+							name="loginId" value=<%=loginId%>></td>
 					</tr>
 					<tr>
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value="<%=password%>"></td>
+							type="password" name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">名前</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value="<%=userName%>"></td>
+							name="userName" value=<%=userName%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">性別</td>
@@ -60,17 +58,18 @@
 							</td>
 						</c:if>
 						<c:if test="${icon == 'female'}">
-							<input type="radio" name="icon" id="male" value="male">
+							<td><input type="radio" name="icon" id="male" value="male">
 							<span>male</span>
 							<input type="radio" name="icon" id="female" value="female"
 								checked>
 							<span>female</span>
+							</td>
 						</c:if>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="profile" value="<%=profile%>"></td>
+							name="profile" value=<%=profile%>></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"

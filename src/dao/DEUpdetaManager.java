@@ -80,6 +80,34 @@ public class DEUpdetaManager extends SnsDAO {
 		}
 
 		return user;
+	}public UserDTO dateupdate(String loginId) {
+		Connection conn = null; // データベース接続情報
+		PreparedStatement pstmt = null; // SQL 管理情報
+		ResultSet rset = null; // 検索結果
+
+
+		String sql = "UPDATE users SET date=1 WHERE loginId=?";
+		UserDTO user = null; // 登録ユーザ情報
+
+
+		try {
+			conn = getConnection();
+
+			pstmt = conn.prepareStatement(sql); // SELECT 構文登録
+			pstmt.setString(1,loginId);
+			pstmt.executeUpdate();
+		}
+
+		catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// データベース切断処理
+			close(rset);
+			close(pstmt);
+			close(conn);
+		}
+
+		return user;
 	}
 
 }

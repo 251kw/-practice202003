@@ -18,14 +18,14 @@ import dto.UserDTO;
 /**
  * Servlet implementation class User
  */
-@WebServlet("/User")
-public class User extends HttpServlet {
+@WebServlet("/UserDateSearchResult")
+public class UserDateSearchResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public User() {
+	public UserDateSearchResult() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -50,36 +50,47 @@ public class User extends HttpServlet {
 		String updata=request.getParameter("updata");
 		String re=request.getParameter("return");
 		String del=request.getParameter("del");
+		String clear=request.getParameter("clear");
 		RequestDispatcher dispatcher = null;
 		String message=null;
 		int sum=0;
 		if(delete!=null) {
+			//削除機能ボタン処理
 			HttpSession session = request.getSession();
 			if(userloginId!=null) {
 			List<String> info = Arrays.asList(userloginId);
 			session.setAttribute("userloginId", userloginId);
 			session.setAttribute("info",info);
 			session.setAttribute("del", del);
-			dispatcher = request.getRequestDispatcher("Delete.jsp");
+			dispatcher = request.getRequestDispatcher("UserDateDeleteConfirm.jsp");
 			dispatcher.forward(request, response);
 			}else {
 				message="チェックがありません。";
 				request.setAttribute("alert", message);
 
 				// index.jsp に処理を転送
-				dispatcher = request.getRequestDispatcher("Research.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 				dispatcher.forward(request, response);
 			}
 		}else if(deleter!=null) {
-			HttpSession session = request.getSession();
+			if(clear!=null) {
+				deleter=null;
+			}
 			request.setAttribute("deleter",deleter );
-			dispatcher = request.getRequestDispatcher("Research.jsp");
+			dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			dispatcher.forward(request, response);
-
+		}else if(clear!=null) {
+			//解除の条件をnullにセットし、解除操作
+				deleter=null;
+			request.setAttribute("deleter",deleter );
+			dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
+			dispatcher.forward(request, response);
 		}else if(re!=null){
-			dispatcher = request.getRequestDispatcher("UserResearch.jsp");
+
+			dispatcher = request.getRequestDispatcher("UserDateResearchInput.jsp");
 			dispatcher.forward(request, response);
 		}else if(updata!=null) {
+
 			HttpSession session = request.getSession();
 			if(userloginId!=null) {
 			for (int index = 0; index < userloginId.length; index ++){
@@ -90,20 +101,20 @@ public class User extends HttpServlet {
 			if(sum>=1) {
 				message="変更する場合はチェックは一つです";
 				request.setAttribute("alert", message);
-				dispatcher = request.getRequestDispatcher("Research.jsp");
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 				dispatcher.forward(request, response);
 			}
 			DBResrchManager dbr = new DBResrchManager();
 			UserDTO users = dbr.getLoginUser5(loginId);
 			session.setAttribute("users",users);
-			dispatcher = request.getRequestDispatcher("NewFile.jsp");
+			dispatcher = request.getRequestDispatcher("UserDateUpdateInput.jsp");
 			dispatcher.forward(request, response);
 		}else {
 			message="チェックがありません。";
 			request.setAttribute("alert", message);
 
 			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("Research.jsp");
+			dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			dispatcher.forward(request, response);
 		}
 	}

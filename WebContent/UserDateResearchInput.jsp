@@ -21,21 +21,21 @@
 			</h1>
 		</div>
 	</div>
-	
+
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="./UserResearchServlet" method="post">
+			<form action="./UserDatesearchInput" method="post">
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=""></td>
+							name="loginId" placeholder="shin" value=""></td>
 					</tr>
 						<tr>
 						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value=""></td>
+							name="userName" placeholder="pass1" value=""></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">アイコン</td>

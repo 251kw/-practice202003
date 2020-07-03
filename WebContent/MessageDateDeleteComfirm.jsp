@@ -24,18 +24,18 @@
 				type="java.util.ArrayList<dto.ShoutDTO>" />
 		</div>
 	</div>
-		<c:if test="${requestScope.alert != null && requestScope.alert != ''}">
+	<c:if test="${requestScope.alert != null && requestScope.alert != ''}">
 		<tr>
 			<%-- リクエストスコープの alert の値を出力 --%>
 			<td colspan="2" class="color-error text-left"><c:out
 					value="${requestScope.alert}" /></td>
 		</tr>
 	</c:if>
-	<form action=".//messagedelete2" method="post">
+	<form action="./MessageDeleteConfirm" method="post">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-
+					<th>選択</th>
 					<th>コメント</th>
 					<th>性別</th>
 					<th>日付</th>
@@ -45,6 +45,8 @@
 			<c:forEach var="shout" items="${list}">
 				<tbody>
 					<tr>
+						<td><input type="checkbox" name="number" type="hidden"
+							value=${shout.shout }></td>
 						<td>${shout.writing }</td>
 						<td>${shout.icon }</td>
 						<td>${shout.date }</td>
@@ -55,7 +57,8 @@
 			</c:forEach>
 		</table>
 		<input class="btn" style="float: right;" type="submit" name="delete"
-			value="topに戻る" />
+			value="削除する" /> <input class="btn" style="float: center;"
+			type="submit" name="return" value="戻る" />
 	</form>
 </body>
 </html>

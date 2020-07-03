@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,21 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DBResrchManager;
-
-
+import dao.DBManager;
+import dto.ShoutDTO;
 
 /**
- * Servlet implementation class UserDelete
+ * Servlet implementation class messagedelete2
  */
-@WebServlet("/UserDelete")
-public class UserDelete extends HttpServlet {
+@WebServlet("/MessageDeleteResult")
+public class MessageDeleteResult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public UserDelete() {
+	public MessageDeleteResult() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -44,39 +43,16 @@ public class UserDelete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;Charset=UTF-8");
-		String shin=null;
+		RequestDispatcher dispatcher = null;
+		DBManager dbm = new DBManager();
+		ArrayList<ShoutDTO> list = dbm.getShoutList();
 		HttpSession session = request.getSession();
-	    String  myName = (String) session.getAttribute("name");
-		List<String> info = (List<String>) session.getAttribute("info");
-		String re=request.getParameter("re");
-		if(re!=null) {
-			RequestDispatcher dispatcher = null;
-			dispatcher = request.getRequestDispatcher("Research.jsp");
-			dispatcher.forward(request, response);
-		}
-		else {
-			for(int i = 0; i < info.size(); i ++){
-				String as=info.get(i);
-				DBResrchManager users=new DBResrchManager();
-				users.getLoginUser6(as);
-				if(myName.equals(as)) {
-					//削除top画面処理
-					shin="del";
-				}
-		}
-			RequestDispatcher dispatcher = null;
-			if(shin!=null) {
-				session.setAttribute("shin", shin);
-				dispatcher = request.getRequestDispatcher("last2.jsp");
-				dispatcher.forward(request, response);
-
-	}else {
-		dispatcher = request.getRequestDispatcher("last.jsp");
+		//top.jspフォワードへshoutセッションアップデート（削除後）
+		session.setAttribute("shouts", list);
+		// 処理の転送先を top.jsp に指定
+		dispatcher = request.getRequestDispatcher("top.jsp");
+		// 処理を転送
 		dispatcher.forward(request, response);
 	}
-		}
 
-}
 }

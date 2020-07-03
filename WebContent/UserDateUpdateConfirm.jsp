@@ -28,7 +28,7 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="./Updeta" method="post">
+			<form action="./UserDateUpdateInput" method="post">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>

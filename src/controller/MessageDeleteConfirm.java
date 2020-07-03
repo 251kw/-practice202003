@@ -19,14 +19,14 @@ import dto.ShoutDTO;
 /**
  * Servlet implementation class messagedelete
  */
-@WebServlet("/messagedelete")
-public class messagedelete extends HttpServlet {
+@WebServlet("/MessageDeleteConfirm")
+public class MessageDeleteConfirm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public messagedelete() {
+    public MessageDeleteConfirm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -46,12 +46,13 @@ public class messagedelete extends HttpServlet {
 		String[] number=request.getParameterValues("number");
 		String delete=request.getParameter("delete");
 		String back=request.getParameter("return");
-		String message=null;
+		String message="";
 		RequestDispatcher dispatcher = null;
 		if(back!=null) {
 			dispatcher = request.getRequestDispatcher("top.jsp");
 			dispatcher.forward(request, response);
 		}else if(delete!=null) {
+			//削除複数処理
 			if(number!=null) {
 				List<String> info = Arrays.asList(number);
 				ArrayList<ShoutDTO> list=new ArrayList<ShoutDTO>();
@@ -65,11 +66,12 @@ public class messagedelete extends HttpServlet {
 				message="下記の情報を削除しました";
 				HttpSession session = request.getSession();
 				session.setAttribute("list", list);
-				dispatcher = request.getRequestDispatcher("messagedelete2.jsp");
+				dispatcher = request.getRequestDispatcher("MessageDeleteResult.jsp");
 				dispatcher.forward(request, response);
 			}else {
+				//チェックボックスの選択がない場合
 				message="選択がありません";
-				dispatcher = request.getRequestDispatcher("messagedelete.jsp");
+				dispatcher = request.getRequestDispatcher("MessageDateDeleteComfirm.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

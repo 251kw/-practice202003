@@ -11,13 +11,6 @@
 <link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
-<%
-	String loginId = request.getParameter("loginId");
-	String password = request.getParameter("password");
-	String userName = request.getParameter("userName");
-	String icon = request.getParameter("icon");
-	String profile = request.getParameter("profile");
-%>
 <div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -33,25 +26,24 @@
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<%-- action 属性にサーブレットを指定 --%>
-			<form action="UserAddConfirm.jsp" >
+			<form action="./UserAddInput" method="post" >
 				<table style="width: 600px" class="table">
 					<tr>
 						<td class="color-main text-left">ログインID(半角英数文字、文字数は8文字以下)</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value=""  size="20" /></td>
+							name="loginId" value="" placeholder="shin"  size="20" /></td>
 					</tr>
-
 					<tr>
 
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value="" size="20" /></td>
+							type="password" name="password" value="" placeholder="pass1" size="20" /></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">名前</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="userName" value="" size="20" /></td>
+							name="userName" value="" placeholder="山田太郎" size="20" /></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">アイコン</td>
@@ -65,7 +57,7 @@
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control"
-							type="text" name="profile" value=""  size="20" /></td>
+							type="text" name="profile" value="" placeholder="こんにちは"  size="20" /></td>
 					</tr>
 
 					<tr>

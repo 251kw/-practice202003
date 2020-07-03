@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="./css/helper.css">
 </head>
 <body>
+<%
+String writing = (String)session.getAttribute("writing");
+%>
+
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -20,7 +24,7 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 60%" class="container padding-y-5 text-center">
-			<form action="./messageupdate" method="post">
+			<form action="./MessageUpdateInput" method="post">
 				<table style="width: 600px" class="table">
 					<c:if test="${requestScope.alert != null }">
 						<%-- リクエストスコープの alert の値を出力 --%>
@@ -30,7 +34,7 @@
 					<tr>
 						<td class="color-main text-left">コメント</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="writing" value="${up.writing }"></td>
+							name="writing" value=<%=writing %>></td>
 						<td><input class="form-control" type="hidden" name="number"
 							value="${up.shout }"></td>
 					</tr>

@@ -16,6 +16,7 @@
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String profile = request.getParameter("profile");
+		String icon=request.getParameter("icon");
 		String del = request.getParameter("del");
 	%>
 	<div class="bg-success padding-y-5">
@@ -27,35 +28,32 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-		<form action="./UserUpdeta4" method="post">
-				<table>
+		<form action="./UserDateUpdateResultCheck" method="post">
+			<table style="width: 600px" class="table">
 					<tr>
-					<td class="color-main text-left">ログインID</td>
-						<td><input class="form-control"
-							type="hidden" name="loginId" value=<%=loginId%>><%=loginId%></td>
-					</tr>
-							<tr>
-					<td class="color-main text-left">ユーザー名</td>
-						<td><input class="form-control"
-							type="hidden" name="userName" value=<%=userName%>><%=userName%></td>
+						<td class="color-main text-left">ログインID</td>
+						<td class="text-left"><%=loginId %><input class="form-control" type="hidden"
+							name="loginId" value=<%=loginId%>></td>
 					</tr>
 					<tr>
-					<td class="color-main text-left">パスワード</td>
-						<td><input class="form-control"
-							type="hidden" name="password" value=<%=password%>><%=password%></td>
+						<td class="color-main text-left">パスワード</td>
+						<td class="text-left"><%=password %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">名前</td>
+						<td class="text-left"><%=userName %></td>
+					</tr>
+					<tr>
+						<td class="color-main text-left">性別</td>
+						<td class="text-left"><%=icon %></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>
-						<td><input class="form-control"
-							type="hidden" name="profile" value=<%=profile%>><%=profile%>
-							<input class="form-control"
-							type="hidden" name="del" value=<%=del%>></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="topに戻る" /></td>
+						<td class="text-left"><%=profile %></td>
 					</tr>
 				</table>
+				<input class="btn"
+						type="submit" value="変更完了" />
 			</form>
 		</div>
 	</div>

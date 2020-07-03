@@ -10,9 +10,16 @@
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
 <link rel="stylesheet" href="./css/helper.css">
 <link rel="stylesheet" href="./css/staylesheet.css">
+<script src="jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+　$("p").click(function(){
+　　$(this).hide();
+　});
+});
+</script>
 </head>
 <body>
-
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
@@ -26,6 +33,7 @@
 			<strong class="color-main">ログインIDとパスワードを入力してください</strong>
 		</div>
 	</div>
+
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<%-- action 属性にサーブレットを指定 --%>
@@ -35,13 +43,14 @@
 						<%-- ログインID 入力欄の名前は loginId --%>
 						<td class="color-main text-left">ログインID</td>
 						<td class="text-left"><input class="form-control" type="text"
-							name="loginId" value="" size="20" /></td>
+							name="loginId" placeholder="tarou" value="" size="20" /></td>
 					</tr>
 					<tr>
 						<%-- パスワード入力欄の名前は password --%>
 						<td class="color-main text-left">パスワード</td>
 						<td class="text-left"><input class="form-control"
-							type="password" name="password" value="" size="20" /></td>
+							type="password" name="password" placeholder="pass1" value=""
+							size="20" /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
@@ -58,6 +67,14 @@
 					</c:if>
 				</table>
 			</form>
+			<p>ここをクリックするとテキストが非表示になります。</p>
+				<div class="box">box</div>
+	<button id="fadeout"></button>
+	<script >
+$('#fadeout').on('click',function(){
+	$('.box').fadeOut(1000);
+})
+</script>
 			<a href="UserAddInput.jsp" class="btn">ユーザー情報を新規登録する</a>
 		</div>
 	</div>

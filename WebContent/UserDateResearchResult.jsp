@@ -37,7 +37,7 @@
 					value="${requestScope.alert}" /></td>
 		</tr>
 	</c:if>
-	<form action="./User" method="post">
+	<form action="./UserDateSearchResult" method="post">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
@@ -70,6 +70,8 @@
 			value="削除する" /> <input class="btn" style="float: right;"
 			type="submit" name="updata" value="変更する" /> <input class="btn"
 			style="float: center;" type="submit" name="deleter" value="全選択する" />
+			<input class="btn"
+			style="float: center;" type="submit" name="clear" value="解除" />
 		<input class="btn" style="float: center;" type="submit" name="return"
 			value="戻る" />
 

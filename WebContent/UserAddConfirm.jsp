@@ -16,145 +16,49 @@
 		</div>
 	</div>
 	<%
-		String loginId = request.getParameter("loginId");
-		String password = request.getParameter("password");
-		String userName = request.getParameter("userName");
-		String icon = request.getParameter("icon");
-		String profile = request.getParameter("profile");
-		RequestDispatcher dispatcher = null;
-		int i = 9;
-		if (loginId.equals("") || password.equals("")) {
-			String message = "ログインIDとパスワードは必須入力です";
-
-			// エラーメッセージをリクエストオブジェクトに保存
-			request.setAttribute("alert", message);
-			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
-			dispatcher.forward(request, response);
-		} else if (loginId.length() > i) {
-			String message = "ログインIDは8文字以下で入力してください";
-
-			// エラーメッセージをリクエストオブジェクトに保存
-			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
-			dispatcher.forward(request, response);
-		} else if (!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
-			String message = "半角英数記号で入力してください";
-
-			request.setAttribute("alert", message);
-
-			// index.jsp に処理を転送
-			dispatcher = request.getRequestDispatcher("UserAddInput2.jsp");
-			dispatcher.forward(request, response);
-
-		}
+	String loginId = (String) request.getParameter("loginId");
+	String userName = (String) request.getParameter("userName");
+	String password = (String) request.getAttribute("password");
+	String profile = (String) request.getAttribute("profile");
+	String icon = (String) request.getAttribute("icon");
 	%>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
 			<div class="color-main">
+			<form action="./UserAddServletResult" method="post">
 				<table style="width: 600px" class="table">
 					<tr>
 						<td class="color-main text-left">ログインID</td>
-						<td class="text-left"><%=loginId %></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">パスワード</td>
-						<td class="text-left"><%=password %></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">名前</td>
-						<td class="text-left"><%=userName %></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">性別</td>
-						<td class="text-left"><%=icon %></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left">コメント</td>
-						<td class="text-left"><%=profile %></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-	<div class="padding-y-5 text-center">
-		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="./UserAddServlet" method="post">
-				<table>
-					<tr>
-						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
+						<td class="text-left"><%=loginId %><input class="form-control"
 							type="hidden" name="loginId" value=<%=loginId%>></td>
 					</tr>
 					<tr>
-						<%-- パスワード入力欄の名前は password --%>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
+						<td class="color-main text-left">パスワード</td>
+						<td class="text-left"><%=password %><input class="form-control"
 							type="hidden" name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="userName" value=<%=userName%> /></td>
+						<td class="color-main text-left">名前</td>
+						<td class="text-left"><%=userName %><input class="form-control"
+							type="hidden" name="userName" value=<%=userName%>></td>
 					</tr>
 					<tr>
-						<td><input type="hidden" name="icon" id="male"
-							value=<%=icon%> checked> <input type="hidden"
-							name="icon" id="female" value=<%=icon%> checked></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="profile" value=<%=profile%> /></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="text-center"><input class="btn"
-							type="submit" value="新規登録する" /></td>
-					</tr>
-				</table>
-			</form>
-		</div>
-	</div>
-
-	<div class="padding-y-5 text-center">
-		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="UserAddInput2.jsp">
-				<table>
-					<tr>
-						<%-- ログインID 入力欄の名前は loginId --%>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="loginId" value="<%=loginId%>"></td>
-					</tr>
-					<tr>
-						<%-- パスワード入力欄の名前は password --%>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="password" value=<%=password%>></td>
-					</tr>
-					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
-							type="hidden" name="userName" value="<%=userName%>"></td>
-					</tr>
-					<tr>
-						<td class="text-left"><input class="form-control"
+						<td class="color-main text-left">性別</td>
+						<td class="text-left"><%=icon %><input class="form-control"
 							type="hidden" name="icon" value=<%=icon%>></td>
-
 					</tr>
 					<tr>
-						<td class="color-main text-left"></td>
-						<td class="text-left"><input class="form-control"
+						<td class="color-main text-left">コメント</td>
+						<td class="text-left"><%=profile %><input class="form-control"
 							type="hidden" name="profile" value=<%=profile%>></td>
 					</tr>
-					<tr>
-						<td colspan="2" class="text-center"><input class="btn"
-							type="submit" value="戻る" /></td>
-					</tr>
 				</table>
+							<input class="btn"
+							type="submit" value="新規登録する" />
+				<input class="btn"
+							type="submit" name="return" value="戻る" />
 			</form>
+			</div>
 		</div>
 	</div>
 </body>
