@@ -20,7 +20,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				変更画面&nbsp;<span class="icon-speaker"></span>
+				変更入力画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>
@@ -62,11 +62,8 @@
 						</c:if>
 						<c:if test="${icon == 'female'}">
 							<td><input type="radio" name="icon" id="male" value="male">
-							<span>male</span>
-							<input type="radio" name="icon" id="female" value="female"
-								checked>
-							<span>female</span>
-							</td>
+								<span>male</span> <input type="radio" name="icon" id="female"
+								value="female" checked> <span>female</span></td>
 						</c:if>
 					</tr>
 					<tr>

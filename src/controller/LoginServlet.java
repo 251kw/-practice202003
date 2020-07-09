@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		RequestDispatcher dispatcher = null;
 		String message = null;
-
+		
 		if (loginId.equals("") || password.equals("")) {
 			// ログインID かパスワードどちらか、もしくは双方未入力なら
 			message = "ログインIDとパスワードは必須入力です";

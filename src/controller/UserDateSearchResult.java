@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,6 +45,7 @@ public class UserDateSearchResult extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
+		//loginId=userloginId
 		String[] userloginId = request.getParameterValues("userloginId");
 		String delete=request.getParameter("delete");
 		String deleter=request.getParameter("deleter");
@@ -58,9 +60,18 @@ public class UserDateSearchResult extends HttpServlet {
 			//削除機能ボタン処理
 			HttpSession session = request.getSession();
 			if(userloginId!=null) {
+			//Listに変換
+				ArrayList<UserDTO> list=new ArrayList<UserDTO>();
 			List<String> info = Arrays.asList(userloginId);
+			for(int i = 0; i < info.size(); i ++){
+				String as=info.get(i);
+				DBResrchManager dbm = new DBResrchManager();
+				UserDTO user=dbm.getLoginUser5(as);
+				list.add(user);
+			}
 			session.setAttribute("userloginId", userloginId);
-			session.setAttribute("info",info);
+			session.setAttribute("list",list);
+			session.setAttribute("info", info);
 			session.setAttribute("del", del);
 			dispatcher = request.getRequestDispatcher("UserDateDeleteConfirm.jsp");
 			dispatcher.forward(request, response);

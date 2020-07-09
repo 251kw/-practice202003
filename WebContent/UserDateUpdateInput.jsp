@@ -18,7 +18,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				変更画面&nbsp;<span class="icon-speaker"></span>
+				変更入力画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>
@@ -56,16 +56,15 @@
 						</c:if>
 						<c:if test="${icon == 'female'}">
 							<td><input type="radio" name="icon" id="male" value="male">
-							<span>male</span>
-							<input type="radio" name="icon" id="female" value="female"
-								checked>
-							<span>female</span></td>
+								<span>male</span> <input type="radio" name="icon" id="female"
+								value="female" checked> <span>female</span></td>
 						</c:if>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="変更する" /></td>
-							<td class="text-left"><a href="UserDateResearchResult.jsp" class="btn">戻る</a></td>
+						<td class="text-left"><a href="UserDateResearchResult.jsp"
+							class="btn">戻る</a></td>
 					</tr>
 
 					<c:if test="${requestScope.alert != null }">

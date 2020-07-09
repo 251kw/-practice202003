@@ -17,7 +17,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				検索&nbsp;<span class="icon-speaker"></span>
+				ユーザー情報検索&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

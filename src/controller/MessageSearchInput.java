@@ -44,7 +44,7 @@ public class MessageSearchInput extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		request.setCharacterEncoding("UTF-8");
 		//叫ぶボタン　受け取り
 		String update=request.getParameter("update");
 		String full=request.getParameter("full");

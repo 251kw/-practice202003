@@ -23,24 +23,32 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				確認画面&nbsp;<span class="icon-speaker"></span>
+				削除確認画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
+		<jsp:useBean id="list" scope="session"
+				type="java.util.ArrayList<dto.UserDTO>" />
 			<form action="./UserDateDeleteInput" method="post">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
-							<td>ユーザー情報</td>
+							<th>ログインID</th>
+							<th>パスワード</th>
+							<th>性別</th>
+							<th>プロフィール</th>
 						</tr>
 					</thead>
-					<c:forEach var="users" items="${info}">
+					<c:forEach var="users" items="${list}">
 						<tbody>
 							<tr>
-								<td>${users }<input type="hidden" name="del" value=${del }>
+								<td>${users.loginId }<input type="hidden" name="del" value=${del }>
 									<input type="hidden" name="user" value=${users }></td>
+									<td>${users.password }</td>
+									<td>${users.icon }</td>
+									<td>${users.profile }</td>
 							</tr>
 					</c:forEach>
 				</table>

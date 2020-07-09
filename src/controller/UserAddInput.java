@@ -40,6 +40,7 @@ public class UserAddInput extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String loginId = (String) request.getParameter("loginId");
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
@@ -51,6 +52,7 @@ public class UserAddInput extends HttpServlet {
 		UserDTO user=research.getLoginUser5(loginId);
 		//以下の条件はエラー処理
 		if(loginId.equals("")) {
+			request.setCharacterEncoding("UTF-8");
 			message="未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
@@ -62,6 +64,7 @@ public class UserAddInput extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
 		}else if(userName.equals("")) {
+			request.setCharacterEncoding("UTF-8");
 			message="未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
@@ -73,6 +76,7 @@ public class UserAddInput extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
 		}else if(password.equals("")) {
+			request.setCharacterEncoding("UTF-8");
 			message="未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
@@ -142,6 +146,7 @@ public class UserAddInput extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
 		}else {
+
 			//新規登録確認画面遷移
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("password", password);

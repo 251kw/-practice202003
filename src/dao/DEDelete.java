@@ -7,21 +7,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import dto.UserDTO;
-public class DEDelete extends SnsDAO{
-	public ArrayList<UserDTO>getLoginUser(String loginId) {
+
+public class DEDelete extends SnsDAO {
+	/**
+	 * ユーザーデータ削除
+	 * @param loginId　ログインID
+	 * @return 削除データ
+	 */
+	public ArrayList<UserDTO> getLoginUser(String loginId) {
 		Connection conn = null; // データベース接続情報
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 
-		ArrayList<UserDTO> list=new ArrayList<UserDTO>();
+		ArrayList<UserDTO> list = new ArrayList<UserDTO>();
 		String sql = "DELETE FROM users WHERE loginId=?";
 		UserDTO user = null; // 登録ユーザ情報
 
 		try {
 			conn = getConnection();
-
 			pstmt = conn.prepareStatement(sql); // SELECT 構文登録
-			pstmt.setString(1,loginId);
+			pstmt.setString(1, loginId);
 			pstmt.executeUpdate();
 			while (rset.next()) {
 				// 必要な列から値を取り出し、ユーザ情報オブジェクトを生成
@@ -48,5 +53,3 @@ public class DEDelete extends SnsDAO{
 	}
 
 }
-
-

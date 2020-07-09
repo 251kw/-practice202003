@@ -41,6 +41,7 @@ public class MessageUpdateresult extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher = null;
 		DBManager dbm = new DBManager();
 		ArrayList<ShoutDTO> list = dbm.getShoutList();

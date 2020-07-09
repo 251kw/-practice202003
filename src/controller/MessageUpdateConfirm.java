@@ -39,6 +39,7 @@ public class MessageUpdateConfirm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String writing=request.getParameter("writing");
 		String icon=request.getParameter("icon");
 		String userName=request.getParameter("userName");

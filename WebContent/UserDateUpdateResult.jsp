@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta charset="UTF-8">
 <link rel="stylesheet" href="./css/skyblue.css">
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
 <link rel="stylesheet" href="./css/helper.css">
@@ -22,7 +21,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				変更完了&nbsp;<span class="icon-speaker"></span>
+				変更完了画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

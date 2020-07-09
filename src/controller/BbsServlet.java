@@ -33,8 +33,7 @@ public class BbsServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String writing = request.getParameter("shout");
 		RequestDispatcher dispatcher;
-
-
+		int flug=0;
 		// 書き込み内容があれば、リストに追加
 		if (!writing.equals("")) {
 			HttpSession session = request.getSession();
@@ -47,7 +46,7 @@ public class BbsServlet extends HttpServlet {
 			}
 
 			// ログインユーザ情報と書き込み内容を引数に、リストに追加するメソッドを呼び出し
-			dbm.setWriting(user, writing);
+			dbm.setWriting(user, writing,flug);
 
 			// 書き込み内容追加後のリストを取得
 			ArrayList<ShoutDTO> list = dbm.getShoutList();

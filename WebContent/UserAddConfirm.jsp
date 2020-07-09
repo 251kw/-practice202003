@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content=Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/skyblue.css">
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
@@ -12,7 +12,7 @@
 <body>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
-			<h1>新規登録&nbsp;</h1>
+			<h1>新規登録確認画面&nbsp;</h1>
 		</div>
 	</div>
 	<%

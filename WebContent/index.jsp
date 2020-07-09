@@ -10,14 +10,6 @@
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
 <link rel="stylesheet" href="./css/helper.css">
 <link rel="stylesheet" href="./css/staylesheet.css">
-<script src="jquery-3.5.1.min.js"></script>
-<script>
-$(document).ready(function(){
-　$("p").click(function(){
-　　$(this).hide();
-　});
-});
-</script>
 </head>
 <body>
 	<div class="bg-success padding-y-5">
@@ -67,14 +59,6 @@ $(document).ready(function(){
 					</c:if>
 				</table>
 			</form>
-			<p>ここをクリックするとテキストが非表示になります。</p>
-				<div class="box">box</div>
-	<button id="fadeout"></button>
-	<script >
-$('#fadeout').on('click',function(){
-	$('.box').fadeOut(1000);
-})
-</script>
 			<a href="UserAddInput.jsp" class="btn">ユーザー情報を新規登録する</a>
 		</div>
 	</div>

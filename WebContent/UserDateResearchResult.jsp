@@ -5,7 +5,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/skyblue.css">
 <link rel="stylesheet" href="./css/pe-icon-7-stroke.css">
@@ -20,7 +19,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				検索画面&nbsp;<span class="icon-speaker"></span>
+				ユーザー情報検索結果画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>
@@ -70,10 +69,9 @@
 			value="削除する" /> <input class="btn" style="float: right;"
 			type="submit" name="updata" value="変更する" /> <input class="btn"
 			style="float: center;" type="submit" name="deleter" value="全選択する" />
-			<input class="btn"
-			style="float: center;" type="submit" name="clear" value="解除" />
-		<input class="btn" style="float: center;" type="submit" name="return"
-			value="戻る" />
+		<input class="btn" style="float: center;" type="submit" name="clear"
+			value="解除" /> <input class="btn" style="float: center;"
+			type="submit" name="return" value="戻る" />
 
 	</form>
 </body>

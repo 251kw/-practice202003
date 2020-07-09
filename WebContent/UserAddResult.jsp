@@ -21,7 +21,7 @@ String icon = (String) request.getAttribute("icon");
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				登録完了&nbsp;<span class="icon-speaker"></span>
+				新規登録結果&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

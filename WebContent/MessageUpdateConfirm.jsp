@@ -23,7 +23,7 @@ String number=(String)session.getAttribute("number");
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				変更確認画面&nbsp;<span class="icon-speaker"></span>
+				コメント変更確認画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

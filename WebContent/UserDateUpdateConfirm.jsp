@@ -43,10 +43,10 @@
 						<tr>
 							<td><input class="form-control" type="hidden" name="loginId"
 								value=<%=loginId%>><%=loginId%></td>
-							<td><input class="form-control" type="hidden" name="userName"
-								value=<%=userName%>><%=userName%></td>
-							<td><input class="form-control" type="hidden" name="password"
-								value=<%=password%>><%=password%></td>
+							<td><input class="form-control" type="hidden"
+								name="userName" value=<%=userName%>><%=userName%></td>
+							<td><input class="form-control" type="hidden"
+								name="password" value=<%=password%>><%=password%></td>
 							<td><input type="hidden" name="icon" value=<%=icon%>><%=icon%></td>
 							<td><input class="form-control" type="hidden" name="profile"
 								value=<%=profile%>><%=profile%></td>

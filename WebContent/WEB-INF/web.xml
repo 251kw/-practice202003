@@ -9,4 +9,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>UserUpdeta2</display-name>
+    <servlet-name>UserUpdeta2</servlet-name>
+    <servlet-class>controller.BbsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserUpdeta2</servlet-name>
+    <url-pattern>/UserUpdeta2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UserUpdeta3</display-name>
+    <servlet-name>UserUpdeta3</servlet-name>
+    <servlet-class>controller.UserUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserUpdeta3</servlet-name>
+    <url-pattern>/UserUpdeta3</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>User2</display-name>
+    <servlet-name>User2</servlet-name>
+    <servlet-class>controller.BbsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>User2</servlet-name>
+    <url-pattern>/User2</url-pattern>
+  </servlet-mapping>
 </web-app>

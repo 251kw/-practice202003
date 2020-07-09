@@ -7,18 +7,32 @@ public class ShoutDTO {
 	private String date;		// 書き込み日時
 	private String writing;
 	private String shout;// 書き込み内容
+	private int plug;
+
+
 
 	public ShoutDTO() {
 
 	}
 
-	public ShoutDTO(String userName, String icon, String date, String writing,String shout) {
+	public ShoutDTO(String userName, String icon, String date, String writing,String shout,int plug) {
 		this.userName = userName;
 		this.icon = icon;
 		this.date = date;
 		this.writing = writing;
 		this.shout=shout;
+		this.plug=plug;
 
+	}
+
+
+
+	public int getPlug() {
+		return plug;
+	}
+
+	public void setPlug(int plug) {
+		this.plug = plug;
 	}
 
 	public String getShout() {

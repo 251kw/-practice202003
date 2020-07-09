@@ -56,7 +56,7 @@ public class UserDateUpdateResultCheck extends HttpServlet {
 		} else {
 
 			// 処理の転送先を top.jsp に指定
-			dispatcher = request.getRequestDispatcher("index.jsp");
+			dispatcher = request.getRequestDispatcher("top.jsp");
 
 		}
 

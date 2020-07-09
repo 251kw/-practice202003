@@ -14,7 +14,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				コメント削除確認画面&nbsp;<span class="icon-speaker"></span>
+				コメント削除結果画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

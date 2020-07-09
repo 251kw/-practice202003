@@ -18,7 +18,7 @@ String writing = (String)session.getAttribute("writing");
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				叫ぶ変更画面&nbsp;<span class="icon-speaker"></span>
+				叫ぶ変更入力画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

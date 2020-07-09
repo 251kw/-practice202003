@@ -14,7 +14,7 @@
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
 			<h1>
-				叫ぶ変更画面&nbsp;<span class="icon-speaker"></span>
+				コメント変更入力画面&nbsp;<span class="icon-speaker"></span>
 			</h1>
 		</div>
 	</div>

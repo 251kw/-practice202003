@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DBResrchManager;
+import dao.DEUpdetaManager;
 
 
 
@@ -61,8 +61,10 @@ public class UserDateDeleteInput extends HttpServlet {
 			for(int i = 0; i < info.size(); i ++){
 				//削除複数を回しdelete処理
 				String as=info.get(i);
-				DBResrchManager users=new DBResrchManager();
-				users.getLoginUser6(as);
+				//DBResrchManager users=new DBResrchManager();
+				//users.getLoginUser6(as);
+				DEUpdetaManager users=new DEUpdetaManager();
+				users.dateupdate(as);
 				if(myName.equals(as)) {
 					//削除top画面処理
 					shin="del";

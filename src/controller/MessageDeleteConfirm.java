@@ -43,6 +43,7 @@ public class MessageDeleteConfirm extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String[] number=request.getParameterValues("number");
 		String delete=request.getParameter("delete");
 		String back=request.getParameter("return");
@@ -61,7 +62,8 @@ public class MessageDeleteConfirm extends HttpServlet {
 					DBManager dbm = new DBManager();
 					ShoutDTO user=dbm.getShoutList1(as);
 					list.add(user);
-					dbm.getShoutList３(as);
+					//dbm.getShoutList３(as);
+					dbm.getShoutList4(as);
 					}
 				message="下記の情報を削除しました";
 				HttpSession session = request.getSession();

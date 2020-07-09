@@ -41,6 +41,7 @@ public class UserDateSearchInput extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String loginId = request.getParameter("loginId");
 		String userName=request.getParameter("userName");
 		String icon=request.getParameter("icon");
