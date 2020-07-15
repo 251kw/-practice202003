@@ -39,6 +39,7 @@ public class MessageDeleteResult extends HttpServlet {
 	}
 
 	/**
+	 * メッセージ削除　結果　再更新処理
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

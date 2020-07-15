@@ -55,7 +55,6 @@
 					</tr>
 					<tr>
 						<td class="color-main text-left">アイコン</td>
-
 						<c:if test="${icon == 'male'}">
 							<td><input type="radio" name="icon" id="male" value="male"
 								checked><span>male</span></td>

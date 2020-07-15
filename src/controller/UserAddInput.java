@@ -20,40 +20,43 @@ import dto.UserDTO;
 public class UserAddInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserAddInput() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UserAddInput() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
+	 * ユーザー　新規登録入力処理
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String loginId = (String) request.getParameter("loginId");
 		String userName = (String) request.getParameter("userName");
 		String password = (String) request.getParameter("password");
 		String profile = (String) request.getParameter("profile");
 		String icon = (String) request.getParameter("icon");
-		String message="";
-		int i=9;
-		DBResrchManager research=new DBResrchManager();
-		UserDTO user=research.getLoginUser5(loginId);
+		String message = "";
+		int i = 9;
+		DBResrchManager research = new DBResrchManager();
+		UserDTO user = research.getLoginUser5(loginId);
 		//以下の条件はエラー処理
-		if(loginId.equals("")) {
+		if (loginId.equals("")) {
 			request.setCharacterEncoding("UTF-8");
-			message="未入力があります。";
+			message = "未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
@@ -63,9 +66,9 @@ public class UserAddInput extends HttpServlet {
 			session.setAttribute("icon", icon);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(userName.equals("")) {
+		} else if (userName.equals("")) {
 			request.setCharacterEncoding("UTF-8");
-			message="未入力があります。";
+			message = "未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
@@ -75,9 +78,9 @@ public class UserAddInput extends HttpServlet {
 			session.setAttribute("icon", icon);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(password.equals("")) {
+		} else if (password.equals("")) {
 			request.setCharacterEncoding("UTF-8");
-			message="未入力があります。";
+			message = "未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
@@ -87,8 +90,8 @@ public class UserAddInput extends HttpServlet {
 			session.setAttribute("icon", icon);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(icon.equals("")) {
-			message="未入力があります。";
+		} else if (icon.equals("")) {
+			message = "未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
@@ -98,8 +101,8 @@ public class UserAddInput extends HttpServlet {
 			session.setAttribute("icon", icon);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(profile.equals("")) {
-			message="未入力があります。";
+		} else if (profile.equals("")) {
+			message = "未入力があります。";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
@@ -109,7 +112,7 @@ public class UserAddInput extends HttpServlet {
 			session.setAttribute("icon", icon);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(loginId.length() > i) {
+		} else if (loginId.length() > i) {
 			message = "ログインIDは8文字以下で入力してください";
 			HttpSession session = request.getSession();
 			// エラーメッセージをリクエストオブジェクトに保存
@@ -121,31 +124,31 @@ public class UserAddInput extends HttpServlet {
 			request.setAttribute("profile", profile);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
+		} else if (!loginId.matches("^[-@+*;:#$%&\\w]+$")) {
 			message = "半角英数記号で入力してください";
 			HttpSession session = request.getSession();
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
-			session.setAttribute("icon",icon);
+			session.setAttribute("icon", icon);
 			request.setAttribute("password", password);
 			request.setAttribute("profile", profile);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else if(user!=null) {
+		} else if (user != null) {
 			message = "入力されたログインIDはすでに使われています";
 			HttpSession session = request.getSession();
 			// エラーメッセージをリクエストオブジェクトに保存
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
-			session.setAttribute("icon",icon);
+			session.setAttribute("icon", icon);
 			request.setAttribute("password", password);
 			request.setAttribute("profile", profile);
 			RequestDispatcher rd = request.getRequestDispatcher("UserAddInputReturn.jsp");
 			rd.forward(request, response);
-		}else {
+		} else {
 
 			//新規登録確認画面遷移
 			request.setAttribute("loginId", loginId);

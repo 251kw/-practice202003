@@ -20,41 +20,43 @@ import dto.UserDTO;
 public class UserDateUpdateResultCheck extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserDateUpdateResultCheck() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public UserDateUpdateResultCheck() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
+	 * ユーザー編集結果　遷移
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
 		String loginId = request.getParameter("loginId");
 		HttpSession session = request.getSession();
-		String  myName = (String) session.getAttribute("name");
+		String myName = (String) session.getAttribute("name");
 		RequestDispatcher dispatcher = null;
-		DEUpdetaManager dbm=new DEUpdetaManager();
-		UserDTO user=dbm.getLoginUser7(loginId);
-		if(loginId.equals(myName)) {
+		DEUpdetaManager dbm = new DEUpdetaManager();
+		UserDTO user = dbm.getLoginUser7(loginId);
+		if (loginId.equals(myName)) {
 			// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 			session.setAttribute("user", user);
 			// 処理の転送先を top.jsp に指定
 			dispatcher = request.getRequestDispatcher("top.jsp");
 		} else {
-
 			// 処理の転送先を top.jsp に指定
 			dispatcher = request.getRequestDispatcher("top.jsp");
 
@@ -63,5 +65,5 @@ public class UserDateUpdateResultCheck extends HttpServlet {
 		// 処理を転送
 		dispatcher.forward(request, response);
 
-		}
 	}
+}

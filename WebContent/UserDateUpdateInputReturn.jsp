@@ -26,7 +26,7 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="UserDateUpdateConfirm.jsp">
+			<form action="./UserDetaUpdateComfirm" method="post">
 				<table style="width: 400px" class="table">
 					<tr>
 						<%-- ログインID 入力欄の名前は loginId --%>
@@ -63,8 +63,8 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="変更する" /></td>
-						<td class="text-left"><a href="UserDateResearchResult.jsp" class="btn">戻る</a></td>
+							type="submit" value="変更する" /><input class="btn"
+							type="submit" name="return"value="戻る" /></td>
 					</tr>
 
 					<c:if test="${requestScope.alert != null }">

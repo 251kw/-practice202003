@@ -13,8 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import dao.DEUpdetaManager;
 
-
-
 /**
  * Servlet implementation class UserDelete
  */
@@ -40,49 +38,50 @@ public class UserDateDeleteInput extends HttpServlet {
 	}
 
 	/**
+	 * ユーザー削除確認画面　画面遷移　精査
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
-		String shin=null;
+		String shin = null;
 		HttpSession session = request.getSession();
-	    String  myName = (String) session.getAttribute("name");
+		String myName = (String) session.getAttribute("name");
+		String[] userloginId = (String[])session.getAttribute("userloginId");
 		List<String> info = (List<String>) session.getAttribute("info");
-		String re=request.getParameter("re");
-		if(re!=null) {
+		String re = request.getParameter("re");
+		RequestDispatcher dispatcher = null;
+		if (re != null) {
 			//戻るボタン処理（検索確認画面へ戻る）
-			RequestDispatcher dispatcher = null;
+			request.setAttribute("userloginId", userloginId);
 			dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			dispatcher.forward(request, response);
-		}
-		else {
-			for(int i = 0; i < info.size(); i ++){
+		} else {
+			for (int i = 0; i < info.size(); i++) {
 				//削除複数を回しdelete処理
-				String as=info.get(i);
+				String as = info.get(i);
 				//DBResrchManager users=new DBResrchManager();
 				//users.getLoginUser6(as);
-				DEUpdetaManager users=new DEUpdetaManager();
+				DEUpdetaManager users = new DEUpdetaManager();
 				users.dateupdate(as);
-				if(myName.equals(as)) {
+				if (myName.equals(as)) {
 					//削除top画面処理
-					shin="del";
+					shin = "del";
 				}
-		}
-			RequestDispatcher dispatcher = null;
-			if(shin!=null) {
+			}
+			if (shin != null) {
 				//ログイン時のログイン情報と一致の場合index.jsp
 				session.setAttribute("shin", shin);
 				dispatcher = request.getRequestDispatcher("UserDateDeleteResultindex.jsp");
 				dispatcher.forward(request, response);
 
-	}else {
-		//ログイン時のログイン情報と不一致の場合top.jsp
-		dispatcher = request.getRequestDispatcher("UserDateDeleteResultTop.jsp");
-		dispatcher.forward(request, response);
-	}
+			} else {
+				//ログイン時のログイン情報と不一致の場合top.jsp
+				dispatcher = request.getRequestDispatcher("UserDateDeleteResultTop.jsp");
+				dispatcher.forward(request, response);
+			}
 		}
 
-}
+	}
 }

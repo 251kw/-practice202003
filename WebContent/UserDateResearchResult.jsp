@@ -12,9 +12,33 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	<%!
+	//checkbox checked or "" 処理
+	public static String checkBox(String item, String[] select) {
+
+		if (select == null) { //初回
+			return "";
+		}
+
+		for (String i : select) { //配列に入っていたらチェック
+			if (i.equals(item)) {
+				return "checked";
+			}
+		}
+
+		return ""; //入っていなかったので何も書かない
+	}%>
 	<%
 		String delete = request.getParameter("return");
-		String deleter = request.getParameter("deleter");
+		String deleter = (String) request.getAttribute("deleter");
+		String clear = (String) request.getAttribute("clear");
+		String[] userloginId = (String[]) request.getAttribute("userloginId");
+		//解除ボタンをプッシュされた場合の処理
+		if (clear != null) {
+			deleter = null;
+			userloginId = null;
+		}
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">
@@ -47,16 +71,22 @@
 				</tr>
 			</thead>
 			<c:forEach var="users" items="${list}">
+				<c:set var="userloginIds" value="${users.loginId }" />
+				<c:set var="deleter" value="<%=deleter%>" />
+				<%
+					// (2) スクリプトレットでpageスコープのpageContextにアクセスし変数を取得.
+						String check = (String) pageContext.findAttribute("userloginIds");
+				%>
 				<tbody>
 					<tr>
-						<c:if test="${deleter != null}">
-							<td><label><input type="checkbox" name="userloginId"
-									value=${users.loginId } checked></label></td>
-						</c:if>
-						<c:if test="${deleter == null}">
-							<td><label><input type="checkbox" name="userloginId"
-									value=${users.loginId }></label></td>
-						</c:if>
+						<td><c:if test="${deleter == null}">
+								<label><input type="checkbox" name="userloginId"
+									value=${users.loginId } <%= checkBox(check,userloginId) %>></label>
+							</c:if> <c:if test="${deleter != null}">
+								<label><input type="checkbox" name="userloginId"
+									value=${users.loginId } checked></label>
+							</c:if></td>
+
 						<td>${users.loginId }<input type="hidden" name="del"
 							id="female" value=${userw }></td>
 						<td>${users.icon }</td>

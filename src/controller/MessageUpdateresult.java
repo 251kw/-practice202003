@@ -21,32 +21,35 @@ import dto.ShoutDTO;
 public class MessageUpdateresult extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public MessageUpdateresult() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public MessageUpdateresult() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
+	 * メッセージ編集結果　メッセージの再アップデート
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher = null;
 		DBManager dbm = new DBManager();
 		ArrayList<ShoutDTO> list = dbm.getShoutList();
 		HttpSession session = request.getSession();
-		String message="コメントの編集、削除できます。";
+		String message = "コメントの編集、削除できます。";
 		//top,jsp sessionをアップデート
 		session.setAttribute("shouts", list);
 		// 処理の転送先を top.jsp に指定

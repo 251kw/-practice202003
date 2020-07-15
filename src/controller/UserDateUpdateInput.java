@@ -37,6 +37,7 @@ public class UserDateUpdateInput extends HttpServlet {
 	}
 
 	/**
+	 * ユーザー編集入力　精査　遷移
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -53,13 +54,24 @@ public class UserDateUpdateInput extends HttpServlet {
 		String back = request.getParameter("return");
 		RequestDispatcher dispatcher = null;
 		int i = 9;
-		if (userName.equals("") || password.equals("")) {
+		if(back!=null) {
+			HttpSession session = request.getSession();
+			request.setAttribute("loginId", loginId);
+			request.setAttribute("userName", userName);
+			session.setAttribute("icon", icon);
+			request.setAttribute("password", password);
+			request.setAttribute("profile", profile);
+			//戻るボタン処理（検索確認画面へ戻る）
+			dispatcher = request.getRequestDispatcher("UserDateUpdateInputCheck.jsp");
+			dispatcher.forward(request, response);
+		}
+		else if (userName.equals("") || password.equals("")) {
 			//ユーザー名、ログインIDどちらかが空白の場合エラーメッセージ
+			HttpSession session = request.getSession();
 			String message = "ユーザ名とパスワードは必須入力です";
 			request.setAttribute("alert", message);
 			request.setAttribute("loginId", loginId);
 			request.setAttribute("userName", userName);
-			HttpSession session = request.getSession();
 			session.setAttribute("icon", icon);
 			request.setAttribute("password", password);
 			request.setAttribute("profile", profile);

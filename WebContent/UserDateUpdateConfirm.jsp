@@ -13,11 +13,11 @@
 </head>
 <body>
 	<%
-		String loginId = request.getParameter("loginId");
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		String profile = request.getParameter("profile");
-		String icon = request.getParameter("icon");
+		String loginId = (String) request.getAttribute("loginId");
+		String userName = (String) request.getAttribute("userName");
+		String password = (String) request.getAttribute("password");
+		String icon = (String) request.getAttribute("icon");
+		String profile = (String) request.getAttribute("profile");
 	%>
 	<div class="bg-success padding-y-5">
 		<div class="container padding-y-5 text-center">

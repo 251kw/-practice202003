@@ -30,7 +30,7 @@ public class DBManager extends SnsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String sql = "SELECT * FROM users WHERE loginId=? AND password=?";
+		String sql = "SELECT * FROM users WHERE loginId=? AND password=? AND date=0";
 		UserDTO user = null; //登録ユーザー情報
 
 		try {
@@ -210,6 +210,28 @@ public class DBManager extends SnsDAO {
 			close(conn);
 		}
 		return shout;
+	}	public ShoutDTO research(String writing, String shouts) {
+		Connection conn = null; // データベース接続情報
+		PreparedStatement pstmt = null; // SQL 管理情報
+		ResultSet rset = null; // 検索結果
+		String sql = "UPDATE shouts SET writing=? WHERE shouts=?";
+		ShoutDTO shout = null;
+		try {
+			//データベース接続情報
+			conn = getConnection();
+			//SELECT文の登録と実行
+			pstmt = conn.prepareStatement(sql); //セレクト文登録
+			pstmt.setString(1, writing);
+			pstmt.setString(2, shouts);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+			close(conn);
+		}
+		return shout;
 	}
 
 	/**
@@ -263,6 +285,4 @@ public class DBManager extends SnsDAO {
 		}
 
 	}
-
-
 }

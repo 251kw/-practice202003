@@ -29,7 +29,7 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-		<jsp:useBean id="list" scope="session"
+		<jsp:useBean id="lists" scope="session"
 				type="java.util.ArrayList<dto.UserDTO>" />
 			<form action="./UserDateDeleteInput" method="post">
 				<table class="table table-striped table-bordered table-hover">
@@ -41,7 +41,7 @@
 							<th>プロフィール</th>
 						</tr>
 					</thead>
-					<c:forEach var="users" items="${list}">
+					<c:forEach var="users" items="${lists}">
 						<tbody>
 							<tr>
 								<td>${users.loginId }<input type="hidden" name="del" value=${del }>

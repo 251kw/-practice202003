@@ -32,25 +32,25 @@
 						<td class="text-left"><input class="form-control" type="text"
 							name="loginId" placeholder="shin" value=""></td>
 					</tr>
-						<tr>
+					<tr>
 						<td class="color-main text-left">ユーザー名</td>
 						<td class="text-left"><input class="form-control" type="text"
 							name="userName" placeholder="pass1" value=""></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">アイコン</td>
-						<td>
-						<input type="radio" name="icon" id="male" value="male" checked><span>male</span>
-						<input type="radio" name="icon" id="female" value="female" ><span>female</span>
-						</td>
+						<td><input type="radio" name="icon" id="male" value="male"
+							checked><span>male</span> <input type="radio" name="icon"
+							id="female" value="female"><span>female</span></td>
 					</tr>
 					<tr>
 						<td><input type="hidden" name="user" value=<%=user%> /></td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
-							type="submit" value="検索" /></td>
+							type="submit" value="検索" />
 							<td class="text-left"><a href="top.jsp" class="btn">戻る</a></td>
+
 					</tr>
 					<%-- リクエストスコープに alert があれば --%>
 					<c:if

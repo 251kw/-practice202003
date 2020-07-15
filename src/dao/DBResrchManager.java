@@ -389,4 +389,5 @@ public class DBResrchManager extends SnsDAO {
 		return user;
 	}
 
+
 }

@@ -20,6 +20,7 @@ import dto.UserDTO;
 @WebServlet("/UserDatesearchInput")
 public class UserDateSearchInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -38,17 +39,21 @@ public class UserDateSearchInput extends HttpServlet {
 	}
 
 	/**
+	 * ユーザー検索入力精査
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String loginId = request.getParameter("loginId");
-		String userName=request.getParameter("userName");
-		String icon=request.getParameter("icon");
-		String userw=request.getParameter("user");
-		String usere=request.getParameter("usere");
+		String userName = request.getParameter("userName");
+		String icon = request.getParameter("icon");
+		String userw = request.getParameter("user");
+		String usere = request.getParameter("usere");
+		String back = request.getParameter("return");
 		RequestDispatcher dispatcher = null;
-		if(loginId.equals("")&&userName.equals("")) {
+		HttpSession session = request.getSession();
+		if (loginId.equals("") && userName.equals("")) {
 			// ログインIDが未入力なら
 			DBResrchManager dbr = new DBResrchManager();
 			ArrayList<UserDTO> user = dbr.getLoginUser4(icon);
@@ -60,24 +65,21 @@ public class UserDateSearchInput extends HttpServlet {
 				request.setAttribute(icon, icon);
 				// 処理の転送先を index.jsp に指定
 				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
-			} else{
+			} else {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
-				HttpSession session = request.getSession();
-
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
+
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
 				session.setAttribute("userw", userw);
 				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			}
-
 			// 処理を転送
 			dispatcher.forward(request, response);
-		}
-		else if(loginId.equals("")) {
+		} else if (loginId.equals("")) {
 			// ログインIDが未入力なら
 			DBResrchManager dbr = new DBResrchManager();
-			ArrayList<UserDTO> user = dbr.getLoginUser2(userName,icon);
+			ArrayList<UserDTO> user = dbr.getLoginUser2(userName, icon);
 			if (user == null || user.size() == 0) {
 				// エラーメッセージをリクエストオブジェクトに保存
 				String message = "該当データがありません";
@@ -86,10 +88,8 @@ public class UserDateSearchInput extends HttpServlet {
 				request.setAttribute(userName, userName);
 				// 処理の転送先を index.jsp に指定
 				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
-			} else{
+			} else {
 				// ユーザ情報を取得できたら、書き込み内容リストを取得
-				HttpSession session = request.getSession();
-
 				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 				session.setAttribute("list", user);
 				request.setAttribute("usere", usere);
@@ -99,64 +99,58 @@ public class UserDateSearchInput extends HttpServlet {
 
 			// 処理を転送
 			dispatcher.forward(request, response);
-		}
-		else if(userName.equals("")) {
+		} else if (userName.equals("")) {
 			// ログインIDが未入力なら
-						DBResrchManager dbr = new DBResrchManager();
-						ArrayList<UserDTO> user = dbr.getLoginUser1(loginId,icon);
-						if (user == null || user.size() == 0) {
-							// エラーメッセージをリクエストオブジェクトに保存
-							String message = "該当データがありません";
-							request.setAttribute("alert", message);
-							request.setAttribute(icon, icon);
-							request.setAttribute(loginId, loginId);
-							// 処理の転送先を index.jsp に指定
-							dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
-						} else{// ユーザ情報を取得できたら、書き込み内容リストを取得
-							HttpSession session = request.getSession();
+			DBResrchManager dbr = new DBResrchManager();
+			ArrayList<UserDTO> user = dbr.getLoginUser1(loginId, icon);
+			if (user == null || user.size() == 0) {
+				// エラーメッセージをリクエストオブジェクトに保存
+				String message = "該当データがありません";
+				request.setAttribute("alert", message);
+				request.setAttribute(icon, icon);
+				request.setAttribute(loginId, loginId);
+				// 処理の転送先を index.jsp に指定
+				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
+			} else {// ユーザ情報を取得できたら、書き込み内容リストを取得
 
-							// ログインユーザ情報、書き込み内容リストとしてセッションに保存
-							session.setAttribute("list", user);
-							request.setAttribute("usere", usere);
-							request.setAttribute("del", userw);
+				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
+				session.setAttribute("list", user);
+				request.setAttribute("usere", usere);
+				request.setAttribute("del", userw);
 
-							dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
-						}
-
-						// 処理を転送
-						dispatcher.forward(request, response);
-		}else{
-				// ログインIDが未入力なら
-							DBResrchManager dbr = new DBResrchManager();
-							ArrayList<UserDTO> user = dbr.getLoginUser(loginId,userName,icon);
-							if (user == null || user.size() == 0) {
-								// ユーザ情報が取得できない場合
-								// エラーメッセージをリクエストオブジェクトに保存
-								String message = "該当データがありません";
-								request.setAttribute("alert", message);
-								request.setAttribute(icon, icon);
-								request.setAttribute(userName, userName);
-								request.setAttribute(loginId, loginId);
-								// 処理の転送先を index.jsp に指定
-								dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
-							} else{
-								// ユーザ情報を取得できたら、書き込み内容リストを取得
-								HttpSession session = request.getSession();
-
-								// ログインユーザ情報、書き込み内容リストとしてセッションに保存
-								session.setAttribute("list", user);
-								request.setAttribute("usere", usere);
-								request.setAttribute("del", userw);
-
-								dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
-
-							}
-
-							// 処理を転送
-							dispatcher.forward(request, response);
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
 			}
-		}
 
+			// 処理を転送
+			dispatcher.forward(request, response);
+		} else {
+			// ログインIDが未入力なら
+			DBResrchManager dbr = new DBResrchManager();
+			ArrayList<UserDTO> user = dbr.getLoginUser(loginId, userName, icon);
+			if (user == null || user.size() == 0) {
+				// ユーザ情報が取得できない場合
+				// エラーメッセージをリクエストオブジェクトに保存
+				String message = "該当データがありません";
+				request.setAttribute("alert", message);
+				request.setAttribute(icon, icon);
+				request.setAttribute(userName, userName);
+				request.setAttribute(loginId, loginId);
+				// 処理の転送先を index.jsp に指定
+				dispatcher = request.getRequestDispatcher("UserDateResearchInputReturn.jsp");
+			} else {
+				// ユーザ情報を取得できたら、書き込み内容リストを取得
+				// ログインユーザ情報、書き込み内容リストとしてセッションに保存
+				session.setAttribute("list", user);
+				request.setAttribute("usere", usere);
+				request.setAttribute("del", userw);
+
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
+
+			}
+
+			// 処理を転送
+			dispatcher.forward(request, response);
+		}
 	}
 
-
+}
