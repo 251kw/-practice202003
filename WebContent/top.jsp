@@ -125,15 +125,15 @@
 					<div class="box">
 						<table class="table table-striped table-bordered">
 							<%
-								String[] number = (String[])request.getAttribute("numbers");
-								String full=(String)request.getAttribute("full");
-								String clear=(String)request.getAttribute("clear");
-								if(clear!=null){
-									full=null;
-									number=null;
-								}
+								String[] number = (String[]) request.getAttribute("numbers");
+									String full = (String) request.getAttribute("full");
+									String clear = (String) request.getAttribute("clear");
+									if (clear != null) {
+										full = null;
+										number = null;
+									}
 							%>
-							<c:set var="full" value="<%=full %>" />
+							<c:set var="full" value="<%=full%>" />
 							<%
 								// (2) スクリプトレットでpageスコープのpageContextにアクセスし変数を取得.
 									String shout = (String) pageContext.findAttribute("shin");
@@ -141,14 +141,14 @@
 							<c:set var="data" value="number" />
 							<tr>
 								<c:if test="${full == null}">
-								<td rowspan="2" class="text-center"><input type="checkbox"
-									name="number" value=${shout.shout } <%= checkBox(shout,number) %>></td>
-								<td>${shout.userName}</td>
+									<td rowspan="2" class="text-center"><input type="checkbox"
+										name="number" value=${shout.shout }
+										<%= checkBox(shout,number) %>></td>
+									<td>${shout.shoutloginId}</td>
 								</c:if>
 								<c:if test="${full!= null}">
-								<td rowspan="2" class="text-center"><input type="checkbox"
-									name="number" value=${shout.shout } checked></td>
-								<td>${shout.userName}</td>
+									<td rowspan="2" class="text-center"><input type="checkbox"
+										name="number" value=${shout.shout } checked></td>
 								</c:if>
 
 							</tr>
@@ -156,8 +156,7 @@
 								<td>${shout.date}</td>
 							</tr>
 							<tr>
-								<td colspan="2"><textarea rows="5" class="form-control">${shout.writing}</textarea>
-								</td>
+								<td colspan="2"> ${shout.writing}</td>
 							</tr>
 						</table>
 					</div>

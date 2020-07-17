@@ -80,15 +80,14 @@ public class DBManager extends SnsDAO {
 			pstmt = conn.createStatement();
 
 			//SELECT文の実行
-			String sql = "SELECT*FROM shouts WHERE plug=0";
+			String sql = "SELECT * FROM shouts,users WHERE users.loginId=shouts.shoutloginId";
 			rset = pstmt.executeQuery(sql);
 			while (rset.next()) {
 				ShoutDTO shout = new ShoutDTO();
 				shout.setShout(rset.getString(1));
-				shout.setUserName(rset.getString(2));
-				shout.setIcon(rset.getString(3));
-				shout.setDate(rset.getString(4));
-				shout.setWriting(rset.getString(5));
+				shout.setShoutloginId(rset.getString(2));
+				shout.setDate(rset.getString(3));
+				shout.setWriting(rset.getString(4));
 				list.add(shout);
 			}
 		} catch (SQLException e) {
@@ -109,7 +108,7 @@ public class DBManager extends SnsDAO {
 	 * @param plug 削除フラグ
 	 * @return　登録メッセージ
 	 */
-	public boolean setWriting(UserDTO user, String writing, int plug) {
+	public boolean setWriting(UserDTO user, String writing) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		boolean result = false;
@@ -117,17 +116,14 @@ public class DBManager extends SnsDAO {
 			conn = getConnection();
 
 			//INSERT文の実行と登録
-			String sql = "INSERT INTO shouts(userName,icon,date,writing,plug) VALUES(?,?,?,?,?)";
+			String sql = "INSERT INTO shouts(shoutloginId,date,writing) VALUES(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user.getUserName());
-			pstmt.setString(2, user.getIcon());
+			pstmt.setString(1, user.getLoginId());
 			//現在日時の取得と日付の書式指定
 			Calendar calender = Calendar.getInstance();
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd- hh:mm:ss");
-
-			pstmt.setString(3, sdf.format(calender.getTime()));
-			pstmt.setString(4, writing);
-			pstmt.setInt(5, plug);
+			pstmt.setString(2, sdf.format(calender.getTime()));
+			pstmt.setString(3, writing);
 			int cnt = pstmt.executeUpdate();
 			if (cnt == 1) {
 				//INSERT文の実行結果が１なら登録成功
@@ -167,10 +163,7 @@ public class DBManager extends SnsDAO {
 				//必要な列から値を取り出し、ユーザー情報オブジェクトを生成
 				shout = new ShoutDTO();
 				shout.setShout(rset.getString(1));
-				shout.setUserName(rset.getString(2));
-				shout.setIcon(rset.getString(3));
-				shout.setDate(rset.getString(4));
-				shout.setWriting(rset.getString(5));
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -243,32 +236,6 @@ public class DBManager extends SnsDAO {
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 		String sql = "DELETE FROM shouts WHERE shouts=?";
-		try {
-			//データベース接続情報
-			conn = getConnection();
-			//SELECT文の登録と実行
-			pstmt = conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, shouts);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-			close(conn);
-		}
-
-	}
-
-	/**
-	 * 削除フラグ1編集し画面上は削除
-	 * @param shouts　削除フラグ
-	 */
-	public void getShoutList4(String shouts) {
-		Connection conn = null; // データベース接続情報
-		PreparedStatement pstmt = null; // SQL 管理情報
-		ResultSet rset = null; // 検索結果
-		String sql = "UPDATE shouts SET plug=1 WHERE shouts=?";
 		try {
 			//データベース接続情報
 			conn = getConnection();

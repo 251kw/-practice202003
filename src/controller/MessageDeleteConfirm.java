@@ -68,8 +68,8 @@ public class MessageDeleteConfirm extends HttpServlet {
 					DBManager dbm = new DBManager();
 					ShoutDTO user = dbm.getShoutList1(as);
 					list.add(user);
-					//dbm.getShoutList３(as);
-					dbm.getShoutList4(as);
+					dbm.getShoutList３(as);
+
 				}
 				message = "下記の情報を削除しました";
 				session.setAttribute("list", list);
