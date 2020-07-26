@@ -20,8 +20,8 @@
 	</div>
 	<div class="padding-y-5 text-center">
 		<div style="width: 40%" class="container padding-y-5 text-center">
-			<form action="index.jsp">
-				<input class="btn" type="submit" value="ログイン画面に戻る" />
+			<form action="./UserDateDeleteCheck" method="post">
+				<input class="btn" type="submit" name="index" value="ログイン画面に戻る" />
 			</form>
 		</div>
 	</div>

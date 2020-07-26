@@ -30,7 +30,7 @@ public class DBManager extends SnsDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 
-		String sql = "SELECT * FROM users WHERE loginId=? AND password=? AND date=0";
+		String sql = "SELECT * FROM users WHERE loginId=binary ? AND password=?";
 		UserDTO user = null; //登録ユーザー情報
 
 		try {
@@ -47,11 +47,11 @@ public class DBManager extends SnsDAO {
 			if (rset.next()) {
 				//必要な列から値を取り出し、ユーザー情報オブジェクトを生成
 				user = new UserDTO();
-				user.setLoginId(rset.getString(2));
-				user.setPassword(rset.getString(3));
-				user.setUserName(rset.getString(4));
-				user.setIcon(rset.getString(5));
-				user.setProfile(rset.getString(6));
+				user.setLoginId(rset.getString(1));
+				user.setPassword(rset.getString(2));
+				user.setUserName(rset.getString(3));
+				user.setIcon(rset.getString(4));
+				user.setProfile(rset.getString(5));
 			}
 
 		} catch (SQLException e) {
@@ -80,14 +80,16 @@ public class DBManager extends SnsDAO {
 			pstmt = conn.createStatement();
 
 			//SELECT文の実行
-			String sql = "SELECT * FROM shouts,users WHERE users.loginId=shouts.shoutloginId";
+			String sql = "select *from shouts left outer join users on users.loginId = shouts.loginId";
 			rset = pstmt.executeQuery(sql);
 			while (rset.next()) {
 				ShoutDTO shout = new ShoutDTO();
-				shout.setShout(rset.getString(1));
-				shout.setShoutloginId(rset.getString(2));
-				shout.setDate(rset.getString(3));
-				shout.setWriting(rset.getString(4));
+				shout.shout_id=rset.getString("shout_id");
+				shout.loginId=rset.getString("loginid");
+				shout.date=rset.getString("date");
+				shout.writing=rset.getString("writing");
+				shout.userName=rset.getString("userName");
+				shout.icon=rset.getString("icon");
 				list.add(shout);
 			}
 		} catch (SQLException e) {
@@ -116,7 +118,7 @@ public class DBManager extends SnsDAO {
 			conn = getConnection();
 
 			//INSERT文の実行と登録
-			String sql = "INSERT INTO shouts(shoutloginId,date,writing) VALUES(?,?,?)";
+			String sql = "INSERT INTO shouts(loginId,date,writing) VALUES(?,?,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getLoginId());
 			//現在日時の取得と日付の書式指定
@@ -141,29 +143,32 @@ public class DBManager extends SnsDAO {
 
 	/**
 	 * メッセージ存在確認
-	 * @param shouts　 id
+	 * @param shouts　 loginId
 	 * @return メッセージデータ
 	 */
-	public ShoutDTO getShoutList1(String shouts) {
+	public ShoutDTO getShoutList1(String shout_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		ShoutDTO shout = null;
-		String sql = "SELECT*FROM shouts WHERE shouts=?";
+		String sql = "select * from shouts,users where users.loginId=shouts.loginId and shouts.shout_id=?";
 		try {
 			//データベース接続情報
 			conn = getConnection();
 			//SELECT文の登録と実行
 			pstmt = conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, shouts);
+			pstmt.setString(1, shout_id);
 			rset = pstmt.executeQuery();
-
 			//検索結果があれば
 			while (rset.next()) {
 				//必要な列から値を取り出し、ユーザー情報オブジェクトを生成
 				shout = new ShoutDTO();
-				shout.setShout(rset.getString(1));
-
+				shout.shout_id=rset.getString("shout_id");
+				shout.loginId=rset.getString("loginid");
+				shout.date=rset.getString("date");
+				shout.writing=rset.getString("writing");
+				shout.userName=rset.getString("userName");
+				shout.icon=rset.getString("icon");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -181,11 +186,11 @@ public class DBManager extends SnsDAO {
 	 * @param shouts id
 	 * @return アップデートメッセージ
 	 */
-	public ShoutDTO getShoutList2(String writing, String shouts) {
+	public ShoutDTO getShoutList2(String writing, String shout_id) {
 		Connection conn = null; // データベース接続情報
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
-		String sql = "UPDATE shouts SET writing=? WHERE shouts=?";
+		String sql = "UPDATE shouts SET writing=? WHERE shout_id=?";
 		ShoutDTO shout = null;
 		try {
 			//データベース接続情報
@@ -193,29 +198,7 @@ public class DBManager extends SnsDAO {
 			//SELECT文の登録と実行
 			pstmt = conn.prepareStatement(sql); //セレクト文登録
 			pstmt.setString(1, writing);
-			pstmt.setString(2, shouts);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rset);
-			close(pstmt);
-			close(conn);
-		}
-		return shout;
-	}	public ShoutDTO research(String writing, String shouts) {
-		Connection conn = null; // データベース接続情報
-		PreparedStatement pstmt = null; // SQL 管理情報
-		ResultSet rset = null; // 検索結果
-		String sql = "UPDATE shouts SET writing=? WHERE shouts=?";
-		ShoutDTO shout = null;
-		try {
-			//データベース接続情報
-			conn = getConnection();
-			//SELECT文の登録と実行
-			pstmt = conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, writing);
-			pstmt.setString(2, shouts);
+			pstmt.setString(2, shout_id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -231,17 +214,17 @@ public class DBManager extends SnsDAO {
 	 * メッセージ削除
 	 * @param shouts　id
 	 */
-	public void getShoutList３(String shouts) {
+	public void getShoutList３(String shout_id) {
 		Connection conn = null; // データベース接続情報
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
-		String sql = "DELETE FROM shouts WHERE shouts=?";
+		String sql = "DELETE FROM shouts WHERE shout_id=?";
 		try {
 			//データベース接続情報
 			conn = getConnection();
 			//SELECT文の登録と実行
 			pstmt = conn.prepareStatement(sql); //セレクト文登録
-			pstmt.setString(1, shouts);
+			pstmt.setString(1, shout_id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -251,5 +234,43 @@ public class DBManager extends SnsDAO {
 			close(conn);
 		}
 
+	}
+	public UserDTO getLoginUser4(String loginId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		String sql = "SELECT * FROM users,shouts WHERE shouts.loginId=?";
+		UserDTO user = null; //登録ユーザー情報
+
+		try {
+			//データベース接続情報
+			conn = getConnection();
+
+			//SELECT文の登録と実行
+			pstmt = conn.prepareStatement(sql); //セレクト文登録
+			pstmt.setString(1, loginId);
+			rset = pstmt.executeQuery();
+
+			//検索結果があれば
+			if (rset.next()) {
+				//必要な列から値を取り出し、ユーザー情報オブジェクトを生成
+				user = new UserDTO();
+				user.setLoginId(rset.getString(1));
+				user.setPassword(rset.getString(2));
+				user.setUserName(rset.getString(3));
+				user.setIcon(rset.getString(4));
+				user.setProfile(rset.getString(5));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			//データベース切断処理
+			close(rset);
+			close(pstmt);
+			close(conn);
+		}
+		return user;
 	}
 }

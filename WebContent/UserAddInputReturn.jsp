@@ -65,6 +65,13 @@
 							<span>female</span>
 							</td>
 						</c:if>
+							<c:if test="${icon == null}">
+							<td><input type="radio" name="icon" id="male" value="male">
+							<span>male</span>
+							<input type="radio" name="icon" id="female" value="female">
+							<span>female</span>
+							</td>
+						</c:if>
 					</tr>
 					<tr>
 						<td class="color-main text-left">コメント</td>

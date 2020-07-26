@@ -36,7 +36,8 @@
 					</tr>
 					<tr>
 						<td class="color-main text-left">パスワード</td>
-						<td class="text-left"><%=password %></td>
+						<td class="text-left"><%=password %><input class="form-control" type="hidden"
+							name="password" value=<%=password%>></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">名前</td>

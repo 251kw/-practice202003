@@ -31,7 +31,7 @@
 					value="${requestScope.alert}" /></td>
 		</tr>
 	</c:if>
-	<form action="./MessageDeleteConfirm" method="post">
+	<form action="./MessageDeleteInput" method="post">
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
@@ -45,11 +45,10 @@
 				<tbody>
 					<tr>
 						<td>${shout.writing }<input name="number" type="hidden"
-							value=${shout.shout }></td>
+							value=${shout.shout_id }></td>
 						<td>${shout.icon }</td>
 						<td>${shout.date }</td>
 						<td>${shout.userName }</td>
-
 					</tr>
 				</tbody>
 			</c:forEach>

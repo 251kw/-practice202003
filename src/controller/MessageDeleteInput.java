@@ -19,14 +19,14 @@ import dto.ShoutDTO;
 /**
  * Servlet implementation class messagedelete
  */
-@WebServlet("/MessageDeleteConfirm")
-public class MessageDeleteConfirm extends HttpServlet {
+@WebServlet("/MessageDeleteInput")
+public class MessageDeleteInput extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public MessageDeleteConfirm() {
+	public MessageDeleteInput() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -68,17 +68,10 @@ public class MessageDeleteConfirm extends HttpServlet {
 					DBManager dbm = new DBManager();
 					ShoutDTO user = dbm.getShoutList1(as);
 					list.add(user);
-					dbm.getShoutList３(as);
-
 				}
 				message = "下記の情報を削除しました";
 				session.setAttribute("list", list);
 				dispatcher = request.getRequestDispatcher("MessageDeleteResult.jsp");
-				dispatcher.forward(request, response);
-			} else {
-				//チェックボックスの選択がない場合
-				message = "選択がありません";
-				dispatcher = request.getRequestDispatcher("MessageDateDeleteComfirm.jsp");
 				dispatcher.forward(request, response);
 			}
 		}

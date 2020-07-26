@@ -3,35 +3,55 @@ package dto;
 // 書き込み内容を保持するクラス
 public class ShoutDTO {
 	// ユーザアイコン
-	private String date;		// 書き込み日時
-	private String writing;
-	private String shout;// 書き込み内容
-	private String shoutloginId;
+	public  String date;		// 書き込み日時
+	public  String writing;
+	public String shout_id;// 書き込み内容
+	public String loginId;
+	public  String userName;
+	public  String icon;
 	public ShoutDTO() {
 
 	}
 
-	public ShoutDTO(String date, String writing,String shout,String shoutloginId) {
+	public ShoutDTO(String date, String writing,String shout_id,String loginId,String userName,String icon) {
 		this.date = date;
 		this.writing = writing;
-		this.shout=shout;
-		this.shoutloginId=shoutloginId;
+		this.userName=userName;
+		this.shout_id=shout_id;
+		this.loginId=loginId;
+		this.icon=icon;
 
 	}
-	public String getShoutloginId() {
-		return shoutloginId;
+	public String getIcon() {
+		return icon;
 	}
 
-	public void setShoutloginId(String shoutloginId) {
-		this.shoutloginId = shoutloginId;
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 
-	public String getShout() {
-		return shout;
+	public String getLoginId() {
+		return loginId;
 	}
 
-	public void setShout(String shout) {
-		this.shout = shout;
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getShout_id() {
+		return shout_id;
+	}
+
+	public void setShout_id(String shout_id) {
+		this.shout_id = shout_id;
 	}
 
 	public String getWriting() {
@@ -49,4 +69,6 @@ public class ShoutDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+
 }

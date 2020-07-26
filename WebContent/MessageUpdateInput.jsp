@@ -32,7 +32,7 @@
 						<td class="text-left"><input class="form-control" type="text"
 							name="writing" value="${up.writing }"></td>
 						<td><input class="form-control" type="hidden" name="number"
-							value="${up.shout }"></td>
+							value="${up.shout_id }"></td>
 					</tr>
 					<tr>
 						<td class="color-main text-left">ユーザー名</td>

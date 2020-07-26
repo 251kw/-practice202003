@@ -61,7 +61,7 @@ public class UserAddResult extends HttpServlet {
 			request.setAttribute("icon", icon);
 			request.setAttribute("password", password);
 			DBSUBanager add = new DBSUBanager();
-			add.getLoginUser(loginId, password, userName, icon, profile, date);
+			add.getLoginUser(loginId, password, userName, icon, profile);
 			//新規登録完了画面へ遷移
 			dispatcher = request.getRequestDispatcher("UserAddResult.jsp");
 			dispatcher.forward(request, response);
@@ -103,7 +103,7 @@ public class UserAddResult extends HttpServlet {
 			request.setAttribute("icon", icon);
 			request.setAttribute("password", password);
 			DBSUBanager add = new DBSUBanager();
-			add.getLoginUser(loginId, password, userName, icon, profile, date);
+			add.getLoginUser(loginId, password, userName, icon, profile);
 			//新規登録完了画面へ遷移
 			dispatcher = request.getRequestDispatcher("UserAddResult.jsp");
 			dispatcher.forward(request, response);

@@ -29,24 +29,23 @@
 		<div style="width: 40%" class="container padding-y-5">
 			<form action="./logout" method="post">
 				<table class="table table-bordered">
+
 					<tr>
-						<td rowspan="2" class="text-center"><span
-							class="${user.icon} pe-3x pe-va"></span>${user.icon}</td>
-						<td width="256">${user.userName}</td>
+						<td rowspan="2" class="text-center">${user.icon}</td>
+						<td>${user.userName}</td>
 						<td><input class="btn btn-light" type="submit" value="ログアウト" /></td>
 					</tr>
 					<tr>
 						<td colspan="2">${user.profile}</td>
 					</tr>
-				</table>
+					</table>
 			</form>
-			<form action="UserDateResearchInput.jsp">
+						<form action="UserDateResearchInput.jsp">
 				<table>
 					<tr>
 						<td><input class="form-control" type="hidden" name="user"
 							value=${user.loginId } /></td>
 					</tr>
-
 					<tr>
 						<td colspan="2" class="text-right"><input class="btn"
 							type="submit" value="変更する" /></td>
@@ -121,7 +120,7 @@
 					</c:if>
 				</div>
 				<c:forEach var="shout" items="${shouts}">
-					<c:set var="shin" value="${shout.shout}" />
+					<c:set var="shin" value="${shout.shout_id}" />
 					<div class="box">
 						<table class="table table-striped table-bordered">
 							<%
@@ -142,21 +141,21 @@
 							<tr>
 								<c:if test="${full == null}">
 									<td rowspan="2" class="text-center"><input type="checkbox"
-										name="number" value=${shout.shout }
+										name="number" value=${shout.shout_id }
 										<%= checkBox(shout,number) %>></td>
-									<td>${shout.shoutloginId}</td>
+									<td>${shout.userName}</td>
 								</c:if>
 								<c:if test="${full!= null}">
 									<td rowspan="2" class="text-center"><input type="checkbox"
-										name="number" value=${shout.shout } checked></td>
+										name="number" value=${shout.shout_id } checked></td>
+									<td>${shout.userName}</td>
 								</c:if>
-
 							</tr>
 							<tr>
 								<td>${shout.date}</td>
 							</tr>
 							<tr>
-								<td colspan="2"> ${shout.writing}</td>
+								<td colspan="2">${shout.writing}</td>
 							</tr>
 						</table>
 					</div>

@@ -35,7 +35,6 @@
 		<table class="table table-striped table-bordered table-hover">
 			<thead>
 				<tr>
-
 					<th>コメント</th>
 					<th>性別</th>
 					<th>日付</th>
@@ -45,7 +44,8 @@
 			<c:forEach var="shout" items="${list}">
 				<tbody>
 					<tr>
-						<td>${shout.writing }</td>
+						<td>${shout.writing }<input name="number" type="hidden"
+							value=${shout.shout_id }></td>
 						<td>${shout.icon }</td>
 						<td>${shout.date }</td>
 						<td>${shout.userName }</td>

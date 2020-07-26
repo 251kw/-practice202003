@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,7 +48,14 @@ public class MessageDeleteResult extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		RequestDispatcher dispatcher = null;
+		String[] number = request.getParameterValues("number");
 		DBManager dbm = new DBManager();
+		if (number != null) {
+			List<String> info = Arrays.asList(number);
+			for (int i = 0; i < info.size(); i++) {
+				String as = info.get(i);
+				dbm.getShoutList３(as);
+			}
 		ArrayList<ShoutDTO> list = dbm.getShoutList();
 		HttpSession session = request.getSession();
 		//top.jspフォワードへshoutセッションアップデート（削除後）
@@ -56,5 +65,7 @@ public class MessageDeleteResult extends HttpServlet {
 		// 処理を転送
 		dispatcher.forward(request, response);
 	}
-
+	}
 }
+
+

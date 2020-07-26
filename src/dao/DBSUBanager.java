@@ -21,13 +21,12 @@ public class DBSUBanager extends SnsDAO {
 	 * @param date　振り分けられた番号
 	 * @return　登録データ
 	 */
-	public UserDTO getLoginUser(String loginId, String password, String userName, String icon, String profile,
-			int date) {
+	public UserDTO getLoginUser(String loginId, String password, String userName, String icon, String profile) {
 		Connection conn = null; // データベース接続情報
 		PreparedStatement pstmt = null; // SQL 管理情報
 		ResultSet rset = null; // 検索結果
 
-		String sql = "INSERT INTO users(loginId,password,userName,icon,profile,date) VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO users(loginId,password,userName,icon,profile) VALUES(?,?,?,?,?)";
 		UserDTO user = null;
 		;
 
@@ -40,7 +39,6 @@ public class DBSUBanager extends SnsDAO {
 			pstmt.setString(3, userName);
 			pstmt.setString(4, icon);
 			pstmt.setString(5, profile);
-			pstmt.setInt(6, date);
 			pstmt.executeUpdate();
 
 		}

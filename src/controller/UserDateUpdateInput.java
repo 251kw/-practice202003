@@ -112,7 +112,7 @@ public class UserDateUpdateInput extends HttpServlet {
 			request.setAttribute("profile", profile);
 			RequestDispatcher rd = request.getRequestDispatcher("UserDateUpdateInputReturn.jsp");
 			rd.forward(request, response);
-		} else {
+		}else {
 			//削除確認画面ボタン処理
 			DEUpdetaManager dbm = new DEUpdetaManager();
 			dbm.getLoginUser(loginId, password, profile, icon, userName);

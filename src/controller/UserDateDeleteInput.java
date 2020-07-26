@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DEUpdetaManager;
+import dao.DBManager;
+import dao.DBResrchManager;
+import dto.UserDTO;
 
 /**
  * Servlet implementation class UserDelete
@@ -46,9 +48,10 @@ public class UserDateDeleteInput extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
 		String shin = null;
+		String shine = null;
 		HttpSession session = request.getSession();
 		String myName = (String) session.getAttribute("name");
-		String[] userloginId = (String[])session.getAttribute("userloginId");
+		String[] userloginId = (String[]) session.getAttribute("userloginId");
 		List<String> info = (List<String>) session.getAttribute("info");
 		String re = request.getParameter("re");
 		RequestDispatcher dispatcher = null;
@@ -61,20 +64,41 @@ public class UserDateDeleteInput extends HttpServlet {
 			for (int i = 0; i < info.size(); i++) {
 				//削除複数を回しdelete処理
 				String as = info.get(i);
-				DEUpdetaManager users = new DEUpdetaManager();
-				users.dateupdate(as);
-				if (myName.equals(as)) {
+				DBManager dbm = new DBManager();
+				UserDTO message = dbm.getLoginUser4(as);
+				if (message != null) {
 					//削除top画面処理
+					shine = "message";
+				} else if (myName.equals(as)) {
 					shin = "del";
 				}
 			}
-			if (shin != null) {
+			if (shine != null) {
+				shine = null;
+				request.setAttribute("userloginId", userloginId);
+				String messages = "叫ぶメッセージが残っているのでデータを削除できません、メッセージを削除してください";
+				request.setAttribute("alert", messages);
+				dispatcher = request.getRequestDispatcher("UserDateResearchResult.jsp");
+				dispatcher.forward(request, response);
+			} else if (shin != null) {
 				//ログイン時のログイン情報と一致の場合index.jsp
+				for (int i = 0; i < info.size(); i++) {
+					//削除複数を回しdelete処理
+					String as = info.get(i);
+					DBResrchManager user = new DBResrchManager();
+					user.getLoginUser6(as);
+				}
 				session.setAttribute("shin", shin);
 				dispatcher = request.getRequestDispatcher("UserDateDeleteResultindex.jsp");
 				dispatcher.forward(request, response);
 
 			} else {
+				for (int i = 0; i < info.size(); i++) {
+					//削除複数を回しdelete処理
+					String as = info.get(i);
+					DBResrchManager user = new DBResrchManager();
+					user.getLoginUser6(as);
+				}
 				//ログイン時のログイン情報と不一致の場合top.jsp
 				dispatcher = request.getRequestDispatcher("UserDateDeleteResultTop.jsp");
 				dispatcher.forward(request, response);

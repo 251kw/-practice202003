@@ -7,29 +7,20 @@ public class UserDTO {
 	private String userName;	// ユーザ名
 	private String icon;		// ユーザアイコン
 	private String profile;		// プロフィール
-	private int date;
 
 	public UserDTO(){
 
 	}
 
-	public UserDTO(String loginId, String password, String userName, String icon, String profile,int date) {
+	public UserDTO(String loginId, String password, String userName, String icon, String profile) {
 
 		this.loginId = loginId;
 		this.password = password;
 		this.userName = userName;
 		this.icon = icon;
 		this.profile = profile;
-		this.date=date;
-	}
-	public int getDate() {
-		return date;
-	}
 
-	public void setDate(int date) {
-		this.date = date;
 	}
-
 	// 各メンバ変数の getter および setter
 	public String getLoginId() {
 		return loginId;

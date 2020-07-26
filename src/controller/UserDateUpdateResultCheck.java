@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DEUpdetaManager;
+import dao.DBManager;
+import dto.ShoutDTO;
 import dto.UserDTO;
 
 /**
@@ -46,11 +48,14 @@ public class UserDateUpdateResultCheck extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;Charset=UTF-8");
 		String loginId = request.getParameter("loginId");
+		String password=request.getParameter("password");
 		HttpSession session = request.getSession();
 		String myName = (String) session.getAttribute("name");
 		RequestDispatcher dispatcher = null;
-		DEUpdetaManager dbm = new DEUpdetaManager();
-		UserDTO user = dbm.getLoginUser7(loginId);
+		DBManager dbm = new DBManager();
+		UserDTO user = dbm.getLoginUser(loginId, password);
+		ArrayList<ShoutDTO> list = dbm.getShoutList();
+		session.setAttribute("shouts", list);
 		if (loginId.equals(myName)) {
 			// ログインユーザ情報、書き込み内容リストとしてセッションに保存
 			session.setAttribute("user", user);
