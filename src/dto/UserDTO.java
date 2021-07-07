@@ -13,13 +13,14 @@ public class UserDTO {
 	}
 
 	public UserDTO(String loginId, String password, String userName, String icon, String profile) {
+
 		this.loginId = loginId;
 		this.password = password;
 		this.userName = userName;
 		this.icon = icon;
 		this.profile = profile;
-	}
 
+	}
 	// 各メンバ変数の getter および setter
 	public String getLoginId() {
 		return loginId;

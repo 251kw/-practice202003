@@ -15,6 +15,7 @@ public class SnsDAO {
 	public Connection getConnection(){
 		Connection conn = null;
 
+
 		try {
 			// JDBC ドライバのロード
             Class.forName("com.mysql.jdbc.Driver");
